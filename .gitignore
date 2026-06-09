@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Python cache (from bundled .claude skills)
+__pycache__/
+*.pyc
+
+# Local Claude settings (personal, not shared)
+.claude/settings.local.json
+
+# macOS
+.DS_Store

@@ -1,8 +1,6 @@
-"use client";
+import Accordion, { type QA } from "@/components/Accordion";
 
-import { useState } from "react";
-
-const FAQS = [
+const FAQS: QA[] = [
   { q: "What should I bring?", a: "Swimwear, a towel, sunscreen and a change of clothes. Lockers are available on site." },
   { q: "Is it safe for kids?", a: "Yes. Kid-friendly pools, lifeguards on duty, and the family slides are kept separate from the speed slides." },
   { q: "Do I need to book in advance?", a: "Walk-ins are welcome, but a quick WhatsApp ahead guarantees a spot on weekends and holidays." },
@@ -18,39 +16,11 @@ const FAQS = [
 ];
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
-
   return (
     <section className="day" id="faq">
       <div className="wrap">
         <h2 className="rv">The questions we get asked most.</h2>
-        <div className="faqs">
-          {FAQS.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div
-                className="faq rv"
-                key={f.q}
-                data-open={isOpen ? "true" : "false"}
-                style={{ transitionDelay: `${Math.min(i * 45, 360)}ms` }}
-              >
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-ans-${i}`}
-                >
-                  <span>{f.q}</span>
-                  <span className="plus" aria-hidden="true" />
-                </button>
-                <div className="ans-wrap" id={`faq-ans-${i}`} role="region" aria-hidden={!isOpen}>
-                  <div className="ans">
-                    <p>{f.a}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <Accordion items={FAQS} idPrefix="faq" />
       </div>
     </section>
   );

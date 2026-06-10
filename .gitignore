@@ -49,3 +49,6 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# graphify generated knowledge graph (rebuild with: graphify update .)
+/graphify-out/

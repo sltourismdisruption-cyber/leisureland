@@ -28,7 +28,12 @@ export default function Faq() {
           {FAQS.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div className="faq rv" key={f.q} data-open={isOpen ? "true" : "false"}>
+              <div
+                className="faq rv"
+                key={f.q}
+                data-open={isOpen ? "true" : "false"}
+                style={{ transitionDelay: `${Math.min(i * 45, 360)}ms` }}
+              >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}

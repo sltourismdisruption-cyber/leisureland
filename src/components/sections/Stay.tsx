@@ -19,10 +19,11 @@ export default function Stay() {
         </p>
 
         <div className="roomcards">
-          {rooms.map((r) => (
+          {rooms.map((r, i) => (
             <a
               className="roomtile rv"
               key={r.name}
+              style={{ transitionDelay: `${i * 90}ms` }}
               href={waLink(roomMessage(r.name))}
               target="_blank"
               rel="noopener noreferrer"
@@ -50,8 +51,8 @@ export default function Stay() {
         <h3 className="sub rv">Only if you stay the night</h3>
         <p className="sub-lede rv">The hands-on part no day visitor gets, and no hotel in Galle offers.</p>
         <div className="stay2">
-          {STAY_ONLY.map((s) => (
-            <div className="bigplace rv" key={s.shot}>
+          {STAY_ONLY.map((s, i) => (
+            <div className="bigplace rv" key={s.shot} style={{ transitionDelay: `${(i % 2) * 90}ms` }}>
               <Shot tone={s.tone} label={s.shot} src={s.src} />
               <div className="cap">
                 <span className="nm">{s.nm}</span>

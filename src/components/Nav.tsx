@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { messages } from "@/lib/constants";
 
@@ -14,9 +14,17 @@ const LINKS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav>
+    <nav data-scrolled={scrolled ? "true" : "false"}>
       <div className="wrap nav-in">
         <a className="brand" href="#main" onClick={() => setOpen(false)} aria-label="Leisure Land home">
           {/* eslint-disable-next-line @next/next/no-img-element */}

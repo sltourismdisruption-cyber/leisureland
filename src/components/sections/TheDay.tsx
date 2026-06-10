@@ -83,8 +83,8 @@ export default function TheDay() {
         <p className="lede rv">One price, one full day, zero hidden costs. Roughly, it looks like this:</p>
 
         <div className="timeline">
-          {STOPS.map((s) => (
-            <div className="stop rv" key={s.time}>
+          {STOPS.map((s, i) => (
+            <div className="stop rv" key={s.time} style={{ transitionDelay: `${i * 70}ms` }}>
               <span className="t">{s.time}</span>
               <span className="ic">{s.icon}</span>
               <div>

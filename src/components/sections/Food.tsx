@@ -27,8 +27,8 @@ export default function Food() {
           </p>
         </div>
         <div className="food-details">
-          {DETAILS.map((d) => (
-            <div className="detail rv" key={d.shot}>
+          {DETAILS.map((d, i) => (
+            <div className="detail rv" key={d.shot} style={{ transitionDelay: `${i * 90}ms` }}>
               <div className="frame">
                 <Shot tone={d.tone} label={d.shot} src={d.src} />
               </div>

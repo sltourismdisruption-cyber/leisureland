@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * The painted coconut underline. ONLY two uses allowed site-wide (handoff §3):
+ * The painted leaf-green underline. ONLY two uses allowed site-wide (handoff §3):
  * the hero word "Nature-Inspired" and the price "4,000 LKR".
  * variant "hero" draws on load; "price" draws when its `.rv` parent reveals.
  */

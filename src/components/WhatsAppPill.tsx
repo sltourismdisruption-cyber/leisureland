@@ -10,7 +10,7 @@ type Props = {
   className?: string;
 };
 
-/** The one coconut pill, the only primary action style on the site. */
+/** The one green pill, the only primary action style on the site. */
 export default function WhatsAppPill({ message, children, big = false, className = "" }: Props) {
   return (
     <a

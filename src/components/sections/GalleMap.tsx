@@ -1,5 +1,83 @@
-const SERIF = { fontFamily: "var(--font-young-serif), serif" };
-const CURSIVE = { fontFamily: "var(--font-kalam), cursive" };
+import type { ReactNode } from "react";
+
+/**
+ * Journey rows: each destination's dotted tuk tuk trail is as long as the ride
+ * (minutes), so near and far read at a glance. Replaces the earlier schematic
+ * map, which implied a geography it didn't actually have.
+ */
+
+type Dest = { name: string; min: number; icon: ReactNode };
+
+const DESTS: Dest[] = [
+  {
+    name: "Unawatuna Beach",
+    min: 15,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 15q4.5-5 9 0t9 0" />
+      </svg>
+    ),
+  },
+  {
+    name: "Galle Fort",
+    min: 20,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 19V5" />
+        <path d="M8 6l7 2.5L8 11" />
+        <path d="M4.5 19h8" />
+      </svg>
+    ),
+  },
+  {
+    name: "Jungle Beach",
+    min: 20,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 18C5 10.5 11 5.5 19 6c-.5 7.5-6.5 12.5-14 12Z" />
+        <path d="M7.5 15.5C10 12 13.5 9.5 17.5 8" />
+      </svg>
+    ),
+  },
+  {
+    name: "Turtle hatchery",
+    min: 20,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5.5 14a6.5 5.5 0 0 1 13 0" />
+        <path d="M3.5 14h17" />
+        <path d="M18.5 11.5l2-1.5" />
+      </svg>
+    ),
+  },
+  {
+    name: "Coconut Tree Hill",
+    min: 25,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V8" />
+        <path d="M12 8C9.5 5 6 5 4.5 7.5" />
+        <path d="M12 8c2.5-3 6-3 7.5-.5" />
+        <path d="M5 19h14" />
+      </svg>
+    ),
+  },
+  {
+    name: "Stilt fishermen",
+    min: 25,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10 19V5" />
+        <path d="M6.5 9.5h7" />
+        <circle cx="15.5" cy="7" r="1.8" />
+        <path d="M4 19q4-4 8 0t8 0" />
+      </svg>
+    ),
+  },
+];
+
+// Trail length: minutes scaled so the farthest ride spans ~72% of the bar area.
+const trailWidth = (min: number) => `${Math.round((min / 25) * 72)}%`;
 
 export default function GalleMap() {
   return (
@@ -12,64 +90,30 @@ export default function GalleMap() {
         </p>
 
         <div className="mappanel rv">
-          <div className="mapwrap">
-            <svg
-              viewBox="0 0 1100 600"
-              role="img"
-              aria-label="A sketched map: Leisure Land in the jungle, with tuk tuk routes down to Galle Fort, Unawatuna Beach, Jungle Beach and the turtle hatchery along the coast"
-            >
-              <path d="M0 444 C 90 432 180 452 270 442 C 360 432 450 452 540 444 C 630 436 720 454 810 446 C 900 438 990 454 1100 446 L1100 600 L0 600 Z" fill="#D9E8ED" />
-              <path d="M0 444 C 90 432 180 452 270 442 C 360 432 450 452 540 444 C 630 436 720 454 810 446 C 900 438 990 454 1100 446" fill="none" stroke="#2C4A3B" strokeWidth={3} strokeLinecap="round" />
-              <path d="M120 505 q14 -8 28 0 q14 8 28 0" fill="none" stroke="#7FB0C4" strokeWidth={2.5} strokeLinecap="round" />
-              <path d="M610 545 q14 -8 28 0 q14 8 28 0" fill="none" stroke="#7FB0C4" strokeWidth={2.5} strokeLinecap="round" />
-              <path d="M880 560 q14 -8 28 0 q14 8 28 0" fill="none" stroke="#7FB0C4" strokeWidth={2.5} strokeLinecap="round" />
-
-              <g stroke="#8A6B47" strokeWidth={2.5} fill="none" strokeLinecap="round" strokeDasharray="1 9">
-                <path d="M548 162 C 430 240 300 330 178 424" />
-                <path d="M552 168 C 510 260 460 350 424 430" />
-                <path d="M568 168 C 610 260 640 350 658 432" />
-                <path d="M572 162 C 700 240 820 330 898 426" />
-              </g>
-
-              <g transform="translate(468,298) rotate(14)" stroke="#6A5037" strokeWidth={3} fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M-16 4 L-11 -11 H9 L15 4 Z" />
-                <path d="M-2 -11 V4" />
-                <circle cx="-8" cy="10" r="5" />
-                <circle cx="8" cy="10" r="5" />
-              </g>
-
-              <g stroke="#3E7E57" strokeWidth={3.2} fill="none" strokeLinecap="round">
-                <g transform="translate(480,178)"><path d="M0 14 V0" /><path d="M-9 0 C -7 -10 7 -10 9 0" /></g>
-                <g transform="translate(642,170)"><path d="M0 14 V0" /><path d="M-9 0 C -7 -10 7 -10 9 0" /></g>
-                <g transform="translate(525,116)"><path d="M0 14 V0" /><path d="M-9 0 C -7 -10 7 -10 9 0" /></g>
-                <g transform="translate(606,212)"><path d="M0 14 V0" /><path d="M-9 0 C -7 -10 7 -10 9 0" /></g>
-                <g transform="translate(672,118)"><path d="M0 14 V0" /><path d="M-9 0 C -7 -10 7 -10 9 0" /></g>
-              </g>
-
-              <circle cx="560" cy="155" r="18" fill="none" stroke="#E8973B" strokeWidth={2.5} />
-              <circle cx="560" cy="155" r="10" fill="#E8973B" stroke="#FBFDFC" strokeWidth={3} />
-              <text x="560" y="86" textAnchor="middle" style={SERIF} fontSize={32} fill="#1E3A2C">Leisure Land</text>
-              <text x="560" y="115" textAnchor="middle" style={CURSIVE} fontSize={19} fill="#7A5B3C">deep in the jungle, 10 min off the highway</text>
-
-              <g style={SERIF} fontSize={25} fill="#1E3A2C" textAnchor="middle">
-                <circle cx="178" cy="440" r="7" fill="#1E3A2C" />
-                <text x="178" y="490">Galle Fort</text>
-                <circle cx="424" cy="446" r="7" fill="#1E3A2C" />
-                <text x="424" y="496">Unawatuna Beach</text>
-                <circle cx="658" cy="444" r="7" fill="#1E3A2C" />
-                <text x="658" y="528">Jungle Beach</text>
-                <circle cx="898" cy="442" r="7" fill="#1E3A2C" />
-                <text x="898" y="492">Turtle hatchery</text>
-              </g>
-              <g style={CURSIVE} fontSize={18.5} fill="#7A5B3C" textAnchor="middle">
-                <text x="178" y="517">about 20 minutes</text>
-                <text x="424" y="523">about 15 minutes</text>
-                <text x="658" y="555">about 20 minutes</text>
-                <text x="898" y="519">about 20 minutes</text>
-              </g>
+          <div className="gx-base">
+            <svg className="gx-pin" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" fill="none" stroke="var(--cta)" strokeWidth="2.5" />
+              <circle cx="12" cy="12" r="4" fill="var(--cta)" />
             </svg>
+            <b>Leisure Land</b>
+            <span className="hand">deep in the jungle, 10 min off the highway</span>
           </div>
+          <ul className="gx-list">
+            {DESTS.map((d, i) => (
+              <li className="gx-row rv" key={d.name} style={{ transitionDelay: `${i * 70}ms` }}>
+                <span className="gx-name">
+                  <span className="gx-ic">{d.icon}</span>
+                  {d.name}
+                </span>
+                <span className="gx-bar">
+                  <span className="gx-trail" style={{ width: trailWidth(d.min) }} aria-hidden="true" />
+                  <span className="gx-time hand">about {d.min} minutes</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
+
         <p className="after rv">
           Bicycles, custom day plans, and the spots most tourists never find. Just ask.
         </p>

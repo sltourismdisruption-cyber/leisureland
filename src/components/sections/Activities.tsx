@@ -55,8 +55,8 @@ export default function Activities() {
         </div>
 
         <div className="biggrid">
-          {TILES.map((t) => (
-            <div className={`tile ${t.cls} rv`} key={t.shot}>
+          {TILES.map((t, i) => (
+            <div className={`tile ${t.cls} rv`} key={t.shot} style={{ transitionDelay: `${(i % 3) * 90}ms` }}>
               <Shot tone={t.tone} label={t.shot} src={t.src} />
               <div className="cap">
                 <span className="nm">{t.nm}</span>

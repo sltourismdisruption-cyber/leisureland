@@ -6,6 +6,7 @@ import Footer from "@/components/sections/Footer";
 import Fab from "@/components/Fab";
 import CookieConsent from "@/components/CookieConsent";
 import RevealObserver from "@/components/RevealObserver";
+import Preloader from "@/components/Preloader";
 
 const youngSerif = Young_Serif({
   variable: "--font-young-serif",
@@ -44,8 +45,21 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${youngSerif.variable} ${albertSans.variable} ${kalam.variable}`}
+      // data-js / data-ready are set by the boot script + preloader before
+      // hydration; React must not treat them as a mismatch.
+      suppressHydrationWarning
     >
       <body>
+        {/* Arms JS-gated animations the instant the page parses; without JS,
+            nothing is ever hidden and the preloader never renders. The
+            watchdog un-arms everything if the app bundle never hydrates
+            (flaky network), so the curtain can never strand the page blank. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `var d=document.documentElement;d.setAttribute("data-js","");setTimeout(function(){if(!d.hasAttribute("data-ready"))d.removeAttribute("data-js")},6000);`,
+          }}
+        />
+        <Preloader />
         <a className="skip" href="#main">Skip to content</a>
         <Nav />
         <main id="main">{children}</main>

@@ -26,21 +26,21 @@ export default function Footer() {
             <WhatsAppPill message={messages.book}>Message us on WhatsApp</WhatsAppPill>
           </div>
 
-          <div className="foot-col">
+          <div className="foot-col fc-explore">
             <span className="label">Explore</span>
             {EXPLORE.map((l) => (
               <a key={l.href} href={l.href}>{l.label}</a>
             ))}
           </div>
 
-          <div className="foot-col">
+          <div className="foot-col fc-visit">
             <span className="label">Visit</span>
             <span>{contact.hours}</span>
             <a href="#getting-here">Map &amp; driving times</a>
             <span className="foot-dim">Walk-ins welcome, WhatsApp ahead on holidays</span>
           </div>
 
-          <div className="foot-col">
+          <div className="foot-col fc-hello">
             <span className="label">Say hello</span>
             <span>WhatsApp {contact.whatsappDisplay}</span>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>

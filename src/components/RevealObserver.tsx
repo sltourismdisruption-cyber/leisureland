@@ -9,6 +9,12 @@ import { useEffect } from "react";
  */
 export default function RevealObserver() {
   useEffect(() => {
+    // No IntersectionObserver (very old browser)? Show everything immediately.
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(".rv").forEach((el) => el.classList.add("in"));
+      return;
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

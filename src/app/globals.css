@@ -145,13 +145,23 @@ nav {
 @keyframes kenburns { from { transform: scale(1.07); } to { transform: scale(1); } }
 .hero-in { position: relative; z-index: 3; padding: 90px 0 120px; width: 100%; text-align: center; }
 .hero h1 { font-size: clamp(40px, 6.2vw, 74px); color: #f7faf7; max-width: 880px; letter-spacing: -0.01em; margin: 0 auto; }
-/* staged entrance for the hero content */
-.ha { opacity: 0; animation: ha-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-@keyframes ha-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+/* "Nature-Inspired" can't wrap (the underline needs one line), so scale the
+   headline down on narrow phones to keep it inside the gutters */
+@media (max-width: 420px) { .hero h1 { font-size: clamp(30px, 8.5vw, 40px); } }
+/* staged entrance for the hero content: armed by JS, fired when the
+   preloader lifts (data-ready), with a soft blur-to-sharp settle */
+html[data-js] .ha { opacity: 0; }
+html[data-js][data-ready] .ha { animation: ha-rise 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes ha-rise {
+  from { opacity: 0; transform: translateY(24px); filter: blur(5px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
 .uline { position: relative; display: inline-block; white-space: nowrap; }
 .uline svg { position: absolute; left: -2%; bottom: -12px; width: 104%; height: 20px; overflow: visible; }
-.uline path { fill: none; stroke: var(--leaf); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 340; stroke-dashoffset: 340; }
-.hero-u path { animation: draw 0.9s 0.5s ease forwards; }
+/* visible by default (no-JS safe); JS arms the draw, data-ready fires it */
+.uline path { fill: none; stroke: var(--leaf); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 340; stroke-dashoffset: 0; }
+html[data-js] .uline path { stroke-dashoffset: 340; }
+html[data-js][data-ready] .hero-u path { animation: draw 0.9s 0.55s ease forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 .hero p.sub { margin-top: 22px; max-width: 580px; margin-left: auto; margin-right: auto; font-size: clamp(17px, 2vw, 19.5px); color: rgba(247, 250, 247, 0.93); }
 .hero-cta { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
@@ -279,11 +289,19 @@ h2 { font-size: clamp(30px, 4.3vw, 50px); max-width: 760px; }
 .gx-ic { width: 24px; height: 24px; color: var(--fern); flex: none; }
 .gx-ic svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .gx-bar { display: flex; align-items: center; gap: 13px; min-width: 0; }
-.gx-trail { flex: none; height: 0; border-top: 3px dotted rgba(106, 80, 55, 0.55); position: relative; transition: width 1s cubic-bezier(0.22, 1, 0.36, 1); }
+/* trail length = --ratio (minutes/25) of the space left after the time text,
+   so near/far stays proportional at every screen width; with JS it draws out
+   from zero when the row reveals */
+.gx-trail { flex: none; height: 0; border-top: 3px dotted rgba(106, 80, 55, 0.55); position: relative; --trail-w: calc((100% - 170px) * var(--ratio)); width: var(--trail-w); }
+html[data-js] .gx-trail { width: 0; transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s; }
+html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 .gx-trail::after { content: ""; position: absolute; right: -4px; top: -6px; width: 9px; height: 9px; border-radius: 50%; background: var(--fern); }
-.gx-time { font-size: 16px; white-space: nowrap; }
+.gx-time { font-size: 16px; white-space: nowrap; flex: none; }
 @media (max-width: 640px) {
-  .gx-row { grid-template-columns: 1fr; gap: 8px; padding: 16px 0; }
+  .gx-row { grid-template-columns: 1fr; gap: 9px; padding: 16px 0; }
+  .gx-base { row-gap: 2px; }
+  .gx-trail { --trail-w: calc((100% - 150px) * var(--ratio)); }
+  .gx-time { font-size: 15px; }
 }
 .galle .after { margin-top: 26px; font-size: 16px; max-width: 560px; }
 
@@ -345,11 +363,31 @@ footer { background: var(--night); color: rgba(244, 248, 244, 0.82); overflow: h
 .fly.f3 { top: 6%; left: 56%; animation-delay: 2.6s; animation-duration: 5.8s; }
 .fly.f4 { top: 32%; left: 31%; animation-delay: 3.4s; }
 .fly.f5 { top: 15%; left: 93%; animation-delay: 4.5s; animation-duration: 7s; }
-.foot-in { padding: 64px 0 0; position: relative; z-index: 2; }
+/* padding-top only: .foot-in shares the element with .wrap, whose 26px side
+   gutters must survive (a padding shorthand here would zero them) */
+.foot-in { padding-top: 64px; position: relative; z-index: 2; }
 .f-logo { height: 30px; width: auto; display: block; margin-bottom: 18px; }
 .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.25fr; gap: clamp(26px, 4vw, 56px); padding-bottom: 48px; }
 @media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 36px 28px; } }
-@media (max-width: 540px) { .foot-grid { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 600px) {
+  .foot-in { padding-top: 52px; }
+  .foot-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "brand brand"
+      "explore visit"
+      "hello hello";
+    gap: 30px 20px;
+    padding-bottom: 38px;
+  }
+  .foot-brand { grid-area: brand; }
+  .fc-explore { grid-area: explore; }
+  .fc-visit { grid-area: visit; }
+  .fc-hello { grid-area: hello; }
+  .foot-brand p { max-width: none; margin-bottom: 16px; }
+  .foot-col { gap: 9px; font-size: 15px; }
+  .foot-bottom { justify-content: center; text-align: center; gap: 6px 18px; }
+}
 .foot-brand p { margin: 0 0 20px; font-size: 15.5px; line-height: 1.65; color: rgba(244, 248, 244, 0.72); max-width: 30ch; }
 .foot-col { display: grid; gap: 11px; align-content: start; font-size: 15.5px; justify-items: start; }
 .foot-col .label { color: #f4f8f4; font-weight: 600; font-size: 16px; margin-bottom: 3px; }
@@ -368,23 +406,57 @@ footer { background: var(--night); color: rgba(244, 248, 244, 0.82); overflow: h
 .cookie p { flex: 1; min-width: 220px; }
 .cookie a { color: var(--fern); text-decoration: underline; text-underline-offset: 2px; }
 .cookie .pill { padding: 9px 18px; font-size: 14px; }
-@media (max-width: 700px) { .fab { right: 16px; bottom: 86px; } .cookie { bottom: 16px; } }
+/* on phones the cookie card leaves a lane for the FAB instead of covering it */
+@media (max-width: 700px) {
+  .fab { right: 14px; bottom: 14px; }
+  .cookie { left: 14px; right: 86px; bottom: 14px; margin: 0; max-width: none; }
+}
 
-/* reveal: gentle rise with a long settle, staggered per item via inline delay */
-.rv { opacity: 0; transform: translateY(26px); transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform; }
-.rv.in { opacity: 1; transform: none; }
+/* reveal: gentle rise with a long settle, staggered per item via inline delay.
+   Content is visible by default; JS arms the hidden state, so a script
+   failure can never leave the page blank. */
+html[data-js] .rv { opacity: 0; transform: translateY(26px); transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1); }
+html[data-js] .rv.in { opacity: 1; transform: none; }
 /* ledes follow their headline by a beat */
-.lede.rv { transition-delay: 100ms; }
+html[data-js] .lede.rv { transition-delay: 100ms; }
 /* nav lifts off the page once you scroll */
 nav[data-scrolled="true"] { box-shadow: 0 12px 32px -18px rgba(20, 48, 38, 0.4); }
+
+/* ---------- preloader: mist curtain, wordmark + painted line ---------- */
+.preloader {
+  position: fixed; inset: 0; z-index: 200; background: var(--mist);
+  display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+html[data-js] .preloader { display: flex; }
+.preloader.is-leaving { opacity: 0; visibility: hidden; pointer-events: none; }
+/* curtain dismissal is attribute-driven too, never solely React state */
+html[data-ready] .preloader { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader img { height: 36px; width: auto; animation: pre-pop 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pre-line { width: 150px; height: 14px; overflow: visible; }
+.pre-line path { fill: none; stroke: var(--leaf); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 340; stroke-dashoffset: 340; animation: draw 0.9s 0.25s ease forwards; }
+@keyframes pre-pop { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* gentle attention ring on the WhatsApp bubble, every few seconds */
+.fab::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; animation: fab-ping 6s ease-out 4s infinite; }
+@keyframes fab-ping {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  14% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .rv { opacity: 1; transform: none; transition: none; }
-  .ha { opacity: 1; animation: none; }
+  html[data-js] .rv { opacity: 1; transform: none; transition: none; }
+  html[data-js] .ha { opacity: 1; animation: none; }
+  html[data-js][data-ready] .ha { opacity: 1; animation: none; }
   .hero-bg .ph-img { animation: none; }
-  .uline path { animation: none; stroke-dashoffset: 0; }
+  html[data-js] .uline path { animation: none; stroke-dashoffset: 0; }
+  html[data-js][data-ready] .hero-u path { animation: none; }
+  .preloader { display: none !important; }
+  .fab::after { animation: none; }
   .tile .ph, .roomtile .ph, .bigplace .ph { transition: none; }
   .tile:hover .ph, .roomtile:hover .ph, .bigplace:hover .ph { transform: none; }
-  .gx-trail { transition: none; }
+  html[data-js] .gx-trail { width: var(--trail-w); transition: none; }
   .fly { animation: none; opacity: 0.45; }
   html { scroll-behavior: auto; }
 }

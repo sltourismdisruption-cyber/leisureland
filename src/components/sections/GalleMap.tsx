@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Journey rows: each destination's dotted tuk tuk trail is as long as the ride
@@ -76,8 +76,9 @@ const DESTS: Dest[] = [
   },
 ];
 
-// Trail length: minutes scaled so the farthest ride spans ~72% of the bar area.
-const trailWidth = (min: number) => `${Math.round((min / 25) * 72)}%`;
+// Trail length ratio: minutes over the farthest ride (25), so the longest
+// trail fills the space left after the time text and the rest stay proportional.
+const trailRatio = (min: number) => String(min / 25);
 
 export default function GalleMap() {
   return (
@@ -100,13 +101,17 @@ export default function GalleMap() {
           </div>
           <ul className="gx-list">
             {DESTS.map((d, i) => (
-              <li className="gx-row rv" key={d.name} style={{ transitionDelay: `${i * 70}ms` }}>
+              <li
+                className="gx-row rv"
+                key={d.name}
+                style={{ transitionDelay: `${i * 70}ms`, "--ratio": trailRatio(d.min) } as CSSProperties}
+              >
                 <span className="gx-name">
                   <span className="gx-ic">{d.icon}</span>
                   {d.name}
                 </span>
                 <span className="gx-bar">
-                  <span className="gx-trail" style={{ width: trailWidth(d.min) }} aria-hidden="true" />
+                  <span className="gx-trail" aria-hidden="true" />
                   <span className="gx-time hand">about {d.min} minutes</span>
                 </span>
               </li>

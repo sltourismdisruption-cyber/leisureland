@@ -122,6 +122,13 @@ export default function GalleMap() {
         <p className="after rv">
           Bicycles, custom day plans, and the spots most tourists never find. Just ask.
         </p>
+        <p className="after rv">
+          Landing in Colombo or Mattala? We arrange airport pickups and drop-offs too, just tell us
+          your flight when you book.
+        </p>
+        <p className="after rv" style={{ color: "var(--ink)", fontWeight: 600 }}>
+          Other places give you a bed. We give you Galle.
+        </p>
       </div>
     </section>
   );

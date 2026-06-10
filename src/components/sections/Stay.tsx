@@ -3,7 +3,9 @@ import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { rooms, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
 
-const STAY_ONLY: { tone: Tone; shot: string; src: string; nm: string; ds: string }[] = [
+// Exported: /accommodation renders the same four experiences in the same grid
+// (handoff v2, hands-on Ceylon section).
+export const STAY_ONLY: { tone: Tone; shot: string; src: string; nm: string; ds: string }[] = [
   { tone: "jungle", shot: "shot 16: hands on the cinnamon branch, portrait", src: "/assets/photos/wildlife-lizard.jpg", nm: "Pluck Ceylon cinnamon", ds: "straight from the tree" },
   { tone: "jungle", shot: "shot 17: picking tea leaves, portrait", src: "/assets/photos/natural-waterfall.jpg", nm: "Pick & brew your own tea", ds: "your own cup, your own hands" },
   { tone: "gold", shot: "shot 18: hibiscus drink in the making, portrait", src: "/assets/photos/hero-lagoon.jpg", nm: "Hibiscus drink from scratch", ds: "the traditional shoe-flower way" },

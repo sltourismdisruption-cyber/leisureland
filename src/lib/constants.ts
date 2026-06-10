@@ -74,6 +74,11 @@ export const dayPricing = [
   { height: "Above 1.3 m", price: "4,200 LKR", note: "about $14" },
 ] as const;
 
+// Pool-only ticket (Doc 06, Option B). The founder fills the real price;
+// until then the placeholder stays VISIBLE on the page by design. Never
+// invent this number.
+export const poolOnlyEntry = "[PRICE]";
+
 // Hours per Doc 05 (day-outing pricing section). The founder still needs to
 // reconcile these with the 9 am to 10 pm line used in the footer and FAQ.
 export const dayHours = {

@@ -5,7 +5,7 @@ const FAQS: QA[] = [
   { q: "Is it safe for kids?", a: "Yes. Kid-friendly pools, lifeguards on duty, and the family slides are kept separate from the speed slides." },
   { q: "Do I need to book in advance?", a: "Walk-ins are welcome, but a quick WhatsApp ahead guarantees a spot on weekends and holidays." },
   { q: "What time are you open?", a: "The water park is open 9 am to 10 pm daily. The ten-foot deep pool closes at 6:30 pm for safety, once the light goes." },
-  { q: "Is the food really not spicy?", a: "There is a non-spicy line for foreign guests, with spicier options too if you are feeling brave." },
+  { q: "Is the food really not spicy?", a: "There is a non-spicy line for guests from around the world, with spicier options too if you are feeling brave." },
   { q: "Vegetarian, vegan or gluten free?", a: "All sorted. Just message us in advance and we will take care of it." },
   { q: "Do you serve alcohol?", a: "Yes, after 2 pm for day guests. No adventure pool or activities after drinking, safety first." },
   { q: "Are there quiet hours for guests staying over?", a: "Yes, no loud sounds after 10 pm. We protect the calm so everyone enjoys the nature." },

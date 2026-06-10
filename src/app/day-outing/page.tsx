@@ -6,7 +6,7 @@ import Underline from "@/components/Underline";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
-import { messages, dayPricing, dayHours, menu, type Tone } from "@/lib/constants";
+import { messages, dayPricing, dayHours, poolOnlyEntry, type Tone } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Your Day at Leisure Land · Water Park Day Outing near Galle",
@@ -20,82 +20,99 @@ export const metadata: Metadata = {
   final(photo) > footer via treeline
 */
 
-// Doc 05 §2: moments, never a schedule. No clock times anywhere on this page
-// outside the pricing section.
+// Doc 06 §1: the six-beat journey. Emotional, no clock times anywhere on this
+// page outside the pricing section. (Doc 06 em dashes become commas/colons
+// per the locked no-dash rule from the v1 handoff.)
 const MOMENTS: { title: string; body: string; tone: Tone; shot: string; src: string }[] = [
   {
-    title: "Arrive and breathe.",
-    body: "Fresh fruit juice in hand, jungle all around.",
-    tone: "gold",
+    title: "Arrive to Another World",
+    body: "Step off the road and into the jungle. A cold welcome juice in your hand, birdsong overhead, the air suddenly greener. You made it.",
+    tone: "jungle",
     shot: "moments set: welcome juice being handed over, portrait",
     src: "/assets/photos/hero-lagoon.jpg",
   },
   {
-    title: "Play.",
-    body: "Slides, waterfall pools, cable bridges, tree house. Go at your own pace.",
+    title: "Chase the Rush",
+    body: "Hit the slides. Feel your stomach drop as you race through the canopy and crash into cool water. Again? Obviously again.",
     tone: "water",
-    shot: "shot 08: splashdown, speed slide, portrait",
+    shot: "The Jungle Plunge: splashdown, portrait",
     src: "/assets/photos/slide.jpg",
   },
   {
-    title: "Feast.",
-    body: "A Sri Lankan lunch buffet, ask for spicy or mild, both authentic.",
-    tone: "food",
-    shot: "moments set: buffet being served onto a plate, portrait",
-    src: "/assets/photos/bbq-bonfire.jpg",
-  },
-  {
-    title: "More play.",
-    body: "Kotta Pora pillow fights, Tarzan jumps, rope walking, paddy swings.",
+    title: "Play Like a Kid Again",
+    body: "Knock a friend off the log into the pool. Swing in like Tarzan. Balance the ancient rope walk. This is the stuff you'll still be laughing about next year.",
     tone: "water",
     shot: "shot 03: mid pillow swing, both balanced, portrait",
     src: "/assets/photos/pool-volleyball.jpg",
   },
   {
-    title: "Wind down.",
-    body: "Black tea or coffee as the light goes golden.",
+    title: "Feast Together",
+    body: "Gather around a real Sri Lankan spread, cooked from scratch. Spicy or mild, your call. Eat until you're happy.",
+    tone: "food",
+    shot: "moments set: buffet being served onto a plate, portrait",
+    src: "/assets/photos/bbq-bonfire.jpg",
+  },
+  {
+    title: "Let the Water Heal You",
+    body: "Stand under the waterfall and let it massage your shoulders. Float. Breathe. Let the jungle do the rest.",
+    tone: "water",
+    shot: "waterfall massage shot: under the falls, shoulders and back, portrait",
+    src: "/assets/photos/natural-waterfall.jpg",
+  },
+  {
+    title: "Leave Lighter Than You Came",
+    body: "A last cup of Ceylon tea as the light turns gold. You'll already be planning the next visit.",
     tone: "gold",
     shot: "moments set: evening tea at golden hour, portrait",
     src: "/assets/photos/aerial-pools.jpg",
   },
 ];
 
-// All 10 activities in Doc 05 order. The two traditional games carry the
-// inline flag label (the one allowed emoji, treated as content).
+// All 12 activities. Doc 06: slides renamed (The Jungle Plunge / The Twister),
+// pool sports split into two cards, the waterfall gets the therapeutic angle,
+// Coconut Tree Climbing added. The flag labels are inline content, not badges.
 const ACTIVITIES: {
   name: string;
   body: string;
-  traditional?: boolean;
+  tag?: string;
+  confirmNote?: string;
   tone: Tone;
   shot: string;
   src: string;
 }[] = [
   {
-    name: "Speed slide",
+    name: "The Jungle Plunge",
     body: "The fast one. A steep run, a big splash, and a story to tell. For the daredevils in the group.",
     tone: "water",
-    shot: "shot 08: splashdown, speed slide, portrait",
+    shot: "The Jungle Plunge: splashdown, portrait",
     src: "/assets/photos/slide.jpg",
   },
   {
-    name: "Family slide",
+    name: "The Twister",
     body: "Wider and gentler, built for everyone. Race your kids down it, then go again.",
     tone: "water",
-    shot: "family slide, everyone racing, portrait",
+    shot: "The Twister: mid-ride, portrait",
     src: "/assets/photos/slide.jpg",
   },
   {
-    name: "Waterfall pools",
-    body: "Bathe under flowing water with the jungle overhead. As close to a wild river bath as a pool gets.",
+    name: "The Waterfall: Nature's Massage",
+    body: "Step beneath the cascading water and let it work. The falls pour over your shoulders and back like a natural massage, water therapy the way nature intended. Close your eyes, feel the rush, and let the tension melt into the pool. Surrounded by jungle, there's no spa quite like it.",
     tone: "water",
-    shot: "shot 06: under the waterfall, portrait",
+    shot: "waterfall massage shot: under the falls, blissful, portrait",
     src: "/assets/photos/natural-waterfall.jpg",
   },
   {
-    name: "Pool volleyball & basketball",
-    body: "A net, a hoop, and water where the floor should be. Pick teams and settle it properly.",
+    name: "Pool Volleyball",
+    body: "A net strung over the water. Pick teams, serve, and settle it properly.",
     tone: "water",
-    shot: "pool volleyball mid-rally, portrait",
+    shot: "pool volleyball, separate action shot, portrait",
+    src: "/assets/photos/pool-volleyball.jpg",
+  },
+  {
+    name: "Pool Basketball",
+    body: "A hoop above the pool. Shoot, splash, and go again.",
+    tone: "water",
+    shot: "pool basketball, separate action shot, portrait",
     src: "/assets/photos/pool-volleyball.jpg",
   },
   {
@@ -115,7 +132,7 @@ const ACTIVITIES: {
   {
     name: "Rope walking",
     body: "For generations, toddy tappers crossed between coconut palms on two ropes, feet on one, hands on the other. Ours is strung over the pool. Make it across, or make a splash trying.",
-    traditional: true,
+    tag: "🇱🇰 Traditional Sri Lankan game",
     tone: "jungle",
     shot: "shot 02: feet on the lower rope, hands on the top rope, halfway across",
     src: "/assets/photos/rope-swing.jpg",
@@ -137,11 +154,28 @@ const ACTIVITIES: {
   {
     name: "Kotta Pora",
     body: "A pillow fight on a log above the water, the game villages played at Avurudu, the Sri Lankan New Year. Last one dry wins.",
-    traditional: true,
+    tag: "🇱🇰 Traditional Sri Lankan game",
     tone: "water",
     shot: "shot 03: mid pillow swing, both balanced, portrait",
     src: "/assets/photos/pool-volleyball.jpg",
   },
+  {
+    name: "Coconut Tree Climbing",
+    body: "A traditional Sri Lankan skill, nearly lost to time and reintroduced here. Learn how generations scaled the palms, a real cultural adventure you won't find at any regular water park.",
+    tag: "🇱🇰 Traditional Sri Lankan experience",
+    confirmNote: '[CONFIRM] credit wording: original note said "reintroduced by National Inn"',
+    tone: "jungle",
+    shot: "coconut tree climbing: action, the climber up the palm, portrait",
+    src: "/assets/photos/coconut-climb.jpg",
+  },
+];
+
+// The photos that replace the text menu (Doc 06 §7): photography sells the
+// food here; the full menu lives only on /food.
+const FOOD_SHOTS: { tone: Tone; shot: string; src: string }[] = [
+  { tone: "food", shot: "appealing food photo: dishes being served, squarish", src: "/assets/photos/bbq-bonfire.jpg" },
+  { tone: "food", shot: "appealing food photo: drinks and bites by the pool, squarish", src: "/assets/photos/hero-lagoon.jpg" },
+  { tone: "gold", shot: "appealing food photo: fresh fruit and juices, squarish", src: "/assets/photos/wildlife-lizard.jpg" },
 ];
 
 // Know before you go: the warm version of the rules (Doc 05 §6). Emoji in the
@@ -187,9 +221,6 @@ export default function DayOuting() {
               </div>
             ))}
           </div>
-          <p className="moments-after rv">
-            Leave happy. Or ask us about the evening session instead.
-          </p>
         </div>
       </section>
 
@@ -199,7 +230,7 @@ export default function DayOuting() {
         <div className="wrap">
           <h2 className="rv">Every activity, properly.</h2>
           <p className="lede rv">
-            Ten ways to spend the day, from the slides you know to the old games you don&apos;t.
+            Twelve ways to spend the day, from the slides you know to the old games you don&apos;t.
           </p>
           <div className="allacts">
             {ACTIVITIES.map((a, i) => (
@@ -208,8 +239,9 @@ export default function DayOuting() {
                   <Shot tone={a.tone} label={a.shot} src={a.src} />
                 </div>
                 <h3>{a.name}</h3>
-                {a.traditional ? <span className="tag">🇱🇰 Traditional Sri Lankan game</span> : null}
+                {a.tag ? <span className="tag">{a.tag}</span> : null}
                 <p>{a.body}</p>
+                {a.confirmNote ? <span className="confirm-note">{a.confirmNote}</span> : null}
               </div>
             ))}
           </div>
@@ -223,8 +255,8 @@ export default function DayOuting() {
           <h2 className="rv">One buffet, your way.</h2>
           <p className="lede rv">
             Our buffet is authentic Sri Lankan, cooked from scratch with zero artificial flavors.
-            Tell us your preference, fiery Sri Lankan-style or the milder version foreigners love.
-            Same dishes, same soul, your spice.
+            Tell us your preference, fiery Sri Lankan-style, or a gentler version loved by guests
+            from around the world. Same dishes, same soul, your spice.
           </p>
           <div className="food-hero rv">
             <Shot
@@ -247,14 +279,22 @@ export default function DayOuting() {
               <p className="pcap">Mild, and still authentic</p>
             </div>
           </div>
-          <ul className="menu-list rv">
-            {menu.map((m) => (
-              <li key={m.dish}>
-                <b>{m.dish}</b>
-                <span>{m.note}</span>
-              </li>
+
+          <h3 className="sub rv" style={{ marginTop: 70 }}>Hungry? We&apos;ve got you, all day.</h3>
+          <p className="sub-lede rv">
+            Beyond the buffet, you can order food and drinks throughout the day. Just here for the
+            pool? You can still grab whatever you fancy, food and beverages are available to all
+            visitors.
+          </p>
+          <div className="food-details">
+            {FOOD_SHOTS.map((f, i) => (
+              <div className="detail rv" key={f.shot} style={{ transitionDelay: `${i * 90}ms` }}>
+                <div className="frame">
+                  <Shot tone={f.tone} label={f.shot} src={f.src} />
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -263,23 +303,41 @@ export default function DayOuting() {
       <section className="band-card" id="pricing">
         <div className="wrap">
           <h2 className="rv">What your day costs.</h2>
-          <p className="lede rv">Priced by height, and everything above is included. No hidden costs.</p>
-          <div className="price-rows rv">
-            {dayPricing.map((p) => (
-              <div className="price-row" key={p.height}>
-                <div>
-                  <b>{p.height}</b>
-                  <span className="pr-note">{p.note}</span>
-                </div>
-                <span className="pr-price">
-                  {p.price === "4,200 LKR" ? (
-                    <Underline variant="price">{p.price}</Underline>
-                  ) : (
-                    p.price
-                  )}
-                </span>
+          <p className="lede rv">Two simple options, side by side. Pick the day you want.</p>
+          <div className="price-options">
+            <div className="price-option rv">
+              <h3>Full Day Pass</h3>
+              <p className="opt-sub">
+                Water park, buffet, welcome drink and evening tea. Everything included, no hidden
+                costs. Priced by height.
+              </p>
+              <div className="price-rows">
+                {dayPricing.map((p) => (
+                  <div className="price-row" key={p.height}>
+                    <div>
+                      <b>{p.height}</b>
+                      <span className="pr-note">{p.note}</span>
+                    </div>
+                    <span className="pr-price">
+                      {p.price === "4,200 LKR" ? (
+                        <Underline variant="price">{p.price}</Underline>
+                      ) : (
+                        p.price
+                      )}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="price-option alt rv" style={{ transitionDelay: "90ms" }}>
+              <h3>Pool-Only Ticket</h3>
+              <p className="opt-sub">
+                Just here for the water? Grab a pool-only ticket and order food and drinks from the
+                menu whenever you like. Buffet not included.
+              </p>
+              <p className="entry-line">Entry: {poolOnlyEntry}</p>
+              <span className="confirm-note">[PRICE] founder to provide the pool-only ticket price</span>
+            </div>
           </div>
           <p className="hours-line rv">
             {dayHours.regular}. {dayHours.evening}.

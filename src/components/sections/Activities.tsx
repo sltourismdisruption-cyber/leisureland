@@ -70,7 +70,7 @@ export default function Activities() {
           Whether you&apos;re eight or eighty, there&apos;s a slide, a swing, or an old game with your
           name on it.{" "}
           <Link className="section-link" href="/day-outing">
-            See all 10 activities
+            See all 12 activities
           </Link>
         </p>
       </div>

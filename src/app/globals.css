@@ -341,6 +341,7 @@ footer { background: var(--night); color: rgba(244, 248, 244, 0.82); overflow: h
   .rv { opacity: 1; transform: none; transition: none; }
   .uline path { animation: none; stroke-dashoffset: 0; }
   .tile .ph, .roomtile .ph, .bigplace .ph { transition: none; }
+  .tile:hover .ph, .roomtile:hover .ph, .bigplace:hover .ph { transform: none; }
   .fly { animation: none; opacity: 0.45; }
   html { scroll-behavior: auto; }
 }

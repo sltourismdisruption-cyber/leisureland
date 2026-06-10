@@ -32,11 +32,12 @@ export default function Faq() {
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-ans-${i}`}
                 >
                   <span>{f.q}</span>
                   <span className="plus" aria-hidden="true" />
                 </button>
-                <div className="ans-wrap">
+                <div className="ans-wrap" id={`faq-ans-${i}`} role="region" aria-hidden={!isOpen}>
                   <div className="ans">
                     <p>{f.a}</p>
                   </div>

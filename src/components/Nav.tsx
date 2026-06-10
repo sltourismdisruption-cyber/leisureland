@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { messages } from "@/lib/constants";
+import { asset, messages } from "@/lib/constants";
 
 const LINKS = [
   { href: "#day", label: "The day" },
@@ -28,7 +28,7 @@ export default function Nav() {
       <div className="wrap nav-in">
         <a className="brand" href="#main" onClick={() => setOpen(false)} aria-label="Leisure Land home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/logo/leisureland-black.png" alt="Leisure Land" />
+          <img src={asset("/assets/logo/leisureland-black.png")} alt="Leisure Land" />
         </a>
         <div className="nav-links">
           {LINKS.map((l) => (

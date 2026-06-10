@@ -1,5 +1,5 @@
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { contact, messages } from "@/lib/constants";
+import { asset, contact, messages } from "@/lib/constants";
 
 const EXPLORE = [
   { href: "#day", label: "The day" },
@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="foot-grid rv">
           <div className="foot-brand">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="f-logo" src="/assets/logo/leisureland-white.png" alt="Leisure Land" />
+            <img className="f-logo" src={asset("/assets/logo/leisureland-white.png")} alt="Leisure Land" />
             <p>
               A nature-inspired water park and stay, deep in the jungle ten minutes from Galle.
             </p>

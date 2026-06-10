@@ -1,4 +1,4 @@
-import type { Tone } from "@/lib/constants";
+import { asset, type Tone } from "@/lib/constants";
 
 /**
  * Image slot. Shows the placeholder photo in `src` over the tinted gradient,
@@ -22,7 +22,7 @@ export default function Shot({
       {src ? (
         // Placeholder imagery only; becomes next/image with real alt text at photo time.
         // eslint-disable-next-line @next/next/no-img-element
-        <img className="ph-img" src={src} alt="" loading="lazy" />
+        <img className="ph-img" src={asset(src)} alt="" loading="lazy" />
       ) : null}
       <span className="shot" style={chipRight ? { left: "auto", right: 14 } : undefined}>
         {label}

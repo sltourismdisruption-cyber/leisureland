@@ -10,6 +10,15 @@
 // Country code + number, digits only (no +, spaces or dashes). e.g. "94771234567"
 export const WHATSAPP_NUMBER = "94000000000";
 
+// On GitHub Pages the site lives under /leisureland, so every static asset URL
+// gets this prefix. Locally it's empty. Set by the deploy workflow.
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+/** Prefix a /public asset path with the deployment base path. */
+export function asset(path: string): string {
+  return `${BASE_PATH}${path}`;
+}
+
 // Prefilled WhatsApp messages (founder may adjust wording).
 export const messages = {
   book: "Hi! I'd like to book a day pass at Leisure Land. When are you available?",

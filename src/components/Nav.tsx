@@ -15,6 +15,7 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(true);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,12 +24,41 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Glassy while the hero photo is behind the bar; back to the solid mist bar
+  // the moment the hero's bottom edge slides under the 70px nav, so the swap
+  // always lands on the hero/content seam, never an arbitrary scroll distance.
+  useEffect(() => {
+    const hero = document.querySelector(".hero");
+    if (!hero) {
+      setOverHero(false);
+      return;
+    }
+    const supportsIO = "IntersectionObserver" in window;
+    if (!supportsIO) {
+      const onScroll = () => setOverHero(hero.getBoundingClientRect().bottom > 70);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => setOverHero(entry.isIntersecting),
+      { rootMargin: "-70px 0px 0px 0px" }
+    );
+    io.observe(hero);
+    return () => io.disconnect();
+  }, []);
+
+  // The open mobile menu brings its own solid surface, so the bar joins it.
+  const glass = overHero && !open;
+
   return (
-    <nav data-scrolled={scrolled ? "true" : "false"}>
+    <nav data-scrolled={scrolled ? "true" : "false"} data-glass={glass ? "true" : "false"}>
       <div className="wrap nav-in">
         <a className="brand" href="#main" onClick={() => setOpen(false)} aria-label="Leisure Land home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset("/assets/logo/leisureland-black.png")} alt="Leisure Land" />
+          <img className="logo-dark" src={asset("/assets/logo/leisureland-black.png")} alt="Leisure Land" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="logo-light" src={asset("/assets/logo/leisureland-white.png")} alt="" aria-hidden="true" />
         </a>
         <div className="nav-links">
           {LINKS.map((l) => (

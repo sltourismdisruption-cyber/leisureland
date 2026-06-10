@@ -37,6 +37,7 @@ export const messages = {
   finalCta: "Hi! We're in Galle for a few days, can you help us plan?",
   directions: "Hi! Can you help me get to Leisure Land, maybe arrange a tuk tuk pickup?",
   aFrame: "Hi! I'm interested in the A-Frame Villa. Our dates and group size:",
+  wholeVilla: "Hi! We'd like to book the whole A-Frame Villa. Our dates and group size:",
   natureWalk: "Hi! We're looking to stay, and we'd love the nature walk too. Our dates and group size:",
 } as const;
 
@@ -102,55 +103,93 @@ export const menu = [
   { dish: "Vanilla ice cream", note: "dessert, loved by every age" },
 ] as const;
 
-// Bungalow rooms by name (Doc 05). Prices are open items, so tiles say
-// "message us for rates" until the founder fills realPrice in.
-export const bungalowRooms: {
+// Room listings (Doc 06 §2): every room type is its OWN standalone listing,
+// no A-Frame/Bungalow grouping. Occupancy, availability and prices are
+// founder placeholders that stay VISIBLE on the page — never invent them.
+// [CONFIRM] notes render as dashed founder chips until resolved.
+export const roomListings: {
   name: string;
-  capacity: string;
-  personality: string;
+  description: string;
+  features?: string;
+  occupancy: string;
+  count: string;
   price: string;
-  extraGuest?: string;
+  confirmNote?: string;
   tone: Tone;
-  shot: string;
   img: string;
 }[] = [
   {
-    name: "Apartment Style Family Room",
-    capacity: "3 available · sleeps 5",
-    personality: "Space for the whole crew",
-    price: "message us for rates",
-    extraGuest: "extra guest 3,750 LKR",
+    name: "Apartment Central",
+    description: "Apartment-style comfort, right at the center of it all.",
+    features: "Apartment style",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
     tone: "jungle",
-    shot: "room set: bed made, natural light, portrait",
     img: "/assets/photos/room-bungalow-bed.jpg",
   },
   {
-    name: "Apartment Style Triple Room",
-    capacity: "1 available · sleeps 3",
-    personality: "Cozy for three",
-    price: "message us for rates",
-    extraGuest: "extra guest 3,750 LKR",
+    name: "Family Room",
+    description: "Space for the whole crew.",
+    features: "The family base",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
     tone: "gold",
-    shot: "room set: bed made, natural light, portrait",
-    img: "/assets/photos/room-balcony.jpg",
+    img: "/assets/photos/room-bungalow-bed.jpg",
   },
   {
     name: "Family Room with Paddy View",
-    capacity: "1 available · sleeps 5",
-    personality: "Wake up to the rice fields",
-    price: "message us for rates",
+    description: "Wake up to the rice fields.",
+    features: "Paddy view",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
     tone: "gold",
-    shot: "room set: view from the window, portrait",
     img: "/assets/photos/room-balcony.jpg",
   },
   {
     name: "Family Room with Pool View",
-    capacity: "2 available · sleeps 4",
-    personality: "Roll out of bed, into the pool",
-    price: "message us for rates",
+    description: "Roll out of bed, into the pool.",
+    features: "Pool view",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
     tone: "water",
-    shot: "room set: view from the door, portrait",
     img: "/assets/photos/room-bungalow-bed.jpg",
+  },
+  {
+    name: "A-Frame Room One",
+    description: "One of three private rooms under the iconic A-frame roof.",
+    features: "A-frame villa",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
+    confirmNote: "[CONFIRM] final room name and occupancy",
+    tone: "jungle",
+    img: "/assets/photos/room-aframe.jpg",
+  },
+  {
+    name: "A-Frame Room Two",
+    description: "One of three private rooms under the iconic A-frame roof.",
+    features: "A-frame villa",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
+    confirmNote: "[CONFIRM] final room name and occupancy",
+    tone: "gold",
+    img: "/assets/photos/room-aframe.jpg",
+  },
+  {
+    name: "A-Frame Room Three",
+    description: "One of three private rooms under the iconic A-frame roof.",
+    features: "A-frame villa",
+    occupancy: "[OCCUPANCY]",
+    count: "[COUNT]",
+    price: "[PRICE]",
+    confirmNote: "[CONFIRM] final room name and occupancy",
+    tone: "jungle",
+    img: "/assets/photos/room-aframe.jpg",
   },
 ];
 

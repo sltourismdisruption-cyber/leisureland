@@ -1,28 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { asset, messages } from "@/lib/constants";
-
-const LINKS = [
-  { href: "#day", label: "The day" },
-  { href: "#acts", label: "Activities" },
-  { href: "#food", label: "Food" },
-  { href: "#stay", label: "Stay" },
-  { href: "#galle", label: "Galle" },
-];
+import { asset, messages, NAV_LINKS } from "@/lib/constants";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [overHero, setOverHero] = useState(true);
+  // Re-arm the scroll/hero logic after every client-side navigation: the nav
+  // lives in the layout and survives page changes, but each page brings its
+  // own .hero element.
+  const pathname = usePathname();
 
   useEffect(() => {
+    setOpen(false);
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   // Glassy while the hero photo is behind the bar; back to the solid mist bar
   // the moment the hero's bottom edge slides under the 70px nav, so the swap
@@ -46,7 +45,7 @@ export default function Nav() {
     );
     io.observe(hero);
     return () => io.disconnect();
-  }, []);
+  }, [pathname]);
 
   // The open mobile menu brings its own solid surface, so the bar joins it.
   const glass = overHero && !open;
@@ -54,15 +53,15 @@ export default function Nav() {
   return (
     <nav data-scrolled={scrolled ? "true" : "false"} data-glass={glass ? "true" : "false"}>
       <div className="wrap nav-in">
-        <a className="brand" href="#main" onClick={() => setOpen(false)} aria-label="Leisure Land home">
+        <Link className="brand" href="/" onClick={() => setOpen(false)} aria-label="Leisure Land home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="logo-dark" src={asset("/assets/logo/leisureland-black.png")} alt="Leisure Land" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="logo-light" src={asset("/assets/logo/leisureland-white.png")} alt="" aria-hidden="true" />
-        </a>
+        </Link>
         <div className="nav-links">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href}>{l.label}</a>
+          {NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href}>{l.label}</Link>
           ))}
         </div>
         <div className="nav-right">
@@ -83,8 +82,8 @@ export default function Nav() {
         </div>
       </div>
       <div className="nav-mobile" id="mobile-menu" data-open={open ? "true" : "false"}>
-        {LINKS.map((l) => (
-          <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+        {NAV_LINKS.map((l) => (
+          <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</Link>
         ))}
         <WhatsAppPill message={messages.book}>Message us</WhatsAppPill>
       </div>

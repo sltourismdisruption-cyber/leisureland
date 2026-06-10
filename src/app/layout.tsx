@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   title:
     "Leisure Land · Sri Lanka's Nature-Inspired Water Park · 10 min from Galle",
   description:
-    "A full day of slides, pools, traditional games and authentic Sri Lankan food. 10 minutes from Galle. From $13 per person.",
+    "A full day of slides, pools, traditional games and authentic Sri Lankan food. 10 minutes from Galle. From $14 per person.",
 };
 
 export default function RootLayout({

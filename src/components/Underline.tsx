@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 
 /**
- * The painted leaf-green underline. ONLY two uses allowed site-wide (handoff §3):
- * the hero word "Nature-Inspired" and the price "4,000 LKR".
+ * The painted leaf-green underline. Two uses on the homepage (handoff §3):
+ * the hero word "Nature-Inspired" and the price "4,200 LKR". New pages may use
+ * it once per page on one meaningful word or number, maximum (handoff v2 §6).
  * variant "hero" draws on load; "price" draws when its `.rv` parent reveals.
  */
 export default function Underline({

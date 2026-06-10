@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Shot from "@/components/Shot";
 
 const DETAILS = [
@@ -36,6 +37,11 @@ export default function Food() {
             </div>
           ))}
         </div>
+        <p className="rv">
+          <Link className="section-link" href="/food">
+            More about our food
+          </Link>
+        </p>
       </div>
     </section>
   );

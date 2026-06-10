@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { rooms, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
@@ -46,6 +47,9 @@ export default function Stay() {
             Tell us your dates and group size, we&apos;ll match you to the right room. Booking direct
             saves up to 30% versus Booking.com and Airbnb.
           </p>
+          <Link className="section-link" href="/accommodation">
+            See all rooms and availability
+          </Link>
         </div>
 
         <h3 className="sub rv">Only if you stay the night</h3>

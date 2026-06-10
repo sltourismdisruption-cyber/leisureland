@@ -45,6 +45,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${youngSerif.variable} ${albertSans.variable} ${kalam.variable}`}
+      // Lets Next 16 suspend the CSS smooth scrolling while it jumps to the
+      // top on route changes (see missing-data-scroll-behavior warning).
+      data-scroll-behavior="smooth"
       // data-js / data-ready are set by the boot script + preloader before
       // hydration; React must not treat them as a mismatch.
       suppressHydrationWarning

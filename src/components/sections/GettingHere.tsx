@@ -11,41 +11,42 @@ const ROUTES = [
 
 export default function GettingHere() {
   return (
-    <section className="galle" id="getting-here">
+    <section className="getting" id="getting-here">
       <div className="wrap">
         <h2 className="rv">Easier to reach than it sounds.</h2>
         <p className="lede rv">
           Ten minutes off the Southern Expressway exit, then a short run through the village.
         </p>
 
-        <div className="routes rv">
-          {ROUTES.map((r) => (
-            <div className="route-row" key={r.place}>
-              <div>
-                <b>{r.place}</b>
-                <div className="from">{r.note}</div>
+        <div className="gh-grid">
+          <div className="rv">
+            {ROUTES.map((r) => (
+              <div className="route-row" key={r.place}>
+                <div>
+                  <b>{r.place}</b>
+                  <div className="from">{r.note}</div>
+                </div>
+                <span className="time">about {r.time}</span>
               </div>
-              <span className="time">about {r.time}</span>
+            ))}
+            <p className="gh-note">
+              Want a hand getting here? Message us and we&apos;ll arrange a tuk tuk to bring you in.
+            </p>
+            <div className="gh-cta">
+              <WhatsAppPill message={messages.directions} big>
+                Ask us for a pickup
+              </WhatsAppPill>
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className="mapembed rv">
-          <iframe
-            title="Map to Leisure Land, near Galle"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Galle,+Sri+Lanka&output=embed"
-          />
-        </div>
-
-        <p className="galle-after-line rv">
-          Want a hand getting here? Message us and we&apos;ll arrange a tuk tuk to bring you in.
-        </p>
-        <div className="rv" style={{ marginTop: 22 }}>
-          <WhatsAppPill message={messages.directions} big>
-            Ask us for a pickup
-          </WhatsAppPill>
+          <div className="gh-map rv">
+            <iframe
+              title="Map to Leisure Land, near Galle"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sLeisure+Land+Water+Park,+Galle,+Sri+Lanka"
+            />
+          </div>
         </div>
       </div>
     </section>

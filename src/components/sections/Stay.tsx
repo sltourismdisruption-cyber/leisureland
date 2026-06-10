@@ -2,11 +2,11 @@ import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { rooms, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
 
-const STAY_ONLY: { tone: Tone; shot: string; nm: string; ds: string }[] = [
-  { tone: "jungle", shot: "shot 16: hands on the cinnamon branch, portrait", nm: "Pluck Ceylon cinnamon", ds: "straight from the tree" },
-  { tone: "jungle", shot: "shot 17: picking tea leaves, portrait", nm: "Pick & brew your own tea", ds: "your own cup, your own hands" },
-  { tone: "gold", shot: "shot 18: hibiscus drink in the making, portrait", nm: "Hibiscus drink from scratch", ds: "the traditional shoe-flower way" },
-  { tone: "food", shot: "shot 19: fruit picking, portrait", nm: "Fruit off the branch", ds: "picked, then eaten on the spot" },
+const STAY_ONLY: { tone: Tone; shot: string; src: string; nm: string; ds: string }[] = [
+  { tone: "jungle", shot: "shot 16: hands on the cinnamon branch, portrait", src: "/assets/photos/wildlife-lizard.jpg", nm: "Pluck Ceylon cinnamon", ds: "straight from the tree" },
+  { tone: "jungle", shot: "shot 17: picking tea leaves, portrait", src: "/assets/photos/natural-waterfall.jpg", nm: "Pick & brew your own tea", ds: "your own cup, your own hands" },
+  { tone: "gold", shot: "shot 18: hibiscus drink in the making, portrait", src: "/assets/photos/hero-lagoon.jpg", nm: "Hibiscus drink from scratch", ds: "the traditional shoe-flower way" },
+  { tone: "food", shot: "shot 19: fruit picking, portrait", src: "/assets/photos/coconut-climb.jpg", nm: "Fruit off the branch", ds: "picked, then eaten on the spot" },
 ];
 
 export default function Stay() {
@@ -28,7 +28,7 @@ export default function Stay() {
               rel="noopener noreferrer"
               aria-label={`Ask about the ${r.name} on WhatsApp`}
             >
-              <Shot tone={r.tone} label={r.shot} />
+              <Shot tone={r.tone} label={r.shot} src={r.img} />
               <div className="cap">
                 <span className="nm">{r.name}</span>
                 <span className="ds">{r.meta}</span>
@@ -52,7 +52,7 @@ export default function Stay() {
         <div className="stay2">
           {STAY_ONLY.map((s) => (
             <div className="bigplace rv" key={s.shot}>
-              <Shot tone={s.tone} label={s.shot} />
+              <Shot tone={s.tone} label={s.shot} src={s.src} />
               <div className="cap">
                 <span className="nm">{s.nm}</span>
                 <span className="ds">{s.ds}</span>

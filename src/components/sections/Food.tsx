@@ -1,9 +1,9 @@
 import Shot from "@/components/Shot";
 
 const DETAILS = [
-  { tone: "food" as const, shot: "shot 10", hand: "the curry pots" },
-  { tone: "food" as const, shot: "shot 11", hand: "string hoppers, fresh" },
-  { tone: "gold" as const, shot: "shot 12", hand: "picked this morning" },
+  { tone: "food" as const, shot: "shot 10", src: "/assets/photos/bbq-bonfire.jpg", hand: "the curry pots" },
+  { tone: "food" as const, shot: "shot 11", src: "/assets/photos/coconut-climb.jpg", hand: "string hoppers, fresh" },
+  { tone: "gold" as const, shot: "shot 12", src: "/assets/photos/wildlife-lizard.jpg", hand: "picked this morning" },
 ];
 
 export default function Food() {
@@ -17,7 +17,11 @@ export default function Food() {
           all you can eat, included in your pass.
         </p>
         <div className="food-hero rv">
-          <Shot tone="food" label="shot 09: the buffet spread, wide, steam and all" />
+          <Shot
+            tone="food"
+            label="shot 09: the buffet spread, wide, steam and all"
+            src="/assets/photos/bbq-bonfire.jpg"
+          />
           <p className="grandma">
             {'"made the way grandma would, from scratch, in our kitchen, with nothing fake."'}
           </p>
@@ -26,7 +30,7 @@ export default function Food() {
           {DETAILS.map((d) => (
             <div className="detail rv" key={d.shot}>
               <div className="frame">
-                <Shot tone={d.tone} label={d.shot} />
+                <Shot tone={d.tone} label={d.shot} src={d.src} />
               </div>
               <span className="hand">{d.hand}</span>
             </div>

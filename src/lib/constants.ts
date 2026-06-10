@@ -40,10 +40,10 @@ export const contact = {
 export type Tone = "jungle" | "water" | "food" | "gold";
 
 // Room data (prices centralized here per the handoff).
-export const rooms: { name: string; meta: string; price: string; tone: Tone; shot: string }[] = [
-  { name: "Standard family room", meta: "the bungalow · sleeps 4", price: "from $85 a night", tone: "jungle", shot: "shot 13: room, morning light, portrait" },
-  { name: "Spacious family room", meta: "the bungalow · sleeps 5", price: "from $110 a night", tone: "gold", shot: "shot 14: bed, paddy view, portrait" },
-  { name: "The A-frame suite", meta: "three connected rooms · sleeps 7", price: "from $310 a night", tone: "jungle", shot: "shot 15: the A-frame at dusk, portrait" },
+export const rooms: { name: string; meta: string; price: string; tone: Tone; shot: string; img: string }[] = [
+  { name: "Standard family room", meta: "the bungalow · sleeps 4", price: "from $85 a night", tone: "jungle", shot: "shot 13: room, morning light, portrait", img: "/assets/photos/room-bungalow-bed.jpg" },
+  { name: "Spacious family room", meta: "the bungalow · sleeps 5", price: "from $110 a night", tone: "gold", shot: "shot 14: bed, paddy view, portrait", img: "/assets/photos/room-balcony.jpg" },
+  { name: "The A-frame suite", meta: "three connected rooms · sleeps 7", price: "from $310 a night", tone: "jungle", shot: "shot 15: the A-frame at dusk, portrait", img: "/assets/photos/room-aframe.jpg" },
 ];
 
 // Reviews stay hidden until real handles/listings exist (handoff §7).

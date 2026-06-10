@@ -1,13 +1,18 @@
 import Shot from "@/components/Shot";
 import Underline from "@/components/Underline";
 import WhatsAppPill from "@/components/WhatsAppPill";
+import { EdgeOverlay } from "@/components/SectionEdge";
 import { messages } from "@/lib/constants";
 
 export default function Hero() {
   return (
     <header className="hero">
       <div className="hero-bg">
-        <Shot tone="jungle" label="shot 01: drone pass over the pools, through the canopy" />
+        <Shot
+          tone="jungle"
+          label="shot 01: drone pass over the pools, through the canopy"
+          src="/assets/photos/hero-lagoon.jpg"
+        />
       </div>
       <div className="wrap hero-in rv">
         <h1>
@@ -25,6 +30,7 @@ export default function Hero() {
         </div>
         <p className="trustline">We reply on WhatsApp in about 15 minutes. Walk-ins welcome.</p>
       </div>
+      <EdgeOverlay fill="card" position="bottom" />
     </header>
   );
 }

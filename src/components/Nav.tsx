@@ -18,8 +18,9 @@ export default function Nav() {
   return (
     <nav>
       <div className="wrap nav-in">
-        <a className="brand" href="#main" onClick={() => setOpen(false)}>
-          Leisure Land
+        <a className="brand" href="#main" onClick={() => setOpen(false)} aria-label="Leisure Land home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/logo/leisureland-black.png" alt="Leisure Land" />
         </a>
         <div className="nav-links">
           {LINKS.map((l) => (

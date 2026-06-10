@@ -1,13 +1,20 @@
 import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
+import { EdgeOverlay } from "@/components/SectionEdge";
 import { messages } from "@/lib/constants";
 
 export default function FinalCta() {
   return (
     <section className="final">
       <div className="bg">
-        <Shot tone="gold" label="shot 20: golden hour over the paddy" chipRight />
+        <Shot
+          tone="gold"
+          label="shot 20: golden hour over the paddy"
+          src="/assets/photos/aerial-pools.jpg"
+          chipRight
+        />
       </div>
+      <EdgeOverlay fill="card" position="top" />
       <div className="wrap rv">
         <h2>Other places give you a bed. We give you Galle.</h2>
         <p>Tell us how long you&apos;re around. We&apos;ll plan the day, the stay, or the whole week.</p>

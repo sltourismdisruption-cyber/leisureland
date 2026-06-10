@@ -1,15 +1,15 @@
 import Shot from "@/components/Shot";
 import { waLink, messages, type Tone } from "@/lib/constants";
 
-type Tile = { cls: "sq6" | "pt4" | "pano"; tone: Tone; shot: string; nm: string; ds: string };
+type Tile = { cls: "sq6" | "pt4" | "pano"; tone: Tone; shot: string; src: string; nm: string; ds: string };
 
 const TILES: Tile[] = [
-  { cls: "sq6", tone: "water", shot: "shot 03: mid pillow swing, both balanced, portrait", nm: "Kotta Pora", ds: "pillow fight on a log, last one dry wins" },
-  { cls: "sq6", tone: "jungle", shot: "shot 04: mid air, rope released, portrait", nm: "Tarzan jump", ds: "grab, swing wide, let go" },
-  { cls: "pano", tone: "gold", shot: "shot 05: the one wide frame, swing out over the paddy", nm: "Paddy field swings", ds: "out over the rice, jungle at your back" },
-  { cls: "pt4", tone: "water", shot: "shot 06: under the waterfall, portrait", nm: "Waterfall pools", ds: "bathe under flowing water" },
-  { cls: "pt4", tone: "jungle", shot: "shot 07: up in the tree house, portrait", nm: "Tree house & cable bridges", ds: "a walk through the canopy" },
-  { cls: "pt4", tone: "water", shot: "shot 08: splashdown, speed slide, portrait", nm: "Speed & family slides", ds: "one for the daredevils, one for everyone" },
+  { cls: "sq6", tone: "water", shot: "shot 03: mid pillow swing, both balanced, portrait", src: "/assets/photos/pool-volleyball.jpg", nm: "Kotta Pora", ds: "pillow fight on a log, last one dry wins" },
+  { cls: "sq6", tone: "jungle", shot: "shot 04: mid air, rope released, portrait", src: "/assets/photos/waterfall-jump.jpg", nm: "Tarzan jump", ds: "grab, swing wide, let go" },
+  { cls: "pano", tone: "gold", shot: "shot 05: the one wide frame, swing out over the paddy", src: "/assets/photos/aerial-pools.jpg", nm: "Paddy field swings", ds: "out over the rice, jungle at your back" },
+  { cls: "pt4", tone: "water", shot: "shot 06: under the waterfall, portrait", src: "/assets/photos/natural-waterfall.jpg", nm: "Waterfall pools", ds: "bathe under flowing water" },
+  { cls: "pt4", tone: "jungle", shot: "shot 07: up in the tree house, portrait", src: "/assets/photos/coconut-climb.jpg", nm: "Tree house & cable bridges", ds: "a walk through the canopy" },
+  { cls: "pt4", tone: "water", shot: "shot 08: splashdown, speed slide, portrait", src: "/assets/photos/slide.jpg", nm: "Speed & family slides", ds: "one for the daredevils, one for everyone" },
 ];
 
 export default function Activities() {
@@ -30,7 +30,11 @@ export default function Activities() {
             </svg>
           </div>
           <div className="frame">
-            <Shot tone="jungle" label="shot 02: feet on the lower rope, hands on the top rope, halfway across" />
+            <Shot
+              tone="jungle"
+              label="shot 02: feet on the lower rope, hands on the top rope, halfway across"
+              src="/assets/photos/rope-swing.jpg"
+            />
           </div>
           <div className="spot-txt">
             <h3>The toddy tapper&apos;s rope walk</h3>
@@ -53,7 +57,7 @@ export default function Activities() {
         <div className="biggrid">
           {TILES.map((t) => (
             <div className={`tile ${t.cls} rv`} key={t.shot}>
-              <Shot tone={t.tone} label={t.shot} />
+              <Shot tone={t.tone} label={t.shot} src={t.src} />
               <div className="cap">
                 <span className="nm">{t.nm}</span>
                 <span className="ds">{t.ds}</span>

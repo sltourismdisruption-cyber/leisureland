@@ -379,6 +379,10 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 .page-hero .hero-in { padding: 120px 0 110px; }
 @media (max-width: 760px) { .page-hero { min-height: 70vh; min-height: 70svh; } }
 
+/* generic color bands for subpage sections (mist is the page default) */
+.band-card { background: var(--card); }
+.band-deep { background: var(--mist-deep); }
+
 /* single-line note banner (e.g. book-direct savings under the stay hero) */
 .note-banner { background: var(--mist-deep); color: #3c5046; font-size: 15px; text-align: center; padding: 13px 20px; }
 .note-banner b { color: var(--ink); font-weight: 600; }

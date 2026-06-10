@@ -1,45 +1,29 @@
-import Icon from "@/components/Icon";
-import Button from "@/components/ui/Button";
-
-const POINTS = [
-  { icon: "trees", text: "Team-building outbound training in the jungle" },
-  { icon: "tag", text: "Group rates available (custom quote)" },
-  { icon: "party-popper", text: "Birthdays, weddings, anniversaries — we can host" },
-  { icon: "graduation-cap", text: "Schools, corporate retreats & friend groups all welcome" },
-];
+import { contact } from "@/lib/constants";
 
 export default function Corporate() {
   return (
-    <section className="section section--sunken" id="corporate" data-screen-label="Corporate">
+    <section className="corporate" id="corporate">
       <div className="wrap">
-        <div className="corp">
-          <div className="reveal">
-            <span className="ll-eyebrow"><Icon name="users-round" />Corporate &amp; groups</span>
-            <h2 className="sec-title">Outbound Training, Team Trips &amp; Group Outings</h2>
-            <p className="sec-intro">
-              Bring your team, your school or your tribe. Custom pricing, custom experiences.
-            </p>
-            <ul className="corp-points">
-              {POINTS.map((p) => (
-                <li key={p.text}>
-                  <Icon name={p.icon} />
-                  <span>{p.text}</span>
-                </li>
-              ))}
-            </ul>
-            <Button
-              variant="primary"
-              size="lg"
-              leadingIcon="mail"
-              href="mailto:hello@leisureland.lk?subject=Group%20outing%20enquiry"
-            >
-              Email us for a custom quote
-            </Button>
-          </div>
-          <div className="corp-visual reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/photos/pool-volleyball.jpg" alt="Group enjoying pool games at Leisure Land" />
-          </div>
+        <h2 className="rv">Bring the team, the class, or the whole crew.</h2>
+        <div className="prose rv">
+          <p>
+            Outbound training in the jungle, birthdays and weddings under the canopy, a school trip the
+            kids actually remember. We host groups of every shape, from a company offsite to a family
+            reunion, and the rates are built around your numbers.
+          </p>
+          <p>
+            Tell us who&apos;s coming, your dates, and what you&apos;re hoping for, and we&apos;ll put
+            together a plan and a quote that fits.
+          </p>
+        </div>
+        <div className="mailcta rv">
+          <a className="pill" href={`mailto:${contact.email}?subject=Group%20outing%20enquiry`}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
+              <path d="M3 6.5h18v11H3z" />
+              <path d="M3.5 7l8.5 6 8.5-6" />
+            </svg>
+            Email us about your group
+          </a>
         </div>
       </div>
     </section>

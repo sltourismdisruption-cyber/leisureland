@@ -1,48 +1,32 @@
-import Icon from "@/components/Icon";
-import Avatar from "@/components/ui/Avatar";
-import { REVIEWS } from "@/lib/content";
+import { REVIEWS_ENABLED } from "@/lib/constants";
 
+/**
+ * Reviews shell. Stays unrendered until real Google / TripAdvisor / Instagram
+ * handles exist (handoff §7). Never shows placeholder ratings. Flip
+ * REVIEWS_ENABLED in lib/constants once listings are live, then drop in handles.
+ */
 export default function Reviews() {
+  if (!REVIEWS_ENABLED) return null;
+
   return (
-    <section className="section section--cream" id="reviews" data-screen-label="Reviews">
+    <section className="day" id="reviews">
       <div className="wrap">
-        <div className="sec-head sec-head--center reveal">
-          <span className="ll-eyebrow" style={{ justifyContent: "center" }}>
-            <Icon name="heart" />Reviews
-          </span>
-          <h2 className="sec-title">Don&apos;t Take Our Word For It</h2>
-          <p className="sec-intro">Real reviews from real travellers.</p>
+        <h2 className="rv">What guests say.</h2>
+        <p className="lede rv">Real words from real visitors. See the full picture where you book your trips.</p>
+        <div className="routes rv">
+          <div className="route-row">
+            <div><b>Google</b><div className="from">Read the reviews and find us on the map</div></div>
+            <a className="time" href="#" target="_blank" rel="noopener noreferrer">Open</a>
+          </div>
+          <div className="route-row">
+            <div><b>TripAdvisor</b><div className="from">Our listing and traveller photos</div></div>
+            <a className="time" href="#" target="_blank" rel="noopener noreferrer">Open</a>
+          </div>
+          <div className="route-row">
+            <div><b>Instagram</b><div className="from">Tagged moments from guests</div></div>
+            <a className="time" href="#" target="_blank" rel="noopener noreferrer">Open</a>
+          </div>
         </div>
-        <div className="reviews-grid">
-          {REVIEWS.map((r, i) => (
-            <article className="review-card reveal" key={r.name} style={{ transitionDelay: `${i * 80}ms` }}>
-              <div className="stars">
-                {Array.from({ length: r.stars }).map((_, s) => (
-                  <Icon key={s} name="star" className="star-filled" fill="var(--marigold-500)" />
-                ))}
-              </div>
-              <p className="review-quote">&ldquo;{r.quote}&rdquo;</p>
-              <div className="review-by">
-                <Avatar name={r.name} />
-                <div>
-                  <div className="review-name">{r.name}</div>
-                  <div className="review-from">
-                    <Icon name="map-pin" style={{ width: 12, height: 12, display: "inline-flex", verticalAlign: "-2px" }} />{" "}
-                    {r.from}
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="platforms reveal">
-          <a className="platform" href="#" target="_blank" rel="noopener noreferrer"><Icon name="star" />See us on Google</a>
-          <a className="platform" href="#" target="_blank" rel="noopener noreferrer"><Icon name="map-pin" />See us on TripAdvisor</a>
-          <a className="platform" href="#" target="_blank" rel="noopener noreferrer"><Icon name="camera" />Tag us @leisureland.lk</a>
-        </div>
-        <p className="reviews-note">
-          Real photos of real people &gt; any star rating. Tag us on Instagram and we&apos;ll feature you.
-        </p>
       </div>
     </section>
   );

@@ -1,91 +1,69 @@
-"use client";
+import Shot from "@/components/Shot";
+import { waLink, messages, type Tone } from "@/lib/constants";
 
-import { useEffect, useRef } from "react";
-import Icon from "@/components/Icon";
-import { ACTIVITIES, PHOTO } from "@/lib/content";
+type Tile = { cls: "sq6" | "pt4" | "pano"; tone: Tone; shot: string; nm: string; ds: string };
 
-function ActivityCarousel() {
-  const scroller = useRef<HTMLDivElement>(null);
-  const paused = useRef(false);
-  // Duplicate the list so the auto-scroll can loop seamlessly.
-  const items = [...ACTIVITIES, ...ACTIVITIES];
-
-  useEffect(() => {
-    const el = scroller.current;
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
-
-    let raf = 0;
-    const step = () => {
-      if (!paused.current) {
-        el.scrollLeft += 0.6;
-        const half = el.scrollWidth / 2;
-        if (el.scrollLeft >= half) el.scrollLeft -= half;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  const pause = () => { paused.current = true; };
-  const resume = () => { paused.current = false; };
-
-  return (
-    <div className="carousel">
-      <div
-        className="carousel__track"
-        ref={scroller}
-        onMouseEnter={pause}
-        onMouseLeave={resume}
-        onPointerDown={pause}
-        onPointerUp={resume}
-        onTouchStart={pause}
-        onTouchEnd={resume}
-      >
-        {items.map((a, i) => (
-          <article className="act-card" key={i} aria-hidden={i >= ACTIVITIES.length ? "true" : undefined}>
-            <div className="act-card__media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={PHOTO + a.img} alt={a.title} loading="lazy" />
-              <span className="act-card__tag" data-kind={a.kind}>{a.tag}</span>
-            </div>
-            <div className="act-card__body">
-              <h3>{a.title}</h3>
-              <p>{a.body}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-      <div className="carousel__hint">
-        <Icon name="move-horizontal" />
-        <span>Swipe to explore all 10</span>
-      </div>
-    </div>
-  );
-}
+const TILES: Tile[] = [
+  { cls: "sq6", tone: "water", shot: "shot 03: mid pillow swing, both balanced, portrait", nm: "Kotta Pora", ds: "pillow fight on a log, last one dry wins" },
+  { cls: "sq6", tone: "jungle", shot: "shot 04: mid air, rope released, portrait", nm: "Tarzan jump", ds: "grab, swing wide, let go" },
+  { cls: "pano", tone: "gold", shot: "shot 05: the one wide frame, swing out over the paddy", nm: "Paddy field swings", ds: "out over the rice, jungle at your back" },
+  { cls: "pt4", tone: "water", shot: "shot 06: under the waterfall, portrait", nm: "Waterfall pools", ds: "bathe under flowing water" },
+  { cls: "pt4", tone: "jungle", shot: "shot 07: up in the tree house, portrait", nm: "Tree house & cable bridges", ds: "a walk through the canopy" },
+  { cls: "pt4", tone: "water", shot: "shot 08: splashdown, speed slide, portrait", nm: "Speed & family slides", ds: "one for the daredevils, one for everyone" },
+];
 
 export default function Activities() {
   return (
-    <section className="section" id="activities" data-screen-label="Activities">
+    <section className="acts" id="acts">
       <div className="wrap">
-        <div className="sec-head reveal">
-          <span className="ll-eyebrow"><Icon name="sparkles" />The activities</span>
-          <h2 className="sec-title">Built for Splashing, Sliding &amp; Showing Off</h2>
-          <p className="sec-intro">
-            Water slides, traditional Sri Lankan games and jungle adventure — all in one
-            nature-immersed park.
-          </p>
+        <h2 className="rv">The slides pull you in. The old games keep you.</h2>
+        <p className="lede rv">
+          Some of this you&apos;ve done before. The best of it you can only do here: games Sri Lankan
+          kids have played for generations, strung over a pool.
+        </p>
+
+        <div className="spot rv">
+          <div className="anno spot-a hand">
+            harder than it looks
+            <svg viewBox="0 0 70 54" aria-hidden="true">
+              <path d="M8 6 C 22 18, 38 26, 52 42 M52 42 l -11 -3 M52 42 l -2 -11" />
+            </svg>
+          </div>
+          <div className="frame">
+            <Shot tone="jungle" label="shot 02: feet on the lower rope, hands on the top rope, halfway across" />
+          </div>
+          <div className="spot-txt">
+            <h3>The toddy tapper&apos;s rope walk</h3>
+            <p>
+              For generations, toddy tappers crossed between coconut palms on two ropes. Feet on one,
+              hands on the other. Ours is strung over the pool. Make it across, or make a splash trying.
+              Either way, it&apos;s the story you&apos;ll tell at dinner.
+            </p>
+            <a
+              className="more"
+              href={waLink(messages.ropeWalk)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ask us about it on WhatsApp
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="wrap">
-        <ActivityCarousel />
-      </div>
-      <div className="wrap">
-        <p className="act-close reveal">
-          &quot;Whether you&apos;re 8 or 80, there&apos;s a slide, swing or traditional game with your
-          name on it.&quot;
+
+        <div className="biggrid">
+          {TILES.map((t) => (
+            <div className={`tile ${t.cls} rv`} key={t.shot}>
+              <Shot tone={t.tone} label={t.shot} />
+              <div className="cap">
+                <span className="nm">{t.nm}</span>
+                <span className="ds">{t.ds}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="closing rv">
+          Whether you&apos;re eight or eighty, there&apos;s a slide, a swing, or an old game with your
+          name on it.
         </p>
       </div>
     </section>

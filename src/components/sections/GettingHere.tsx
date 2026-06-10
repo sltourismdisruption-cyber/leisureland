@@ -1,48 +1,51 @@
-import Icon from "@/components/Icon";
-import Button from "@/components/ui/Button";
-import { DIRECTIONS, WA } from "@/lib/content";
+import WhatsAppPill from "@/components/WhatsAppPill";
+import { messages } from "@/lib/constants";
+
+// Times unverified (handoff flags them) — confirm with the founder before launch.
+const ROUTES = [
+  { place: "From Galle Fort", note: "about Rs. 1,500 by tuk tuk", time: "20 min" },
+  { place: "From Unawatuna", note: "a short run down the coast", time: "30 min" },
+  { place: "From Mirissa", note: "straight along the coast road", time: "45 min" },
+  { place: "From Colombo", note: "via the Southern Expressway, 10 min from the exit", time: "2 hrs" },
+];
 
 export default function GettingHere() {
   return (
-    <section className="section" id="getting-here" data-screen-label="How to get here">
+    <section className="galle" id="getting-here">
       <div className="wrap">
-        <div className="sec-head reveal">
-          <span className="ll-eyebrow"><Icon name="route" />How to get here</span>
-          <h2 className="sec-title">Easier to Reach Than You&apos;d Think</h2>
-          <p className="sec-intro">
-            10 minutes from the Galle Highway exit. Easy from anywhere on the south coast.
-          </p>
+        <h2 className="rv">Easier to reach than it sounds.</h2>
+        <p className="lede rv">
+          Ten minutes off the Southern Expressway exit, then a short run through the village.
+        </p>
+
+        <div className="routes rv">
+          {ROUTES.map((r) => (
+            <div className="route-row" key={r.place}>
+              <div>
+                <b>{r.place}</b>
+                <div className="from">{r.note}</div>
+              </div>
+              <span className="time">about {r.time}</span>
+            </div>
+          ))}
         </div>
-        <div className="route">
-          <ul className="dir-list reveal">
-            {DIRECTIONS.map((d) => (
-              <li key={d.from}>
-                <Icon name="car-front" />
-                <div className="dir-main">
-                  <b>From {d.from}</b>
-                  <span>{d.note}</span>
-                </div>
-                <span className="dir-time">{d.time}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="route-aside reveal">
-            <div className="map-embed">
-              <iframe
-                title="Map to Leisure Land near Galle"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Galle,+Sri+Lanka&output=embed"
-              />
-            </div>
-            <div className="route-help">
-              <Icon name="message-circle" />
-              <p>Need help getting here? Message us on WhatsApp — we can arrange a tuk tuk pickup.</p>
-              <Button variant="cta" size="md" leadingIcon="navigation" wa={WA.directions}>
-                Get directions
-              </Button>
-            </div>
-          </div>
+
+        <div className="mapembed rv">
+          <iframe
+            title="Map to Leisure Land, near Galle"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Galle,+Sri+Lanka&output=embed"
+          />
+        </div>
+
+        <p className="galle-after-line rv">
+          Want a hand getting here? Message us and we&apos;ll arrange a tuk tuk to bring you in.
+        </p>
+        <div className="rv" style={{ marginTop: 22 }}>
+          <WhatsAppPill message={messages.directions} big>
+            Ask us for a pickup
+          </WhatsAppPill>
         </div>
       </div>
     </section>

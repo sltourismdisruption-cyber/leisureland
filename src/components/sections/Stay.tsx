@@ -1,102 +1,65 @@
-import Icon from "@/components/Icon";
-import Button from "@/components/ui/Button";
-import { LODGES, STAY_EXPERIENCES, PHOTO } from "@/lib/content";
+import Shot from "@/components/Shot";
+import WhatsAppPill from "@/components/WhatsAppPill";
+import { rooms, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
+
+const STAY_ONLY: { tone: Tone; shot: string; nm: string; ds: string }[] = [
+  { tone: "jungle", shot: "shot 16: hands on the cinnamon branch, portrait", nm: "Pluck Ceylon cinnamon", ds: "straight from the tree" },
+  { tone: "jungle", shot: "shot 17: picking tea leaves, portrait", nm: "Pick & brew your own tea", ds: "your own cup, your own hands" },
+  { tone: "gold", shot: "shot 18: hibiscus drink in the making, portrait", nm: "Hibiscus drink from scratch", ds: "the traditional shoe-flower way" },
+  { tone: "food", shot: "shot 19: fruit picking, portrait", nm: "Fruit off the branch", ds: "picked, then eaten on the spot" },
+];
 
 export default function Stay() {
   return (
-    <section className="section" id="stay" data-screen-label="Accommodation">
+    <section className="stay" id="stay">
       <div className="wrap">
-        <div className="sec-head reveal">
-          <span className="ll-eyebrow"><Icon name="bed-double" />Accommodation</span>
-          <h2 className="sec-title">Stay Overnight. Live Sri Lanka.</h2>
-          <p className="sec-intro">
-            Ten rooms across an A-frame and a bungalow. Paddy-field views, jungle sounds, and
-            hands-on experiences you can&apos;t get at a regular hotel.
+        <h2 className="rv">Stay the night. Wake to paddy fields.</h2>
+        <p className="lede rv">
+          Ten rooms across a bungalow and an A-frame, with the whole park included in your stay.
+        </p>
+
+        <div className="roomcards">
+          {rooms.map((r) => (
+            <a
+              className="roomtile rv"
+              key={r.name}
+              href={waLink(roomMessage(r.name))}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ask about the ${r.name} on WhatsApp`}
+            >
+              <Shot tone={r.tone} label={r.shot} />
+              <div className="cap">
+                <span className="nm">{r.name}</span>
+                <span className="ds">{r.meta}</span>
+                <span className="pr">{r.price}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="stay-cta rv">
+          <WhatsAppPill message={messages.stay} big>
+            WhatsApp us with your dates
+          </WhatsAppPill>
+          <p>
+            Tell us your dates and group size, we&apos;ll match you to the right room. Booking direct
+            saves up to 30% versus Booking.com and Airbnb.
           </p>
         </div>
 
-        <div className="price-guarantee reveal">
-          <Icon name="badge-percent" />
-          <div>
-            <b>Best Price Guarantee.</b>{" "}
-            <span>Book direct via WhatsApp and save up to 30% vs Booking.com &amp; Airbnb.</span>
-          </div>
-        </div>
-
-        <div className="lodge-grid">
-          {LODGES.map((l, i) => (
-            <article className="lodge-card reveal" key={l.name} style={{ transitionDelay: `${i * 80}ms` }}>
-              <div className="lodge-photo-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="lodge-photo" src={PHOTO + l.img} alt={l.name} loading="lazy" />
-                <span className="lodge-place">{l.place}</span>
+        <h3 className="sub rv">Only if you stay the night</h3>
+        <p className="sub-lede rv">The hands-on part no day visitor gets, and no hotel in Galle offers.</p>
+        <div className="stay2">
+          {STAY_ONLY.map((s) => (
+            <div className="bigplace rv" key={s.shot}>
+              <Shot tone={s.tone} label={s.shot} />
+              <div className="cap">
+                <span className="nm">{s.nm}</span>
+                <span className="ds">{s.ds}</span>
               </div>
-              <div className="lodge-body">
-                <h3>{l.name}</h3>
-                <div className="lodge-sleeps"><Icon name="users" /><span>{l.sleeps}</span></div>
-                <div className="lodge-tags">
-                  {l.tags.map((t) => (
-                    <span className="lodge-chip" key={t}>{t}</span>
-                  ))}
-                </div>
-                <div className="lodge-price">
-                  <div>
-                    <span className="lodge-from">From</span>
-                    <span className="lodge-amt">{l.price}</span>
-                    <span className="lodge-night">/night</span>
-                    <span className="lodge-lkr">{l.lkr}</span>
-                  </div>
-                </div>
-                <div className="lodge-peak">{l.peak}</div>
-                <div style={{ marginTop: "auto" }}>
-                  <Button
-                    variant="cta"
-                    size="md"
-                    fullWidth
-                    leadingIcon="message-circle"
-                    wa={`Hi! I'd like to check availability for the ${l.name}.`}
-                  >
-                    WhatsApp to book
-                  </Button>
-                </div>
-              </div>
-            </article>
+            </div>
           ))}
         </div>
-
-        {/* Hands-on experiences */}
-        <div className="exp-band">
-          <div className="exp-band__head reveal">
-            <h3>Every stay is hands-on</h3>
-            <p>
-              Beyond the water park and meals, overnight guests get the experiences that turn a trip
-              into a story.
-            </p>
-          </div>
-          <div className="exp-grid">
-            {STAY_EXPERIENCES.map((x, i) => (
-              <div className="exp-item reveal" key={x.title} style={{ transitionDelay: `${i * 60}ms` }}>
-                <div className="exp-icon"><Icon name={x.icon} /></div>
-                <div>
-                  <h4>{x.title}</h4>
-                  <p>{x.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="meal-note reveal">
-            <Icon name="utensils" />
-            <p>
-              <b>Choose how you eat</b> — full board (all meals), half board (breakfast + dinner), or
-              room only. Just tell us your preference when you book.
-            </p>
-          </div>
-        </div>
-
-        <p className="stay-close reveal">
-          &quot;You came for a slide. You leave with cinnamon-stained hands, tea leaves in your pocket,
-          and the kind of memories no five-star hotel could give you.&quot;
-        </p>
       </div>
     </section>
   );

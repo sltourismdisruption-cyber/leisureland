@@ -1,42 +1,36 @@
-import Icon from "@/components/Icon";
+import Shot from "@/components/Shot";
 
-const ITEMS = [
-  { icon: "check", text: "Coconut-based curries — mild, creamy, traditional" },
-  { icon: "check", text: "Rice, string hoppers and Sri Lankan staples" },
-  { icon: "check", text: "Fresh tropical fruits picked from our own land" },
-  { icon: "check", text: "Vegan, vegetarian & gluten-free options always available" },
-  { icon: "leaf", text: "Zero artificial flavours — everything made from scratch" },
-  { icon: "utensils-crossed", text: "All-you-can-eat buffet, included in your day pass" },
+const DETAILS = [
+  { tone: "food" as const, shot: "shot 10", hand: "the curry pots" },
+  { tone: "food" as const, shot: "shot 11", hand: "string hoppers, fresh" },
+  { tone: "gold" as const, shot: "shot 12", hand: "picked this morning" },
 ];
 
 export default function Food() {
   return (
-    <section className="section section--cream" id="food" data-screen-label="Food">
+    <section className="food" id="food">
       <div className="wrap">
-        <div className="split">
-          <div className="split__media reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/photos/bbq-bonfire.jpg" alt="Sri Lankan food and bonfire BBQ at night" />
-          </div>
-          <div className="reveal">
-            <span className="ll-eyebrow"><Icon name="soup" />The food</span>
-            <h2 className="sec-title">Real Sri Lankan Food. Foreigner-Friendly Spice.</h2>
-            <p className="sec-intro">
-              Authentic flavours of Sri Lanka — minus the chili sweat. Made fresh in our kitchen with
-              zero artificial flavours.
-            </p>
-            <ul className="food-list">
-              {ITEMS.map((it) => (
-                <li key={it.text}>
-                  <Icon name={it.icon} />
-                  <span>{it.text}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="pull-quote">
-              &quot;Food made the way grandma would — from scratch, in our kitchen, with nothing fake.&quot;
-            </p>
-          </div>
+        <h2 className="rv">Cooked from scratch, gentle on the spice.</h2>
+        <p className="lede rv">
+          Real Sri Lankan food without the chili sweat. Mild coconut curries, rice and string hoppers,
+          fruit from our own land. Vegan, vegetarian and gluten free are always covered, and it&apos;s
+          all you can eat, included in your pass.
+        </p>
+        <div className="food-hero rv">
+          <Shot tone="food" label="shot 09: the buffet spread, wide, steam and all" />
+          <p className="grandma">
+            {'"made the way grandma would, from scratch, in our kitchen, with nothing fake."'}
+          </p>
+        </div>
+        <div className="food-details">
+          {DETAILS.map((d) => (
+            <div className="detail rv" key={d.shot}>
+              <div className="frame">
+                <Shot tone={d.tone} label={d.shot} />
+              </div>
+              <span className="hand">{d.hand}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

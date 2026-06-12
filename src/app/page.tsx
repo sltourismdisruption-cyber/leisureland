@@ -4,7 +4,6 @@ import SectionEdge from "@/components/SectionEdge";
 import Activities from "@/components/sections/Activities";
 import Food from "@/components/sections/Food";
 import Stay from "@/components/sections/Stay";
-import GalleMap from "@/components/sections/GalleMap";
 import GettingHere from "@/components/sections/GettingHere";
 import Corporate from "@/components/sections/Corporate";
 import Faq from "@/components/sections/Faq";
@@ -15,8 +14,9 @@ import FinalCta from "@/components/sections/FinalCta";
   Band order, every transition separated by the irregular wavy edge
   (hero and final carry their own overlaid edges over the photos):
   hero(photo) > day(card) > acts(canopy) > food(mist) > stay(card) >
-  galle(mist) > getting-here(card) > corporate(mist-deep) > faq(card) >
+  getting-here(mist) > corporate(mist-deep) > faq(card) >
   final(photo) > footer via treeline
+  The Galle journey rows moved to /accommodation (Doc 05).
 */
 export default function Home() {
   return (
@@ -30,10 +30,8 @@ export default function Home() {
       <SectionEdge from="mist" to="card" />
       <Stay />
       <SectionEdge from="card" to="mist" />
-      <GalleMap />
-      <SectionEdge from="mist" to="card" />
       <GettingHere />
-      <SectionEdge from="card" to="mistDeep" />
+      <SectionEdge from="mist" to="mistDeep" />
       <Corporate />
       <SectionEdge from="mistDeep" to="card" />
       <Faq />

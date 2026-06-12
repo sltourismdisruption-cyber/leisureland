@@ -1,9 +1,26 @@
 import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { EdgeOverlay } from "@/components/SectionEdge";
+import { EdgeOverlay, type EdgeColor } from "@/components/SectionEdge";
 import { messages } from "@/lib/constants";
 
-export default function FinalCta() {
+/**
+ * The golden-hour closer with the treeline rising into the footer. Every page
+ * ends with this section so the footer seam is identical sitewide (handoff v2
+ * rule 10). Props let each page bring its own copy; defaults are the homepage.
+ */
+export default function FinalCta({
+  heading = "Skip the boring landmarks. Come and collect stories you'll tell for a lifetime.",
+  body = "Tell us how long you're around. We'll plan the day, the stay, or the whole week.",
+  ctaLabel = "Start the chat",
+  message = messages.finalCta,
+  edgeFill = "card",
+}: {
+  heading?: string;
+  body?: string;
+  ctaLabel?: string;
+  message?: string;
+  edgeFill?: EdgeColor;
+}) {
   return (
     <section className="final">
       <div className="bg">
@@ -14,12 +31,12 @@ export default function FinalCta() {
           chipRight
         />
       </div>
-      <EdgeOverlay fill="card" position="top" />
+      <EdgeOverlay fill={edgeFill} position="top" />
       <div className="wrap rv">
-        <h2>Other places give you a bed. We give you Galle.</h2>
-        <p>Tell us how long you&apos;re around. We&apos;ll plan the day, the stay, or the whole week.</p>
-        <WhatsAppPill message={messages.finalCta} big>
-          Start the chat
+        <h2>{heading}</h2>
+        <p>{body}</p>
+        <WhatsAppPill message={message} big>
+          {ctaLabel}
         </WhatsAppPill>
       </div>
       <div className="treeline" aria-hidden="true">

@@ -23,7 +23,7 @@ export default function Hero() {
         </h1>
         <p className="sub ha" style={rise(300)}>
           A full day of slides, pools, traditional games and authentic Sri Lankan food. 10 minutes
-          from Galle. From $13 per person.
+          from Galle. From $14 per person.
         </p>
         <div className="hero-cta ha" style={rise(450)}>
           <WhatsAppPill message={messages.book} big>

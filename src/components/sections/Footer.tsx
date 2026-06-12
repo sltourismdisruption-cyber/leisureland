@@ -1,12 +1,11 @@
+import Link from "next/link";
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { asset, contact, messages } from "@/lib/constants";
+import { asset, contact, messages, NAV_LINKS } from "@/lib/constants";
 
+// Page links plus Rules & Safety, which lives on /day-outing (Doc 05).
 const EXPLORE = [
-  { href: "#day", label: "The day" },
-  { href: "#acts", label: "Activities" },
-  { href: "#food", label: "Food" },
-  { href: "#stay", label: "Stay" },
-  { href: "#galle", label: "Galle" },
+  ...NAV_LINKS,
+  { href: "/day-outing#rules", label: "Rules & Safety" },
 ];
 
 export default function Footer() {
@@ -26,21 +25,21 @@ export default function Footer() {
             <WhatsAppPill message={messages.book}>Message us on WhatsApp</WhatsAppPill>
           </div>
 
-          <div className="foot-col">
+          <div className="foot-col fc-explore">
             <span className="label">Explore</span>
             {EXPLORE.map((l) => (
-              <a key={l.href} href={l.href}>{l.label}</a>
+              <Link key={l.href} href={l.href}>{l.label}</Link>
             ))}
           </div>
 
-          <div className="foot-col">
+          <div className="foot-col fc-visit">
             <span className="label">Visit</span>
             <span>{contact.hours}</span>
-            <a href="#getting-here">Map &amp; driving times</a>
+            <Link href="/#getting-here">Map &amp; driving times</Link>
             <span className="foot-dim">Walk-ins welcome, WhatsApp ahead on holidays</span>
           </div>
 
-          <div className="foot-col">
+          <div className="foot-col fc-hello">
             <span className="label">Say hello</span>
             <span>WhatsApp {contact.whatsappDisplay}</span>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>

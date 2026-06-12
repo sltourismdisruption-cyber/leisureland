@@ -1,15 +1,13 @@
-"use client";
+import Accordion, { type QA } from "@/components/Accordion";
 
-import { useState } from "react";
-
-const FAQS = [
+const FAQS: QA[] = [
   { q: "What should I bring?", a: "Swimwear, a towel, sunscreen and a change of clothes. Lockers are available on site." },
   { q: "Is it safe for kids?", a: "Yes. Kid-friendly pools, lifeguards on duty, and the family slides are kept separate from the speed slides." },
   { q: "Do I need to book in advance?", a: "Walk-ins are welcome, but a quick WhatsApp ahead guarantees a spot on weekends and holidays." },
-  { q: "What time are you open?", a: "The water park is open 9 am to 10 pm daily. The ten-foot deep pool closes at 6 pm for safety, once the light goes." },
-  { q: "Is the food really not spicy?", a: "There is a non-spicy line for foreign guests, with spicier options too if you are feeling brave." },
+  { q: "What time are you open?", a: "The water park is open 9 am to 10 pm daily. The ten-foot deep pool closes at 6:30 pm for safety, once the light goes." },
+  { q: "Is the food really not spicy?", a: "There is a non-spicy line for guests from around the world, with spicier options too if you are feeling brave." },
   { q: "Vegetarian, vegan or gluten free?", a: "All sorted. Just message us in advance and we will take care of it." },
-  { q: "Do you serve alcohol?", a: "Yes, after 2 pm for day guests. No adventure pool or activities after drinking, safety first." },
+  { q: "Do you serve alcohol?", a: "We don't serve alcohol, but you're welcome to enjoy your own after 2 pm. For everyone's safety, adventure activities and pools are off-limits after drinking." },
   { q: "Are there quiet hours for guests staying over?", a: "Yes, no loud sounds after 10 pm. We protect the calm so everyone enjoys the nature." },
   { q: "What if it rains?", a: "We handle it case by case. Just WhatsApp us and we will sort you out fairly." },
   { q: "Can I rent a bicycle to explore?", a: "Yes, with a little notice. Let us know on WhatsApp and we will have one ready." },
@@ -18,39 +16,11 @@ const FAQS = [
 ];
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
-
   return (
     <section className="day" id="faq">
       <div className="wrap">
         <h2 className="rv">The questions we get asked most.</h2>
-        <div className="faqs">
-          {FAQS.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div
-                className="faq rv"
-                key={f.q}
-                data-open={isOpen ? "true" : "false"}
-                style={{ transitionDelay: `${Math.min(i * 45, 360)}ms` }}
-              >
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-ans-${i}`}
-                >
-                  <span>{f.q}</span>
-                  <span className="plus" aria-hidden="true" />
-                </button>
-                <div className="ans-wrap" id={`faq-ans-${i}`} role="region" aria-hidden={!isOpen}>
-                  <div className="ans">
-                    <p>{f.a}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <Accordion items={FAQS} idPrefix="faq" />
       </div>
     </section>
   );

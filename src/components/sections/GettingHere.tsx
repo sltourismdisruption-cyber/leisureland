@@ -3,7 +3,7 @@ import { messages } from "@/lib/constants";
 
 // Times unverified (handoff flags them) — confirm with the founder before launch.
 const ROUTES = [
-  { place: "From Galle Fort", note: "about Rs. 1,500 by tuk tuk", time: "20 min" },
+  { place: "From Galle Fort", note: "about Rs. 1,500 by vehicle", time: "20 min" },
   { place: "From Unawatuna", note: "a short run down the coast", time: "30 min" },
   { place: "From Mirissa", note: "straight along the coast road", time: "45 min" },
   { place: "From Colombo", note: "via the Southern Expressway, 10 min from the exit", time: "2 hrs" },
@@ -30,7 +30,7 @@ export default function GettingHere() {
               </div>
             ))}
             <p className="gh-note">
-              Want a hand getting here? Message us and we&apos;ll arrange a tuk tuk to bring you in.
+              Want a hand getting here? Message us and we&apos;ll arrange a vehicle to bring you in.
             </p>
             <div className="gh-cta">
               <WhatsAppPill message={messages.directions} big>

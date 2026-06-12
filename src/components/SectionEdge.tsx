@@ -13,6 +13,8 @@ export const EDGE_COLORS = {
   mist: "#DEE7E4",
   mistDeep: "#CEDAD5",
   canopy: "#1D4534",
+  // matches the bottom of the /day-outing day-flow golden-hour gradient
+  golden: "#ECDFC2",
 } as const;
 
 export type EdgeColor = keyof typeof EDGE_COLORS;

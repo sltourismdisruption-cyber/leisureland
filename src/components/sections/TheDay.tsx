@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import Underline from "@/components/Underline";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { messages } from "@/lib/constants";
 
-type Stop = { time: string; icon: ReactNode; title: string; body: string };
+// Moment-based flow per Doc 05 §2: no clock times anywhere in this section.
+// Operating hours live in the /day-outing pricing section, FAQ and footer.
+type Moment = { icon: ReactNode; title: string; body: string };
 
-const STOPS: Stop[] = [
+const MOMENTS: Moment[] = [
   {
-    time: "9:00",
-    title: "Arrive to a welcome drink",
-    body: "A fresh tropical greeting on arrival, while you get your bearings.",
+    title: "Arrive and breathe.",
+    body: "Fresh fruit juice in hand, jungle all around.",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path d="M16 15h16l-2.4 22.5c-.3 3-2.4 4.5-5.6 4.5s-5.3-1.5-5.6-4.5L16 15z" />
@@ -20,22 +22,23 @@ const STOPS: Stop[] = [
     ),
   },
   {
-    time: "9:30",
-    title: "Slides and waterfall pools",
-    body: "The speed slide for the brave, the family slide for everyone.",
+    title: "Play.",
+    body: "Slides, waterfall pools, cable bridges, tree house. Go at your own pace.",
+    // tree house: a house nested in a round canopy, trunk dropping to the ground
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M7 9 C20 9 17 24 28 26 C37 27.5 41 33 41 39" />
-        <path d="M7 15 C17 15 15.5 28 25 30" />
-        <path d="M16 42c3-3 6-3 9 0" />
-        <path d="M28 42c3-3 6-3 9 0" />
+        <circle cx="24" cy="18" r="13" />
+        <path d="M24 31v11" />
+        <path d="M18 22l6-5 6 5" />
+        <path d="M20 21v6h8v-6" />
+        <path d="M23 27v-3h2v3" />
+        <path d="M18 42h12" />
       </svg>
     ),
   },
   {
-    time: "1:00",
-    title: "The buffet",
-    body: "Rice, coconut curries, string hoppers. A non-spicy line is always there.",
+    title: "Feast.",
+    body: "A Sri Lankan lunch buffet, ask for spicy or mild, both authentic.",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path d="M12 23h24v5.5C36 36 31 41 24 41s-12-5-12-12.5V23z" />
@@ -47,22 +50,23 @@ const STOPS: Stop[] = [
     ),
   },
   {
-    time: "3:00",
-    title: "The old island games",
-    body: "Walk the toddy tapper's ropes, swing the Tarzan rope, pillow fight on a log.",
+    title: "More play.",
+    body: "Kotta Pora pillow fights, Tarzan jumps, rope walking, paddy swings.",
+    // Tarzan: a rope from above with a figure gripping it, mid-swing
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M9 9v31" />
-        <path d="M39 9v31" />
-        <path d="M9 16 C19 22.5 29 22.5 39 16" />
-        <path d="M9 30 C19 36.5 29 36.5 39 30" />
+        <path d="M34 5C31 14 27 19 22 22" />
+        <circle cx="19" cy="24" r="3" />
+        <path d="M21 22c3-1 6-4 9-7" />
+        <path d="M19 27v6" />
+        <path d="M16 29l5 1" />
+        <path d="M19 33l-4 6M19 33l4 5" />
       </svg>
     ),
   },
   {
-    time: "6:00",
-    title: "Evening tea or coffee",
-    body: "Sri Lankan style, the perfect way to wind down the day.",
+    title: "Wind down.",
+    body: "Black tea or coffee as the light goes golden.",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path d="M11 24h20v5.5c0 6-4 10.5-10 10.5s-10-4.5-10-10.5V24z" />
@@ -83,13 +87,12 @@ export default function TheDay() {
         <p className="lede rv">One price, one full day, zero hidden costs. Roughly, it looks like this:</p>
 
         <div className="timeline">
-          {STOPS.map((s, i) => (
-            <div className="stop rv" key={s.time} style={{ transitionDelay: `${i * 70}ms` }}>
-              <span className="t">{s.time}</span>
-              <span className="ic">{s.icon}</span>
+          {MOMENTS.map((m, i) => (
+            <div className="stop rv" key={m.title} style={{ transitionDelay: `${i * 70}ms` }}>
+              <span className="ic">{m.icon}</span>
               <div>
-                <b>{s.title}</b>
-                <p>{s.body}</p>
+                <b>{m.title}</b>
+                <p>{m.body}</p>
               </div>
             </div>
           ))}
@@ -97,12 +100,17 @@ export default function TheDay() {
 
         <div className="price-block rv">
           <div className="amount">
-            All of it: <Underline variant="price">4,000 LKR</Underline> <em>(about $13)</em>
+            All of it: <Underline variant="price">4,200 LKR</Underline> <em>(about $14)</em>
           </div>
-          <p>The whole day, per person, every age. Nothing to add on. Just bring swimwear and a towel.</p>
+          <p>The whole day, per person. Nothing to add on. Just bring swimwear and a towel.</p>
           <WhatsAppPill message={messages.checkDate} big>
             Check a date on WhatsApp
           </WhatsAppPill>
+          <p className="rv">
+            <Link className="section-link" href="/day-outing">
+              Full details on our day outing page
+            </Link>
+          </p>
         </div>
       </div>
     </section>

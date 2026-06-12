@@ -1,8 +1,11 @@
+import Link from "next/link";
 import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { rooms, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
 
-const STAY_ONLY: { tone: Tone; shot: string; src: string; nm: string; ds: string }[] = [
+// Exported: /accommodation renders the same four experiences in the same grid
+// (handoff v2, hands-on Ceylon section).
+export const STAY_ONLY: { tone: Tone; shot: string; src: string; nm: string; ds: string }[] = [
   { tone: "jungle", shot: "shot 16: hands on the cinnamon branch, portrait", src: "/assets/photos/wildlife-lizard.jpg", nm: "Pluck Ceylon cinnamon", ds: "straight from the tree" },
   { tone: "jungle", shot: "shot 17: picking tea leaves, portrait", src: "/assets/photos/natural-waterfall.jpg", nm: "Pick & brew your own tea", ds: "your own cup, your own hands" },
   { tone: "gold", shot: "shot 18: hibiscus drink in the making, portrait", src: "/assets/photos/hero-lagoon.jpg", nm: "Hibiscus drink from scratch", ds: "the traditional shoe-flower way" },
@@ -15,7 +18,7 @@ export default function Stay() {
       <div className="wrap">
         <h2 className="rv">Stay the night. Wake to paddy fields.</h2>
         <p className="lede rv">
-          Ten rooms across a bungalow and an A-frame, with the whole park included in your stay.
+          Ten rooms tucked into the jungle, paddy views, pool views, and the entire park included with every stay.
         </p>
 
         <div className="roomcards">
@@ -33,7 +36,6 @@ export default function Stay() {
               <div className="cap">
                 <span className="nm">{r.name}</span>
                 <span className="ds">{r.meta}</span>
-                <span className="pr">{r.price}</span>
               </div>
             </a>
           ))}
@@ -46,6 +48,9 @@ export default function Stay() {
             Tell us your dates and group size, we&apos;ll match you to the right room. Booking direct
             saves up to 30% versus Booking.com and Airbnb.
           </p>
+          <Link className="section-link" href="/accommodation">
+            See all rooms and availability
+          </Link>
         </div>
 
         <h3 className="sub rv">Only if you stay the night</h3>

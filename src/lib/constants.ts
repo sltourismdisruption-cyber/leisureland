@@ -6,10 +6,9 @@
  *    The CMS phase will read from this same shape, so keep it tidy.
  */
 
-// ⚠️ PLACEHOLDER — replace with the real WhatsApp Business number.
-// Country code + number, digits only (no +, spaces or dashes). e.g. "94771234567"
-// The old site listed +94 77 757 2785 (Doc 05 open item) — confirm before using.
-export const WHATSAPP_NUMBER = "94000000000";
+// WhatsApp Business number, digits only (country code + number, no +/spaces).
+// +94 77 757 2785 (Doc 07, confirmed for all buttons).
+export const WHATSAPP_NUMBER = "94777572785";
 
 // Sitewide navigation (nav bar + footer). Order and labels per Doc 05.
 export const NAV_LINKS = [

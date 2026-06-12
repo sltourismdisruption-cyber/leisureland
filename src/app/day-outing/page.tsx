@@ -1,12 +1,14 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SectionEdge from "@/components/SectionEdge";
 import Shot from "@/components/Shot";
-import Underline from "@/components/Underline";
 import WhatsAppPill from "@/components/WhatsAppPill";
+import MenuModal from "@/components/MenuModal";
+import TermsModal from "@/components/TermsModal";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
-import { messages, dayPricing, dayHours, poolOnlyEntry, type Tone } from "@/lib/constants";
+import { messages, dayPricing, dayHours, poolPricing, poolSpecialNote, type Tone } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Your Day at Leisure Land · Water Park Day Outing near Galle",
@@ -88,11 +90,19 @@ const ACTIVITIES: {
     src: "/assets/photos/slide.jpg",
   },
   {
-    name: "The Twister",
-    body: "Wider and gentler, built for everyone. Race your kids down it, then go again.",
-    tone: "water",
-    shot: "The Twister: mid-ride, portrait",
-    src: "/assets/photos/slide.jpg",
+    name: "Tarzan jump",
+    body: "Grab the rope, swing wide, let go. The splash is half the fun, the flight is the other half.",
+    tone: "jungle",
+    shot: "shot 04: mid air, rope released, portrait",
+    src: "/assets/photos/waterfall-jump.jpg",
+  },
+  {
+    name: "Rope walking",
+    body: "For generations, toddy tappers crossed between coconut palms on two ropes, feet on one, hands on the other. Ours is strung over the pool. Make it across, or make a splash trying.",
+    tag: "🇱🇰 Traditional Sri Lankan game",
+    tone: "jungle",
+    shot: "shot 02: feet on the lower rope, hands on the top rope, halfway across",
+    src: "/assets/photos/rope-swing.jpg",
   },
   {
     name: "The Waterfall: Nature's Massage",
@@ -100,6 +110,52 @@ const ACTIVITIES: {
     tone: "water",
     shot: "waterfall massage shot: under the falls, blissful, portrait",
     src: "/assets/photos/natural-waterfall.jpg",
+  },
+  {
+    name: "Coconut Tree Climbing",
+    body: "A traditional Sri Lankan skill, nearly lost to time and reintroduced here. Learn how generations scaled the palms, a real cultural adventure you won't find at any regular water park.",
+    tag: "🇱🇰 Traditional Sri Lankan experience",
+    confirmNote: '[CONFIRM] credit wording: original note said "reintroduced by National Inn"',
+    tone: "jungle",
+    shot: "coconut tree climbing: action, the climber up the palm, portrait",
+    src: "/assets/photos/coconut-climb.jpg",
+  },
+  {
+    name: "Kotta Pora",
+    body: "A pillow fight on a log above the water, the game villages played at Avurudu, the Sri Lankan New Year. Last one dry wins.",
+    tag: "🇱🇰 Traditional Sri Lankan game",
+    tone: "water",
+    shot: "shot 03: mid pillow swing, both balanced, portrait",
+    src: "/assets/photos/pool-volleyball.jpg",
+  },
+  {
+    name: "The Twister",
+    body: "Wider and gentler, built for everyone. Race your kids down it, then go again.",
+    tone: "water",
+    shot: "The Twister: mid-ride, portrait",
+    src: "/assets/photos/slide.jpg",
+  },
+  {
+    name: "Paaruwa (Bamboo Raft)",
+    body: "Drift the water the old Sri Lankan way, poling a traditional bamboo raft.",
+    tag: "🇱🇰 Traditional Sri Lankan experience",
+    tone: "water",
+    shot: "Paaruwa bamboo raft: poling across the water, portrait",
+    src: "/assets/photos/hero-lagoon.jpg",
+  },
+  {
+    name: "Tree house",
+    body: "Climb into the canopy and take in the whole park from above. The quiet spot when you need a breather.",
+    tone: "jungle",
+    shot: "shot 07: up in the tree house, portrait",
+    src: "/assets/photos/coconut-climb.jpg",
+  },
+  {
+    name: "Paddy field swings",
+    body: "Swing out over the rice fields with the jungle at your back. The view does the talking.",
+    tone: "gold",
+    shot: "shot 05, portrait crop: swing out over the paddy",
+    src: "/assets/photos/aerial-pools.jpg",
   },
   {
     name: "Pool Volleyball",
@@ -114,59 +170,6 @@ const ACTIVITIES: {
     tone: "water",
     shot: "pool basketball, separate action shot, portrait",
     src: "/assets/photos/pool-volleyball.jpg",
-  },
-  {
-    name: "Cable bridges",
-    body: "Wobble your way across cables strung through the trees. Part walk, part balance test.",
-    tone: "jungle",
-    shot: "cable bridge crossing, portrait",
-    src: "/assets/photos/coconut-climb.jpg",
-  },
-  {
-    name: "Tree house",
-    body: "Climb into the canopy and take in the whole park from above. The quiet spot when you need a breather.",
-    tone: "jungle",
-    shot: "shot 07: up in the tree house, portrait",
-    src: "/assets/photos/coconut-climb.jpg",
-  },
-  {
-    name: "Rope walking",
-    body: "For generations, toddy tappers crossed between coconut palms on two ropes, feet on one, hands on the other. Ours is strung over the pool. Make it across, or make a splash trying.",
-    tag: "🇱🇰 Traditional Sri Lankan game",
-    tone: "jungle",
-    shot: "shot 02: feet on the lower rope, hands on the top rope, halfway across",
-    src: "/assets/photos/rope-swing.jpg",
-  },
-  {
-    name: "Paddy field swings",
-    body: "Swing out over the rice fields with the jungle at your back. The view does the talking.",
-    tone: "gold",
-    shot: "shot 05, portrait crop: swing out over the paddy",
-    src: "/assets/photos/aerial-pools.jpg",
-  },
-  {
-    name: "Tarzan jump",
-    body: "Grab the rope, swing wide, let go. The splash is half the fun, the flight is the other half.",
-    tone: "jungle",
-    shot: "shot 04: mid air, rope released, portrait",
-    src: "/assets/photos/waterfall-jump.jpg",
-  },
-  {
-    name: "Kotta Pora",
-    body: "A pillow fight on a log above the water, the game villages played at Avurudu, the Sri Lankan New Year. Last one dry wins.",
-    tag: "🇱🇰 Traditional Sri Lankan game",
-    tone: "water",
-    shot: "shot 03: mid pillow swing, both balanced, portrait",
-    src: "/assets/photos/pool-volleyball.jpg",
-  },
-  {
-    name: "Coconut Tree Climbing",
-    body: "A traditional Sri Lankan skill, nearly lost to time and reintroduced here. Learn how generations scaled the palms, a real cultural adventure you won't find at any regular water park.",
-    tag: "🇱🇰 Traditional Sri Lankan experience",
-    confirmNote: '[CONFIRM] credit wording: original note said "reintroduced by National Inn"',
-    tone: "jungle",
-    shot: "coconut tree climbing: action, the climber up the palm, portrait",
-    src: "/assets/photos/coconut-climb.jpg",
   },
 ];
 
@@ -183,11 +186,28 @@ const FOOD_SHOTS: { tone: Tone; shot: string; src: string }[] = [
 const RULES: { rule: string; detail: string }[] = [
   { rule: "Bring ID", detail: "Anyone 18 or over needs one: NIC, license or passport." },
   { rule: "Swimwear in the pools", detail: "Swimwear or silk suits only. No denim, cotton or shawls, they're unsafe on the slides." },
-  { rule: "Towels", detail: "Not included, bring your own." },
-  { rule: "Alcohol", detail: "After 2 pm only, never before or during activities. No activities after drinking, safety first." },
+  { rule: "Towels", detail: "Towels aren't included, bring your own, or purchase one on site." },
+  { rule: "Alcohol", detail: "We don't serve alcohol, but you're welcome to enjoy your own after 2 pm. No pools or activities after drinking, safety first." },
   { rule: "Lifeguards", detail: "On duty all day. The deep pool closes at 6:30 pm, once the light goes." },
   { rule: "Under 18s", detail: "Come along with a parent or guardian." },
-  { rule: "Gold jewelry", detail: "Best left at home." },
+];
+
+// Hand-drawn stroke icons for the rules, in the same order as RULES. Strokes
+// inherit fern via the .rule .ric svg rule, so no per-path color here. Never a
+// library icon (hard rule).
+const RULE_ICONS = [
+  // ID card
+  <svg viewBox="0 0 48 48" key="id"><rect x="6" y="12" width="36" height="25" rx="4" /><circle cx="15.5" cy="22" r="4" /><path d="M25 20h13" /><path d="M25 26.5h10" /><path d="M11 31.5h9" /></svg>,
+  // swimwear
+  <svg viewBox="0 0 48 48" key="swim"><path d="M11 16h26" /><path d="M11 16l3.5 15c1 4.5 6.5 4.5 7.5 0l2-8 2 8c1 4.5 6.5 4.5 7.5 0L37 16" /><path d="M21.5 16c0 3 5 3 5 0" /></svg>,
+  // towel
+  <svg viewBox="0 0 48 48" key="towel"><path d="M9 17h25a6.5 6.5 0 0 1 0 13H9z" /><path d="M9 17v13" /><path d="M9 23.5h25" /><path d="M38 22v9" /></svg>,
+  // alcohol clock
+  <svg viewBox="0 0 48 48" key="alcohol"><circle cx="17" cy="25" r="10.5" /><path d="M17 25v-6.5" /><path d="M17 25l4.5 2.5" /><path d="M32 13h9l-1.8 9c-.8 6.5-4.6 6.5-5.4 0z" /><path d="M36.5 29v6" /><path d="M33 35h7" /></svg>,
+  // lifebuoy
+  <svg viewBox="0 0 48 48" key="guard"><circle cx="24" cy="24" r="13" /><circle cx="24" cy="24" r="5.5" /><path d="M24 11v7.5M24 29.5V37M11 24h7.5M29.5 24H37" /></svg>,
+  // parent and child
+  <svg viewBox="0 0 48 48" key="kids"><circle cx="17" cy="13.5" r="5" /><path d="M9 38c0-8.5 3.8-12.5 8-12.5s8 4 8 12.5" /><circle cx="34" cy="20" r="4" /><path d="M28.5 38c0-6 2.5-9 5.5-9s5.5 3 5.5 9" /></svg>,
 ];
 
 export default function DayOuting() {
@@ -208,29 +228,45 @@ export default function DayOuting() {
         <div className="wrap">
           <h2 className="rv">How your day flows.</h2>
           <p className="lede rv">No schedule, no rush. The day moves the way you want it to.</p>
-          <div className="moments">
-            {MOMENTS.map((m) => (
-              <div className="moment rv" key={m.title}>
-                <div className="m-photo">
-                  <Shot tone={m.tone} label={m.shot} src={m.src} />
+          <div className="trail">
+            {MOMENTS.map((m, i) => (
+              <Fragment key={m.title}>
+                <div className={`moment${i % 2 === 1 ? " rev" : ""} rv`}>
+                  <div className="medwrap">
+                    <div className="pool">
+                      <Shot tone={m.tone} label={m.shot} src={m.src} />
+                    </div>
+                  </div>
+                  <div className="mtxt">
+                    <h3>{m.title}</h3>
+                    <p>{m.body}</p>
+                  </div>
                 </div>
-                <div className="m-txt">
-                  <h3>{m.title}</h3>
-                  <p>{m.body}</p>
-                </div>
-              </div>
+                {i < MOMENTS.length - 1 ? (
+                  <svg className="flowline" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+                    <path
+                      d={
+                        i % 2 === 0
+                          ? "M131 -34 C 320 158, 690 -38, 869 154"
+                          : "M869 -34 C 680 158, 310 -38, 131 154"
+                      }
+                    />
+                  </svg>
+                ) : null}
+              </Fragment>
             ))}
           </div>
         </div>
       </section>
 
-      <SectionEdge from="mist" to="card" />
+      <SectionEdge from="golden" to="card" />
 
       <section className="band-card" id="activities">
         <div className="wrap">
           <h2 className="rv">Every activity, properly.</h2>
           <p className="lede rv">
-            Twelve ways to spend the day, from the slides you know to the old games you don&apos;t.
+            More ways to play than you can fit in one day, from the slides you know to the old games
+            you don&apos;t.
           </p>
           <div className="allacts">
             {ACTIVITIES.map((a, i) => (
@@ -304,40 +340,74 @@ export default function DayOuting() {
         <div className="wrap">
           <h2 className="rv">What your day costs.</h2>
           <p className="lede rv">Two simple options, side by side. Pick the day you want.</p>
-          <div className="price-options">
-            <div className="price-option rv">
-              <h3>Full Day Pass</h3>
-              <p className="opt-sub">
-                Water park, buffet, welcome drink and evening tea. Everything included, no hidden
-                costs. Priced by height.
-              </p>
-              <div className="price-rows">
-                {dayPricing.map((p) => (
-                  <div className="price-row" key={p.height}>
-                    <div>
-                      <b>{p.height}</b>
-                      <span className="pr-note">{p.note}</span>
+          <div className="tickets">
+            <div className="twrap tilt-a rv">
+              <div className="ticket">
+                <div className="stub" aria-hidden="true">
+                  <svg viewBox="0 0 90 230">
+                    <g stroke="#eaf3ec" strokeWidth="2.5" fill="none" strokeLinecap="round">
+                      <path d="M64 14 V216" />
+                      <path d="M64 30 H48" /><path d="M64 50 H54" /><path d="M64 70 H42" />
+                      <path d="M64 90 H54" /><path d="M64 110 H48" /><path d="M64 130 H54" />
+                      <path d="M64 150 H42" /><path d="M64 170 H54" /><path d="M64 190 H48" />
+                    </g>
+                    <circle cx="64" cy="70" r="5.5" fill="#f2d98b" />
+                    <circle cx="64" cy="150" r="5.5" fill="#f2d98b" />
+                    <text x="6" y="64" fontSize="15" fill="#d9c9a8" style={{ fontFamily: "var(--cursive)" }}>1.3 m</text>
+                    <text x="6" y="144" fontSize="15" fill="#d9c9a8" style={{ fontFamily: "var(--cursive)" }}>0.8 m</text>
+                  </svg>
+                </div>
+                <div className="tbody">
+                  <h3>Full Day Pass</h3>
+                  <p className="tdesc">
+                    Water park, buffet, welcome drink and evening tea. Everything included, nothing
+                    hidden. Priced by height.
+                  </p>
+                  {dayPricing.map((p) => (
+                    <div className="tier" key={p.height}>
+                      <div>
+                        <b>{p.height}</b>
+                        <span>{p.note}</span>
+                      </div>
+                      <span className={`pr${p.price === "Free" ? " free" : ""}`}>{p.price}</span>
                     </div>
-                    <span className="pr-price">
-                      {p.price === "4,200 LKR" ? (
-                        <Underline variant="price">{p.price}</Underline>
-                      ) : (
-                        p.price
-                      )}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="price-option alt rv" style={{ transitionDelay: "90ms" }}>
-              <h3>Pool-Only Ticket</h3>
-              <p className="opt-sub">
-                Just here for the water? Grab a pool-only ticket and order food and drinks from the
-                menu whenever you like. Buffet not included.
-              </p>
-              <p className="entry-line">Entry: {poolOnlyEntry}</p>
-              <span className="confirm-note">[PRICE] founder to provide the pool-only ticket price</span>
+            <div className="twrap tilt-b rv">
+              <div className="ticket pool-t">
+                <div className="stub" aria-hidden="true">
+                  <svg viewBox="0 0 90 230">
+                    <g stroke="#eaf3ec" strokeWidth="2.5" fill="none" strokeLinecap="round">
+                      <path d="M16 90 q14 -10 28 0 q14 10 28 0" />
+                      <path d="M16 115 q14 -10 28 0 q14 10 28 0" />
+                      <path d="M16 140 q14 -10 28 0 q14 10 28 0" />
+                    </g>
+                  </svg>
+                </div>
+                <div className="tbody">
+                  <h3>Pool-Only Ticket</h3>
+                  <p className="tdesc">
+                    Just here for the water? Order food and drinks from the menu whenever you like.
+                    Buffet not included. Priced by height.
+                  </p>
+                  {poolPricing.map((p) => (
+                    <div className="tier" key={p.height}>
+                      <div>
+                        <b>{p.height}</b>
+                        <span>{p.note}</span>
+                      </div>
+                      <span className={`pr${p.price === "Free" ? " free" : ""}`}>{p.price}</span>
+                    </div>
+                  ))}
+                  <p className="pool-note">{poolSpecialNote}</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="menu-cta rv">
+            <MenuModal label="View the menu" />
           </div>
           <p className="hours-line rv">
             {dayHours.regular}. {dayHours.evening}.
@@ -360,19 +430,31 @@ export default function DayOuting() {
           <p className="lede rv">
             A few things that keep the day safe and easy for everyone.
           </p>
-          <div className="rules-list">
+          <div className="rules">
             {RULES.map((r, i) => (
-              <div className="rule-row rv" key={r.rule} style={{ transitionDelay: `${i * 50}ms` }}>
-                <b>{r.rule}</b>
-                <p>{r.detail}</p>
+              <div className="rule rv" key={r.rule} style={{ transitionDelay: `${(i % 2) * 60}ms` }}>
+                <span className="ric" aria-hidden="true">{RULE_ICONS[i]}</span>
+                <div>
+                  <b>{r.rule}</b>
+                  <p>{r.detail}</p>
+                </div>
               </div>
             ))}
+          </div>
+          <div className="rv">
+            <TermsModal label="Full rules and booking terms" />
           </div>
         </div>
       </section>
 
       <ReviewsStrip />
-      <FinalCta edgeFill="mistDeep" />
+      <FinalCta
+        heading="Trust us."
+        body="You don't want to miss this experience."
+        ctaLabel="WhatsApp to book your day"
+        message={messages.book}
+        edgeFill="mistDeep"
+      />
     </>
   );
 }

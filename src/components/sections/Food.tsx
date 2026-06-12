@@ -4,7 +4,7 @@ import Shot from "@/components/Shot";
 const DETAILS = [
   { tone: "food" as const, shot: "shot 10", src: "/assets/photos/bbq-bonfire.jpg", hand: "the curry pots" },
   { tone: "food" as const, shot: "shot 11", src: "/assets/photos/coconut-climb.jpg", hand: "string hoppers, fresh" },
-  { tone: "gold" as const, shot: "shot 12", src: "/assets/photos/wildlife-lizard.jpg", hand: "picked this morning" },
+  { tone: "gold" as const, shot: "shot 12", src: "/assets/photos/wildlife-lizard.jpg", hand: "plucked from our gardens" },
 ];
 
 export default function Food() {

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SectionEdge from "@/components/SectionEdge";
@@ -5,10 +6,10 @@ import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import Accordion, { type QA } from "@/components/Accordion";
 import RoomGallery, { type GalleryPhoto } from "@/components/RoomGallery";
+import WalkCarousel from "@/components/WalkCarousel";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
 import GalleMap from "@/components/sections/GalleMap";
-import { STAY_ONLY } from "@/components/sections/Stay";
 import { roomListings, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -18,8 +19,8 @@ export const metadata: Metadata = {
 };
 
 /*
-  Band order: hero(photo) > book-direct banner(mist-deep) > whole villa(mist) >
-  room listings(card) > every stay includes(mist) > nature walk(canopy) >
+  Band order: hero(photo) > book-direct banner(mist-deep) > room listings(mist) >
+  whole villa(card) > every stay includes(mist) > nature walk(canopy) >
   hands-on(card) > galle basecamp(mist) > stay faq(card) > final(photo)
 */
 
@@ -51,6 +52,27 @@ const STAY_FAQS: QA[] = [
   { q: "What if our plans change?", a: "Message us as early as you can and we'll postpone your booking fairly. Full terms are available on request." },
 ];
 
+// Every stay includes: the founder's exact 6 items (BBQ stays an add-on, not
+// folded in here), each paired with a hand-drawn fern stroke icon. Strokes
+// inherit color/width from .inc .iic svg, so no per-path styling.
+const INCLUDES: { title: string; body: string; icon: ReactNode }[] = [
+  { title: "Full access to the water park", body: "Every slide, pool and game, all day, every day of your stay.", icon: <svg viewBox="0 0 48 48"><path d="M7 30c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3" /><path d="M7 38c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3" /><path d="M14 27V13a4 4 0 0 1 8 0v3" /><circle cx="30" cy="14" r="3.5" /></svg> },
+  { title: "Complimentary Wi-Fi", body: "Stay connected across the whole property.", icon: <svg viewBox="0 0 48 48"><path d="M10 22c8-7 20-7 28 0" /><path d="M15 28c5.5-4.5 12.5-4.5 18 0" /><path d="M20 34c3-2.5 5-2.5 8 0" /><circle cx="24" cy="38.5" r="1.6" fill="currentColor" stroke="none" /></svg> },
+  { title: "Peaceful jungle surroundings", body: "Fresh air and calm, with nothing rushing you.", icon: <svg viewBox="0 0 48 48"><path d="M24 40c0-10 5-16 13-18-3 9-7 13-13 14" /><path d="M24 40c0-12-5-19-13-21 3 10 7 15 13 16" /><path d="M24 40V24" /></svg> },
+  { title: "Natural sounds and birdsong", body: "The property is alive with birds from first light.", icon: <svg viewBox="0 0 48 48"><path d="M14 32c0-7 5-12 12-12 4 0 6 2 9 2-1 4-4 6-4 6" /><path d="M14 32c-3 0-5-2-5-5" /><path d="M14 32l-3 6" /><circle cx="31" cy="20.5" r="1.4" fill="currentColor" stroke="none" /></svg> },
+  { title: "Welcome drink on arrival", body: "A cold drink to greet you the moment you land.", icon: <svg viewBox="0 0 48 48"><path d="M15 13h18l-2.5 24a2 2 0 0 1-2 1.8h-9a2 2 0 0 1-2-1.8z" /><path d="M16.5 21h15" /><path d="M27 13l4-6" /></svg> },
+  { title: "Morning bed tea", body: "Bed tea brought to your room when you wake.", icon: <svg viewBox="0 0 48 48"><path d="M14 18h16v8a8 8 0 0 1-16 0z" /><path d="M30 20h4a3 3 0 0 1 0 6h-4" /><path d="M18 13c0-2 2-2 2-4M24 13c0-2 2-2 2-4" /></svg> },
+];
+
+// Hands-on Ceylon experiences, each with its own hand-drawn icon.
+const EXPERIENCES: { title: string; body: string; icon: ReactNode }[] = [
+  { title: "Pluck Ceylon cinnamon", body: "Straight from the tree.", icon: <svg viewBox="0 0 48 48"><path d="M24 40c0-12 5-19 14-21-3 10-8 15-14 16" /><path d="M24 40c0-9-4-14-11-16 2 8 6 12 11 13" /></svg> },
+  { title: "Pick and brew tea", body: "Your own cup, leaf to pot.", icon: <svg viewBox="0 0 48 48"><path d="M16 16h16v8a8 8 0 0 1-16 0z" /><path d="M32 18h3a3 3 0 0 1 0 6h-3" /><path d="M16 30h16" /></svg> },
+  { title: "Make a hibiscus drink", body: "Shoe-flower, the local way.", icon: <svg viewBox="0 0 48 48"><circle cx="24" cy="27" r="9" /><path d="M24 18c0-4 3-6 6-6-1 4-3 6-6 6" /><path d="M20 27h8M24 23v8" /></svg> },
+  { title: "Fruit off the tree", body: "Whatever's ripe that day.", icon: <svg viewBox="0 0 48 48"><path d="M24 38c-6 0-10-5-10-11 0-5 4-9 10-9s10 4 10 9c0 6-4 11-10 11z" /><path d="M24 18c0-4 2-7 5-8" /></svg> },
+  { title: "Watch the birds", body: "The land is full of them.", icon: <svg viewBox="0 0 48 48"><path d="M14 32c0-7 5-12 12-12 4 0 6 2 9 2-1 4-4 6-4 6" /><path d="M14 32c-3 0-5-2-5-5" /><circle cx="31" cy="20.5" r="1.4" fill="currentColor" stroke="none" /></svg> },
+];
+
 export default function Accommodation() {
   return (
     <>
@@ -69,37 +91,7 @@ export default function Accommodation() {
         <b>Book direct on WhatsApp</b> and save up to 30% versus Booking.com and Airbnb.
       </div>
 
-      <section id="a-frame">
-        <div className="wrap">
-          <h2 className="rv">The Whole A-Frame Villa</h2>
-          <p className="lede rv">
-            Book the entire A-Frame: all rooms, the whole place to yourselves.
-          </p>
-          <div className="aframe">
-            <div className="rv">
-              <RoomGallery photos={VILLA_GALLERY} name="The A-Frame Villa" />
-            </div>
-            <div className="aframe-txt rv">
-              <p>
-                Three private rooms under one iconic roof. Book a single room below, or take the
-                whole villa with your favorite people. Best enjoyed booked together: three couples,
-                one unforgettable stay.
-              </p>
-              <p className="price-line">Whole villa from [PRICE] · single rooms listed below.</p>
-              <span className="confirm-note">[PRICE] founder to provide the whole-villa rate</span>
-              <div>
-                <WhatsAppPill message={messages.wholeVilla} big>
-                  Book the whole A-Frame Villa
-                </WhatsAppPill>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionEdge from="mist" to="card" />
-
-      <section className="band-card" id="rooms">
+      <section id="rooms">
         <div className="wrap">
           <h2 className="rv">Choose your room.</h2>
           <p className="lede rv">
@@ -114,21 +106,44 @@ export default function Accommodation() {
                 <span className="meta">Sleeps {r.occupancy} · {r.count} available</span>
                 {r.features ? <span className="feat">{r.features}</span> : null}
                 <p className="desc">{r.description}</p>
-                <p className="price-line">From {r.price} a night</p>
-                {r.confirmNote ? <span className="confirm-note">{r.confirmNote}</span> : null}
                 <div>
                   <WhatsAppPill message={roomMessage(r.name)}>
-                    Ask about this room
+                    Message us for rates and availability&nbsp;→
                   </WhatsAppPill>
                 </div>
               </div>
             ))}
           </div>
-          <p className="menu-note rv">
-            <span className="confirm-note">
-              [CONFIRM] complete and final room list: any other room types?
-            </span>
+        </div>
+      </section>
+
+      <SectionEdge from="mist" to="card" />
+
+      <section className="band-card" id="a-frame">
+        <div className="wrap">
+          <h2 className="rv">Or take the whole A-Frame Villa with Private Jacuzzi.</h2>
+          <p className="lede rv">
+            Book the entire villa, private jacuzzi included. Every room, the whole place, and the
+            jacuzzi to yourselves.
           </p>
+          <div className="aframe">
+            <div className="rv">
+              <RoomGallery photos={VILLA_GALLERY} name="The A-Frame Villa with Private Jacuzzi" />
+            </div>
+            <div className="aframe-txt rv">
+              <p>
+                Two double rooms and a triple under one iconic roof, sleeping seven in all, with a
+                private jacuzzi just for your group. Book a single room above, or take the entire
+                villa with your favorite people.
+              </p>
+              <p className="price-line">Sleeps 7 · one entire villa, private jacuzzi included.</p>
+              <div>
+                <WhatsAppPill message={messages.wholeVilla} big>
+                  Message us to book the villa
+                </WhatsAppPill>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -137,24 +152,28 @@ export default function Accommodation() {
       <section id="includes">
         <div className="wrap">
           <h2 className="rv">Every stay includes.</h2>
-          <div className="includes rv">
-            <p><b>Full access to the water park.</b></p>
-            <p><b>Complimentary Wi-Fi.</b></p>
-            <p><b>Peaceful jungle surroundings.</b></p>
-            <p><b>Natural sounds and birdsong.</b></p>
-            <p><b>Welcome drink on arrival.</b></p>
-            <p><b>Morning bed tea.</b></p>
+          <p className="lede rv">The things that come with every room, no asterisks.</p>
+          <div className="incl">
+            {INCLUDES.map((it, i) => (
+              <div className="inc rv" key={it.title} style={{ transitionDelay: `${(i % 2) * 60}ms` }}>
+                <span className="iic" aria-hidden="true">{it.icon}</span>
+                <div>
+                  <b>{it.title}</b>
+                  <p>{it.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <h3 className="sub rv" style={{ marginTop: 60 }}>Choose your meal plan.</h3>
-          <p className="sub-lede rv">
-            Full board, half board or room only. Tell us when you book and we&apos;ll set it up.
-          </p>
-
-          <h3 className="sub rv" style={{ marginTop: 60 }}>Optional add-on experiences.</h3>
-          <p className="sub-lede rv">
-            BBQ nights: request it and we&apos;ll fire up the grill under the stars.
-          </p>
+          <div className="plan">
+            <div className="planc rv">
+              <h3>Meals your way</h3>
+              <p>Full board, half board or room only. Tell us when you book and we&apos;ll set it up.</p>
+            </div>
+            <div className="planc rv" style={{ transitionDelay: "90ms" }}>
+              <h3>BBQ under the stars</h3>
+              <p>An optional add-on. Request it and we&apos;ll fire up the grill under the stars.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -172,19 +191,15 @@ export default function Accommodation() {
             Our Nature Walks can be arranged on request. Availability depends on our nature
             guide&apos;s schedule, so we recommend asking in advance to secure your spot.
           </p>
-          <div className="walkstrip">
-            {[
+          <WalkCarousel
+            photos={[
               { label: "walk set: the path ahead, portrait", src: "/assets/photos/coconut-climb.jpg" },
               { label: "walk set: guide pointing out a plant, portrait", src: "/assets/photos/natural-waterfall.jpg" },
               { label: "walk set: hands on cinnamon bark, portrait", src: "/assets/photos/wildlife-lizard.jpg" },
               { label: "walk set: tea leaves being picked, portrait", src: "/assets/photos/hero-lagoon.jpg" },
               { label: "walk set: fruit straight off the tree, portrait", src: "/assets/photos/waterfall-jump.jpg" },
-            ].map((w, i) => (
-              <div className="wframe rv" key={w.label} style={{ transitionDelay: `${(i % 3) * 90}ms` }}>
-                <Shot tone="jungle" label={w.label} src={w.src} />
-              </div>
-            ))}
-          </div>
+            ]}
+          />
           <p className="closing rv">
             This is the Sri Lanka most tourists never touch. Literally.{" "}
             <a
@@ -205,20 +220,15 @@ export default function Accommodation() {
         <div className="wrap">
           <h2 className="rv">Hands-on Ceylon experiences.</h2>
           <p className="lede rv">The hands-on part no day visitor gets, and no hotel in Galle offers.</p>
-          <div className="stay2">
-            {STAY_ONLY.map((s, i) => (
-              <div className="bigplace rv" key={s.shot} style={{ transitionDelay: `${(i % 2) * 90}ms` }}>
-                <Shot tone={s.tone} label={s.shot} src={s.src} />
-                <div className="cap">
-                  <span className="nm">{s.nm}</span>
-                  <span className="ds">{s.ds}</span>
-                </div>
+          <div className="exp">
+            {EXPERIENCES.map((e, i) => (
+              <div className="expc rv" key={e.title} style={{ transitionDelay: `${(i % 3) * 70}ms` }}>
+                <span className="eic" aria-hidden="true">{e.icon}</span>
+                <b>{e.title}</b>
+                <p>{e.body}</p>
               </div>
             ))}
           </div>
-          <p className="menu-note rv">
-            Staying in the villa? You can cook your own meals too, just ask us when you book.
-          </p>
         </div>
       </section>
 

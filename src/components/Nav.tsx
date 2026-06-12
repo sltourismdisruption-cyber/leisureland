@@ -15,6 +15,12 @@ export default function Nav() {
   // own .hero element.
   const pathname = usePathname();
 
+  // Active-page indicator: compare each nav href to the current route. Trailing
+  // slashes are normalized away because the site builds with trailingSlash:true,
+  // so usePathname can report "/food" or "/food/" depending on the entry.
+  const stripSlash = (s: string) => s.replace(/\/+$/, "") || "/";
+  const isActive = (href: string) => stripSlash(pathname) === stripSlash(href);
+
   useEffect(() => {
     setOpen(false);
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -51,7 +57,11 @@ export default function Nav() {
   const glass = overHero && !open;
 
   return (
-    <nav data-scrolled={scrolled ? "true" : "false"} data-glass={glass ? "true" : "false"}>
+    <nav
+      data-scrolled={scrolled ? "true" : "false"}
+      data-glass={glass ? "true" : "false"}
+      data-menu-open={open ? "true" : "false"}
+    >
       <div className="wrap nav-in">
         <Link className="brand" href="/" onClick={() => setOpen(false)} aria-label="Leisure Land home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -61,7 +71,14 @@ export default function Nav() {
         </Link>
         <div className="nav-links">
           {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={l.href}>{l.label}</Link>
+            <Link
+              key={l.href}
+              href={l.href}
+              className={isActive(l.href) ? "active" : undefined}
+              aria-current={isActive(l.href) ? "page" : undefined}
+            >
+              {l.label}
+            </Link>
           ))}
         </div>
         <div className="nav-right">
@@ -83,7 +100,15 @@ export default function Nav() {
       </div>
       <div className="nav-mobile" id="mobile-menu" data-open={open ? "true" : "false"}>
         {NAV_LINKS.map((l) => (
-          <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</Link>
+          <Link
+            key={l.href}
+            href={l.href}
+            className={isActive(l.href) ? "active" : undefined}
+            aria-current={isActive(l.href) ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            {l.label}
+          </Link>
         ))}
         <WhatsAppPill message={messages.book}>Message us</WhatsAppPill>
       </div>

@@ -24,12 +24,15 @@ const MOMENTS: Moment[] = [
   {
     title: "Play.",
     body: "Slides, waterfall pools, cable bridges, tree house. Go at your own pace.",
+    // tree house: a house nested in a round canopy, trunk dropping to the ground
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M7 9 C20 9 17 24 28 26 C37 27.5 41 33 41 39" />
-        <path d="M7 15 C17 15 15.5 28 25 30" />
-        <path d="M16 42c3-3 6-3 9 0" />
-        <path d="M28 42c3-3 6-3 9 0" />
+        <circle cx="24" cy="18" r="13" />
+        <path d="M24 31v11" />
+        <path d="M18 22l6-5 6 5" />
+        <path d="M20 21v6h8v-6" />
+        <path d="M23 27v-3h2v3" />
+        <path d="M18 42h12" />
       </svg>
     ),
   },
@@ -49,12 +52,15 @@ const MOMENTS: Moment[] = [
   {
     title: "More play.",
     body: "Kotta Pora pillow fights, Tarzan jumps, rope walking, paddy swings.",
+    // Tarzan: a rope from above with a figure gripping it, mid-swing
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M9 9v31" />
-        <path d="M39 9v31" />
-        <path d="M9 16 C19 22.5 29 22.5 39 16" />
-        <path d="M9 30 C19 36.5 29 36.5 39 30" />
+        <path d="M34 5C31 14 27 19 22 22" />
+        <circle cx="19" cy="24" r="3" />
+        <path d="M21 22c3-1 6-4 9-7" />
+        <path d="M19 27v6" />
+        <path d="M16 29l5 1" />
+        <path d="M19 33l-4 6M19 33l4 5" />
       </svg>
     ),
   },

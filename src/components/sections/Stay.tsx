@@ -18,7 +18,7 @@ export default function Stay() {
       <div className="wrap">
         <h2 className="rv">Stay the night. Wake to paddy fields.</h2>
         <p className="lede rv">
-          Ten rooms across a bungalow and an A-frame, with the whole park included in your stay.
+          Ten rooms tucked into the jungle, paddy views, pool views, and the entire park included with every stay.
         </p>
 
         <div className="roomcards">
@@ -36,7 +36,6 @@ export default function Stay() {
               <div className="cap">
                 <span className="nm">{r.name}</span>
                 <span className="ds">{r.meta}</span>
-                <span className="pr">{r.price}</span>
               </div>
             </a>
           ))}

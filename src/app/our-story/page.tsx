@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 /*
   Band order: hero(photo, the page's one landscape) > origin(mist) >
   stay ethos(card) > play ethos(mist) > nature as partner(card) >
-  traditions(mist) > what we offer(card) > final(photo).
+  traditions(mist) > final(photo).
   No dark canopy band on this page (handoff v2); photography is hands
   and the land, never faces.
 */
@@ -174,28 +174,13 @@ export default function OurStory() {
         </div>
       </section>
 
-      <SectionEdge from="mist" to="card" />
-
-      <section className="band-card" id="offer">
-        <div className="wrap">
-          <h2 className="rv">What we offer.</h2>
-          <p className="facilities rv">
-            Waterpark experience<span className="dot">·</span>Adventure activities
-            <span className="dot">·</span>Nature walks<span className="dot">·</span>Bird watching
-            <span className="dot">·</span>Comfortable rooms<span className="dot">·</span>Delicious meals
-            <span className="dot">·</span>BBQ nights<span className="dot">·</span>Airport transfers
-            <span className="dot">·</span>WiFi
-          </p>
-        </div>
-      </section>
-
       <ReviewsStrip />
       <FinalCta
         heading="Escape. Explore. Enjoy."
         body="Come spend a day with us and see what we mean. With love, the Leisure Land family."
         ctaLabel="Come see it for yourself"
         message={messages.finalCta}
-        edgeFill="card"
+        edgeFill="mist"
       />
     </>
   );

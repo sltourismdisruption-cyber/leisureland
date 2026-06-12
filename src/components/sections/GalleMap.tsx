@@ -87,7 +87,7 @@ export default function GalleMap() {
         <h2 className="rv">Stay with us, see all of Galle.</h2>
         <p className="lede rv">
           Almost everything worth seeing is 10 to 25 minutes away. Tell us what you like and we&apos;ll
-          arrange the tuk tuk.
+          arrange a vehicle.
         </p>
 
         <div className="mappanel rv">
@@ -127,7 +127,7 @@ export default function GalleMap() {
           your flight when you book.
         </p>
         <p className="after rv" style={{ color: "var(--ink)", fontWeight: 600 }}>
-          Other places give you a bed. We give you Galle.
+          Skip the boring landmarks. Come and collect stories you&apos;ll tell for a lifetime.
         </p>
       </div>
     </section>

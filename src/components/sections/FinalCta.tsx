@@ -9,7 +9,7 @@ import { messages } from "@/lib/constants";
  * rule 10). Props let each page bring its own copy; defaults are the homepage.
  */
 export default function FinalCta({
-  heading = "Other places give you a bed. We give you Galle.",
+  heading = "Skip the boring landmarks. Come and collect stories you'll tell for a lifetime.",
   body = "Tell us how long you're around. We'll plan the day, the stay, or the whole week.",
   ctaLabel = "Start the chat",
   message = messages.finalCta,

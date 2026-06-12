@@ -7,7 +7,7 @@ const FAQS: QA[] = [
   { q: "What time are you open?", a: "The water park is open 9 am to 10 pm daily. The ten-foot deep pool closes at 6:30 pm for safety, once the light goes." },
   { q: "Is the food really not spicy?", a: "There is a non-spicy line for guests from around the world, with spicier options too if you are feeling brave." },
   { q: "Vegetarian, vegan or gluten free?", a: "All sorted. Just message us in advance and we will take care of it." },
-  { q: "Do you serve alcohol?", a: "Yes, after 2 pm for day guests. No adventure pool or activities after drinking, safety first." },
+  { q: "Do you serve alcohol?", a: "We don't serve alcohol, but you're welcome to enjoy your own after 2 pm. For everyone's safety, adventure activities and pools are off-limits after drinking." },
   { q: "Are there quiet hours for guests staying over?", a: "Yes, no loud sounds after 10 pm. We protect the calm so everyone enjoys the nature." },
   { q: "What if it rains?", a: "We handle it case by case. Just WhatsApp us and we will sort you out fairly." },
   { q: "Can I rent a bicycle to explore?", a: "Yes, with a little notice. Let us know on WhatsApp and we will have one ready." },

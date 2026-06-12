@@ -1,4 +1,5 @@
-import { contact } from "@/lib/constants";
+import WhatsAppPill from "@/components/WhatsAppPill";
+import { messages } from "@/lib/constants";
 
 export default function Corporate() {
   return (
@@ -17,13 +18,9 @@ export default function Corporate() {
           </p>
         </div>
         <div className="mailcta rv">
-          <a className="pill" href={`mailto:${contact.email}?subject=Group%20outing%20enquiry`}>
-            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
-              <path d="M3 6.5h18v11H3z" />
-              <path d="M3.5 7l8.5 6 8.5-6" />
-            </svg>
-            Email us about your group
-          </a>
+          <WhatsAppPill message={messages.group} big>
+            WhatsApp us for a group quote
+          </WhatsAppPill>
         </div>
       </div>
     </section>

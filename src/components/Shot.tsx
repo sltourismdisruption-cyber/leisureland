@@ -11,14 +11,17 @@ export default function Shot({
   label,
   src,
   chipRight = false,
+  tinaField,
 }: {
   tone: Tone;
   label: string;
   src?: string;
   chipRight?: boolean;
+  /** Optional Tina visual-editing handle, set by `tinaField(...)`. */
+  tinaField?: string;
 }) {
   return (
-    <div className={`ph ph-${tone}`}>
+    <div className={`ph ph-${tone}`} data-tina-field={tinaField}>
       {src ? (
         // Placeholder imagery only; becomes next/image with real alt text at photo time.
         // eslint-disable-next-line @next/next/no-img-element

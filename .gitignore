@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# but keep the example so devs know which keys are needed
+!.env.local.example
 
 # vercel
 .vercel
@@ -52,3 +54,14 @@ __pycache__/
 
 # graphify generated knowledge graph (rebuild with: graphify update .)
 /graphify-out/
+
+# Photo working files — never commit raw originals or working copies
+RawImages/
+staging/
+staging copy/
+build_review.py
+review.html
+
+# TinaCMS generated files (rebuilt by `tinacms build`)
+.tina/__generated__/
+tina/__generated__/

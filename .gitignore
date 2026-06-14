@@ -52,3 +52,10 @@ __pycache__/
 
 # graphify generated knowledge graph (rebuild with: graphify update .)
 /graphify-out/
+
+# Photo working files — never commit raw originals or working copies
+RawImages/
+staging/
+staging copy/
+build_review.py
+review.html

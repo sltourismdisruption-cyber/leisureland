@@ -58,6 +58,7 @@ __pycache__/
 # Photo working files — never commit raw originals or working copies
 RawImages/
 staging/
+staging-optimized/
 staging copy/
 build_review.py
 review.html

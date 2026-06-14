@@ -11,7 +11,14 @@ export type WalkPhoto = { label: string; src: string };
  * dots below are mobile-only (hidden on desktop via CSS) and track the active
  * slide as you swipe; tapping one scrolls to that photo.
  */
-export default function WalkCarousel({ photos }: { photos: WalkPhoto[] }) {
+export default function WalkCarousel({
+  photos,
+  tinaField,
+}: {
+  photos: WalkPhoto[];
+  /** Optional Tina visual-editing handle for the nature-walk photo list. */
+  tinaField?: string;
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -38,7 +45,12 @@ export default function WalkCarousel({ photos }: { photos: WalkPhoto[] }) {
     <>
       <div className="walkstrip" ref={trackRef} onScroll={onScroll}>
         {photos.map((w, i) => (
-          <div className="wframe rv" key={w.label} style={{ transitionDelay: `${(i % 3) * 90}ms` }}>
+          <div
+            className="wframe rv"
+            key={w.label}
+            style={{ transitionDelay: `${(i % 3) * 90}ms` }}
+            data-tina-field={tinaField}
+          >
             <Shot tone="jungle" label={w.label} src={w.src} />
           </div>
         ))}

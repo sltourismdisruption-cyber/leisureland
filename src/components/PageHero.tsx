@@ -20,6 +20,7 @@ export default function PageHero({
   ctaLabel,
   message,
   edgeFill,
+  tinaField,
 }: {
   tone: Tone;
   shotLabel: string;
@@ -29,11 +30,13 @@ export default function PageHero({
   ctaLabel?: string;
   message?: string;
   edgeFill: EdgeColor;
+  /** Optional Tina visual-editing handle for the hero image. */
+  tinaField?: string;
 }) {
   return (
     <header className="hero page-hero">
       <div className="hero-bg">
-        <Shot tone={tone} label={shotLabel} src={src} />
+        <Shot tone={tone} label={shotLabel} src={src} tinaField={tinaField} />
       </div>
       <div className="wrap hero-in">
         <h1 className="ha" style={rise(150)}>{title}</h1>

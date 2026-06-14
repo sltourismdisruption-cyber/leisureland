@@ -124,6 +124,9 @@ export default defineConfig({
         path: "content/pages",
         format: "json",
         ui: {
+          // Opens the live /accommodation page so editors can click images
+          // directly on the page (contextual / visual editing).
+          router: () => "/accommodation",
           allowedActions: { create: false, delete: false },
         },
         match: { include: "accommodation" },
@@ -131,42 +134,55 @@ export default defineConfig({
           {
             type: "image",
             name: "heroImage",
-            label: "Hero Image",
+            label: "Hero — Main Background Image",
+          },
+          {
+            type: "object",
+            name: "rooms",
+            label: "Rooms",
+            list: true,
+            ui: {
+              itemProps: (item: { roomName?: string }) => ({
+                label: item?.roomName || "Room",
+              }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "roomName",
+                label: "Room Name",
+              },
+              {
+                type: "image",
+                name: "gallery",
+                label: "Gallery (add, remove or reorder photos)",
+                list: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "wholeVilla",
+            label: "Whole A-Frame Villa",
+            fields: [
+              {
+                type: "image",
+                name: "gallery",
+                label: "Gallery (add, remove or reorder photos)",
+                list: true,
+              },
+            ],
           },
           {
             type: "image",
-            name: "paddyViewRoomImage",
-            label: "Room — Family Room Paddy View",
+            name: "natureWalk",
+            label: "Nature Walk Photos",
+            list: true,
           },
           {
             type: "image",
-            name: "poolViewRoomImage",
-            label: "Room — Family Room Pool View",
-          },
-          {
-            type: "image",
-            name: "apartmentRoomImage",
-            label: "Room — Apartment Style Family Room",
-          },
-          {
-            type: "image",
-            name: "tripleRoomImage",
-            label: "Room — Apartment Style Triple Room",
-          },
-          {
-            type: "image",
-            name: "aframeDoubleImage",
-            label: "Room — A-Frame Villa Double Room",
-          },
-          {
-            type: "image",
-            name: "aframeTripleImage",
-            label: "Room — A-Frame Villa Triple Room",
-          },
-          {
-            type: "image",
-            name: "aframeVillaImage",
-            label: "Room — A-Frame Villa with Jacuzzi (full villa)",
+            name: "ctaImage",
+            label: "Final CTA — Background Image",
           },
         ],
       },

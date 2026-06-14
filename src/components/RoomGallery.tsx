@@ -17,7 +17,16 @@ const Chevron = ({ dir }: { dir: "left" | "right" }) => (
  * arrows and a counter, and a tap-to-open lightbox with keyboard and swipe
  * navigation. Holds the 4-6 shots per room (bed, bathroom, view, detail).
  */
-export default function RoomGallery({ photos, name }: { photos: GalleryPhoto[]; name: string }) {
+export default function RoomGallery({
+  photos,
+  name,
+  tinaField,
+}: {
+  photos: GalleryPhoto[];
+  name: string;
+  /** Optional Tina visual-editing handle for this gallery list. */
+  tinaField?: string;
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -69,6 +78,7 @@ export default function RoomGallery({ photos, name }: { photos: GalleryPhoto[]; 
               key={p.label}
               onClick={() => setLightbox(i)}
               aria-label={`Open photo ${i + 1} of ${photos.length}, ${name}`}
+              data-tina-field={tinaField}
             >
               <Shot tone={p.tone} label={p.label} src={p.src} />
             </button>

@@ -14,12 +14,18 @@ export default function FinalCta({
   ctaLabel = "Start the chat",
   message = messages.finalCta,
   edgeFill = "card",
+  src = "/assets/photos/aerial-pools.jpg",
+  tinaField,
 }: {
   heading?: string;
   body?: string;
   ctaLabel?: string;
   message?: string;
   edgeFill?: EdgeColor;
+  /** Background image. Defaults to the shared golden-hour aerial used sitewide. */
+  src?: string;
+  /** Optional Tina visual-editing handle for the CTA background image. */
+  tinaField?: string;
 }) {
   return (
     <section className="final">
@@ -27,8 +33,9 @@ export default function FinalCta({
         <Shot
           tone="gold"
           label="shot 20: golden hour over the paddy"
-          src="/assets/photos/aerial-pools.jpg"
+          src={src}
           chipRight
+          tinaField={tinaField}
         />
       </div>
       <EdgeOverlay fill={edgeFill} position="top" />

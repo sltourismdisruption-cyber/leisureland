@@ -1,45 +1,58 @@
 {
-  "heroImage": "/assets/photos/room-aframe.jpg",
+  "heroImage": "/images/assets/photos/room-aframe.jpg",
   "rooms": [
     {
       "roomName": "Family Room with Paddy View",
-      "gallery": ["/assets/photos/room-balcony.jpg"]
+      "gallery": [
+        "/images/assets/photos/room-balcony.jpg"
+      ]
     },
     {
       "roomName": "Family Room with Pool View",
-      "gallery": ["/assets/photos/room-bungalow-bed.jpg"]
+      "gallery": [
+        "/images/assets/photos/room-bungalow-bed.jpg",
+        "/images/a-frame-bed-paddy-view.jpg"
+      ]
     },
     {
       "roomName": "Apartment Style Family Room",
-      "gallery": ["/assets/photos/room-bungalow-bed.jpg"]
+      "gallery": [
+        "/images/assets/photos/room-bungalow-bed.jpg"
+      ]
     },
     {
       "roomName": "Apartment Style Triple Room",
-      "gallery": ["/assets/photos/room-bungalow-bed.jpg"]
+      "gallery": [
+        "/images/assets/photos/room-bungalow-bed.jpg"
+      ]
     },
     {
       "roomName": "A-Frame Villa Double Room",
-      "gallery": ["/assets/photos/room-aframe.jpg"]
+      "gallery": [
+        "/images/assets/photos/room-aframe.jpg"
+      ]
     },
     {
       "roomName": "A-Frame Villa Triple Room",
-      "gallery": ["/assets/photos/room-aframe.jpg"]
+      "gallery": [
+        "/images/assets/photos/room-aframe.jpg"
+      ]
     }
   ],
   "wholeVilla": {
     "gallery": [
-      "/assets/photos/room-aframe.jpg",
-      "/assets/photos/room-bungalow-bed.jpg",
-      "/assets/photos/room-balcony.jpg",
-      "/assets/photos/room-aframe.jpg"
+      "/images/assets/photos/room-aframe.jpg",
+      "/images/assets/photos/room-bungalow-bed.jpg",
+      "/images/assets/photos/room-balcony.jpg",
+      "/images/assets/photos/room-aframe.jpg"
     ]
   },
   "natureWalk": [
-    "/assets/photos/coconut-climb.jpg",
-    "/assets/photos/natural-waterfall.jpg",
-    "/assets/photos/wildlife-lizard.jpg",
-    "/assets/photos/hero-lagoon.jpg",
-    "/assets/photos/waterfall-jump.jpg"
+    "/images/assets/photos/coconut-climb.jpg",
+    "/images/assets/photos/natural-waterfall.jpg",
+    "/images/assets/photos/wildlife-lizard.jpg",
+    "/images/assets/photos/hero-lagoon.jpg",
+    "/images/assets/photos/waterfall-jump.jpg"
   ],
-  "ctaImage": "/assets/photos/aerial-pools.jpg"
+  "ctaImage": "/images/assets/photos/aerial-pools.jpg"
 }

@@ -33,11 +33,13 @@ export default defineConfig({
             type: "image",
             name: "heroImage",
             label: "Hero — Main Background Image",
+            uploadDir: () => "home/hero",
           },
           {
             type: "image",
             name: "ctaImage",
             label: "Final CTA — Background Image",
+            uploadDir: () => "home/final-cta",
           },
         ],
       },
@@ -55,6 +57,7 @@ export default defineConfig({
             type: "image",
             name: "heroImage",
             label: "Hero Image",
+            uploadDir: () => "day-outing/hero",
           },
           {
             type: "image",
@@ -135,6 +138,7 @@ export default defineConfig({
             type: "image",
             name: "heroImage",
             label: "Hero — Main Background Image",
+            uploadDir: () => "accommodation/hero",
           },
           {
             type: "object",
@@ -183,6 +187,7 @@ export default defineConfig({
             type: "image",
             name: "ctaImage",
             label: "Final CTA — Background Image",
+            uploadDir: () => "accommodation/final-cta",
           },
         ],
       },
@@ -200,6 +205,7 @@ export default defineConfig({
             type: "image",
             name: "heroImage",
             label: "Hero Image",
+            uploadDir: () => "food/hero",
           },
           {
             type: "image",
@@ -232,6 +238,7 @@ export default defineConfig({
             type: "image",
             name: "heroImage",
             label: "Hero Image",
+            uploadDir: () => "our-story/hero",
           },
           {
             type: "image",

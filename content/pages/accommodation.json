@@ -1,5 +1,5 @@
 {
-  "heroImage": "/images/assets/photos/room-aframe.jpg",
+  "heroImage": "/images/a-frame-mezzanine-triangular-window.jpg",
   "rooms": [
     {
       "roomName": "Family Room with Paddy View",
@@ -11,8 +11,7 @@
     {
       "roomName": "Family Room with Pool View",
       "gallery": [
-        "/images/assets/photos/room-bungalow-bed.jpg",
-        "/images/a-frame-bed-paddy-view.jpg"
+        "/images/a-frame-bed-mezzanine-staircase.jpg"
       ]
     },
     {

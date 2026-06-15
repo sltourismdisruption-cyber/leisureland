@@ -60,6 +60,7 @@ RawImages/
 staging/
 staging-optimized/
 staging copy/
+Room-photos/
 build_review.py
 review.html
 

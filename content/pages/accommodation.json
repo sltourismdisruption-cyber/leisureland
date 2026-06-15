@@ -4,46 +4,83 @@
     {
       "roomName": "Family Room with Paddy View",
       "gallery": [
-        "/images/accommodation/rooms/family-room-paddy-view/a-frame-balcony-vanity-rattan.jpg"
+        "/images/accommodation/rooms/family-room-paddy-view/paddyview-canopy-beds-green.jpg",
+        "/images/accommodation/rooms/family-room-paddy-view/paddyview-fourposter-beds.jpg",
+        "/images/accommodation/rooms/family-room-paddy-view/paddyview-veranda-walkway.jpg",
+        "/images/accommodation/rooms/family-room-paddy-view/paddyview-grounds-pool-lawn.jpg",
+        "/images/accommodation/rooms/family-room-paddy-view/paddyview-vanity-mirror.jpg",
+        "/images/accommodation/rooms/family-room-paddy-view/paddyview-bathroom-concrete.jpg"
       ]
     },
     {
       "roomName": "Family Room with Pool View",
       "gallery": [
-        "/images/accommodation/rooms/family-room-pool-view/a-frame-bed-mezzanine-staircase.jpg"
+        "/images/accommodation/rooms/family-room-pool-view/poolview-pool-paddy-pro.jpg",
+        "/images/accommodation/rooms/family-room-pool-view/poolview-twin-canopy-beds.jpg",
+        "/images/accommodation/rooms/family-room-pool-view/poolview-beds-through-doors.jpg",
+        "/images/accommodation/rooms/family-room-pool-view/poolview-veranda-walkway.jpg",
+        "/images/accommodation/rooms/family-room-pool-view/poolview-bathroom-toilet.jpg"
       ]
     },
     {
       "roomName": "Apartment Style Family Room",
       "gallery": [
-        "/images/accommodation/rooms/apartment-style-family-room/room-bungalow-bed.jpg"
+        "/images/accommodation/rooms/apartment-style-family-room/apt-family-openplan-bed-dining.jpg",
+        "/images/accommodation/rooms/apartment-style-family-room/apt-family-bedroom-nook.jpg",
+        "/images/accommodation/rooms/apartment-style-family-room/apt-family-balcony-paddy-view.jpg",
+        "/images/accommodation/rooms/apartment-style-family-room/apt-family-balcony-swing-view.jpg",
+        "/images/accommodation/rooms/apartment-style-family-room/apt-family-veranda-seating.jpg",
+        "/images/accommodation/rooms/apartment-style-family-room/apt-family-bathroom-vanity.jpg"
       ]
     },
     {
       "roomName": "Apartment Style Triple Room",
       "gallery": [
-        "/images/accommodation/rooms/apartment-style-triple-room/room-bungalow-bed.jpg"
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bed-sloped-01.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bed-sloped-04.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-loft-stairs-01.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-loft-stairs-03.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bed-sloped-02.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bed-sloped-03.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-loft-stairs-02.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-mezzanine-wide.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-seating-window.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bathroom-01.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bathroom-02.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bathroom-03.jpg",
+        "/images/accommodation/rooms/apartment-style-triple-room/apt-triple-bathroom-04.jpg"
       ]
     },
     {
       "roomName": "A-Frame Villa Double Room",
       "gallery": [
-        "/images/accommodation/rooms/a-frame-villa-double-room/room-aframe.jpg"
+        "/images/accommodation/rooms/a-frame-villa-double-room/a-frame-bedroom-green-02.jpg",
+        "/images/accommodation/rooms/a-frame-villa-double-room/a-frame-bedroom-green-01.jpg",
+        "/images/accommodation/rooms/a-frame-villa-double-room/a-frame-iconic-gable-bed.jpg"
       ]
     },
     {
       "roomName": "A-Frame Villa Triple Room",
       "gallery": [
-        "/images/accommodation/rooms/a-frame-villa-triple-room/room-aframe.jpg"
+        "/images/accommodation/rooms/a-frame-villa-triple-room/a-frame-bedroom-green-01.jpg",
+        "/images/accommodation/rooms/a-frame-villa-triple-room/a-frame-bedroom-green-02.jpg",
+        "/images/accommodation/rooms/a-frame-villa-triple-room/a-frame-iconic-gable-bed.jpg"
       ]
     }
   ],
   "wholeVilla": {
     "gallery": [
-      "/images/a-frame-villa-exterior-jacuzzi.jpg",
-      "/images/accommodation/a-frame-villa/room-aframe.jpg",
-      "/images/a-frame-private-jacuzzi-stones.jpg",
-      "/images/bathroom-double-vanity.jpg"
+      "/images/accommodation/a-frame-villa/a-frame-exterior-day-trees.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-exterior-night-pool-01.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-exterior-night-pool-02.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-exterior-night-jacuzzi.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-exteriors-grove.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-kitchen-01.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-kitchen-02.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-bedroom-green-01.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-bedroom-green-02.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-iconic-gable-bed.jpg",
+      "/images/accommodation/a-frame-villa/a-frame-bathroom-marble.jpg"
     ]
   },
   "natureWalk": [

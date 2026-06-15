@@ -40,10 +40,10 @@
   ],
   "wholeVilla": {
     "gallery": [
+      "/images/a-frame-villa-exterior-jacuzzi.jpg",
       "/images/accommodation/a-frame-villa/room-aframe.jpg",
-      "/images/accommodation/a-frame-villa/room-bungalow-bed.jpg",
-      "/images/accommodation/a-frame-villa/room-balcony.jpg",
-      "/images/accommodation/a-frame-villa/room-aframe.jpg"
+      "/images/a-frame-private-jacuzzi-stones.jpg",
+      "/images/bathroom-double-vanity.jpg"
     ]
   },
   "natureWalk": [
@@ -54,5 +54,5 @@
     "/images/starfruit-picking-tree.jpg",
     "/images/jackfruit-opened-hands.jpg"
   ],
-  "ctaImage": "/images/accommodation/final-cta/aerial-pools.jpg"
+  "ctaImage": "/images/accommodation/final-cta/paddy-fields-golden-hour-wide.jpg"
 }

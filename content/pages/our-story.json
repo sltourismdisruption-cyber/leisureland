@@ -1,5 +1,10 @@
 {
   "heroImage": "",
-  "landImage": "",
-  "teamImage": ""
+  "originImage": "",
+  "stayImage": "/images/our-story/stay-ethos/room-balcony-jungle-view.jpg",
+  "playImage": "/images/our-story/play-ethos/tarzan-swing-mid-flight.jpg",
+  "natureImage": "/images/our-story/nature/giant-tree-jungle-canopy.jpg",
+  "kottaPora": "/images/our-story/traditions/kotta-pora-log-two-men.jpg",
+  "ropes": "/images/our-story/traditions/rope-walking-full-view.jpg",
+  "ctaImage": "/images/our-story/final-cta/paddy-fields-golden-hour-wide.jpg"
 }

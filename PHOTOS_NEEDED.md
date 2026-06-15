@@ -34,3 +34,16 @@ Every slot below is a clean placeholder awaiting a proper food shoot.
 | **Mild plate** | Close-up of a gentle/mild plate | ⤴ Same shot as **Day Outing → Buffet Mild Plate** above — one photo fills both pages (not duplicated here) |
 
 *Already filled (no shot needed): Showcase "Fruit off the trees" → `starfruit-picking-tree`; Final CTA → `paddy-fields-golden-hour-wide` (the standard golden-hour closer).*
+
+## Our Story page — "Our Story shoot" (Phase 4 — 2026-06-16)
+
+This page has a strict rule: **photography is hands and the land, never faces.**
+Most slots were filled with strong, on-brief matches; two remain open and are
+held as clean placeholders.
+
+| Slot | Shot to capture | Notes |
+|---|---|---|
+| **Hero** | The land at golden hour, wide — the page's one signature landscape | Held open for a proper hero shot. *Not* the sunset tire-swing (reserved elsewhere) and *not* a reused CTA aerial — this deserves its own frame. |
+| **Origin — "where it all began"** | Hands plucking cinnamon (or another hands-on-the-land moment), **no faces**, portrait | The only cinnamon photo in the library (`cinnamon-leaf-guide`) shows visitors' faces, so it breaks the page rule — needs a clean hands-only frame. |
+
+*Already filled (no shot needed): Stay ethos → `room-balcony-jungle-view`; Play ethos → `tarzan-swing-mid-flight`; Nature as partner → `giant-tree-jungle-canopy`; Tradition Kotta Pora → `kotta-pora-log-two-men`; Tradition ropes → `rope-walking-full-view`; Final CTA → `paddy-fields-golden-hour-wide` (the sitewide golden-hour closer).*

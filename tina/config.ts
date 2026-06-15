@@ -225,6 +225,8 @@ export default defineConfig({
         path: "content/pages",
         format: "json",
         ui: {
+          // Opens the live /our-story page for click-on-the-page editing.
+          router: () => "/our-story",
           allowedActions: { create: false, delete: false },
         },
         match: { include: "our-story" },
@@ -232,18 +234,44 @@ export default defineConfig({
           {
             type: "image",
             name: "heroImage",
-            label: "Hero Image",
+            label: "Hero — The Land at Golden Hour (wide)",
             uploadDir: () => "our-story/hero",
           },
           {
             type: "image",
-            name: "landImage",
-            label: "The Land",
+            name: "originImage",
+            label: "Where It Began (hands & the land, portrait)",
           },
           {
             type: "image",
-            name: "teamImage",
-            label: "The Team / People",
+            name: "stayImage",
+            label: "Stay Ethos — Not Just a Bed (portrait)",
+          },
+          {
+            type: "image",
+            name: "playImage",
+            label: "Play Ethos — Adventure (portrait)",
+          },
+          {
+            type: "image",
+            name: "natureImage",
+            label: "Nature as Partner (portrait)",
+          },
+          {
+            type: "image",
+            name: "kottaPora",
+            label: "Tradition — Kotta Pora (log pillow fight)",
+          },
+          {
+            type: "image",
+            name: "ropes",
+            label: "Tradition — Toddy Tapper's Ropes",
+          },
+          {
+            type: "image",
+            name: "ctaImage",
+            label: "Final CTA — Background Image",
+            uploadDir: () => "our-story/final-cta",
           },
         ],
       },

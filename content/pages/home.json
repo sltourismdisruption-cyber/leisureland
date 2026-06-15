@@ -1,15 +1,15 @@
 {
-  "heroImage": "",
+  "heroImage": "/images/home/hero/pools-jungle-landscape-ground.jpg",
   "activitiesSpotlight": "/images/home/activities/rope-walking-full-view.jpg",
   "activitiesTiles": [
     "/images/home/activities/kotta-pora-log-two-men.jpg",
     "/images/home/activities/tarzan-swing-mid-flight.jpg",
-    "",
+    "/images/tire-swing-silhouette-sunset.jpg",
     "/images/home/activities/couple-waterfall-romantic.jpg",
-    "",
+    "/images/treehouse-canopy-professional.jpg",
     "/images/home/activities/woman-slide-splashdown.jpg"
   ],
-  "foodHero": "/images/home/food/sri-lankan-buffet-spread.jpg",
+  "foodHero": "/images/home/food/sri-lankan-buffet-spread_2.jpg",
   "foodDetails": [
     "/images/home/food/group-feast-buffet-table.jpg",
     "",
@@ -26,5 +26,5 @@
     "/images/home/stay/hibiscus-drink-making.jpg",
     "/images/home/stay/woman-picking-rambutan.jpg"
   ],
-  "ctaImage": "/images/home/final-cta/paddy-fields-golden-hour-wide.jpg"
+  "ctaImage": "/images/home/final-cta/paddy-fields-dusk.jpg"
 }

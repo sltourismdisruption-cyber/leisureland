@@ -1,4 +1,30 @@
 {
-  "heroImage": "/images/home/hero/pools-jungle-landscape-ground.jpg",
-  "ctaImage": "/images/home/final-cta/pool-framed-through-trees.jpg"
+  "heroImage": "",
+  "activitiesSpotlight": "/images/home/activities/rope-walking-full-view.jpg",
+  "activitiesTiles": [
+    "/images/home/activities/kotta-pora-log-two-men.jpg",
+    "/images/home/activities/tarzan-swing-mid-flight.jpg",
+    "",
+    "/images/home/activities/couple-waterfall-romantic.jpg",
+    "",
+    "/images/home/activities/woman-slide-splashdown.jpg"
+  ],
+  "foodHero": "/images/home/food/sri-lankan-buffet-spread.jpg",
+  "foodDetails": [
+    "/images/home/food/group-feast-buffet-table.jpg",
+    "",
+    "/images/home/food/starfruit-picking-tree.jpg"
+  ],
+  "stayRooms": [
+    "/images/home/stay/a-frame-double-bed-under-mezzanine.jpg",
+    "/images/home/stay/a-frame-bed-paddy-view.jpg",
+    "/images/home/stay/a-frame-villa-exterior-night.jpg"
+  ],
+  "stayExperiences": [
+    "",
+    "",
+    "/images/home/stay/hibiscus-drink-making.jpg",
+    "/images/home/stay/woman-picking-rambutan.jpg"
+  ],
+  "ctaImage": "/images/home/final-cta/paddy-fields-golden-hour-wide.jpg"
 }

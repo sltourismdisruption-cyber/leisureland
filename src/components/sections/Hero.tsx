@@ -7,14 +7,23 @@ import { messages } from "@/lib/constants";
 // Staged entrance: each block rises in sequence on load.
 const rise = (ms: number) => ({ animationDelay: `${ms}ms` });
 
-export default function Hero() {
+export default function Hero({
+  src = "/assets/photos/hero-lagoon.jpg",
+  tinaField,
+}: {
+  /** Background image. Defaults to the original hero lagoon shot. */
+  src?: string;
+  /** Optional Tina visual-editing handle for the hero image. */
+  tinaField?: string;
+}) {
   return (
     <header className="hero">
       <div className="hero-bg">
         <Shot
           tone="jungle"
           label="shot 01: drone pass over the pools, through the canopy"
-          src="/assets/photos/hero-lagoon.jpg"
+          src={src}
+          tinaField={tinaField}
         />
       </div>
       <div className="wrap hero-in">

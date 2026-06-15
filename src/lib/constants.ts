@@ -71,6 +71,11 @@ export const contact = {
 
 export type Tone = "jungle" | "water" | "food" | "gold";
 
+// A single image slot fed from TinaCMS to a home section component: the image
+// path (empty string renders a clean placeholder) plus the visual-editing
+// handle from tinaField(). Optional so un-wired usage falls back to defaults.
+export type ImgField = { src?: string; tinaField?: string };
+
 // Room data (prices centralized here per the handoff).
 export const rooms: { name: string; meta: string; price: string; tone: Tone; shot: string; img: string }[] = [
   { name: "Standard family room", meta: "sleeps 4", price: "from $85 a night", tone: "jungle", shot: "shot 13: room, morning light, portrait", img: "/assets/photos/room-bungalow-bed.jpg" },

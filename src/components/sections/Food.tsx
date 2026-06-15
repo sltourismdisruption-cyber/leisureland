@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Shot from "@/components/Shot";
+import type { ImgField } from "@/lib/constants";
 
 const DETAILS = [
   { tone: "food" as const, shot: "shot 10", src: "/assets/photos/bbq-bonfire.jpg", hand: "the curry pots" },
@@ -7,7 +8,15 @@ const DETAILS = [
   { tone: "gold" as const, shot: "shot 12", src: "/assets/photos/wildlife-lizard.jpg", hand: "plucked from our gardens" },
 ];
 
-export default function Food() {
+// Images come from the home doc via Tina (buffet hero + 3 detail tiles, by
+// index); copy/tones stay in DETAILS. Falls back to the original srcs if un-wired.
+export default function Food({
+  hero,
+  details,
+}: {
+  hero?: ImgField;
+  details?: ImgField[];
+}) {
   return (
     <section className="food" id="food">
       <div className="wrap">
@@ -21,7 +30,8 @@ export default function Food() {
           <Shot
             tone="food"
             label="shot 09: the buffet spread, wide, steam and all"
-            src="/assets/photos/bbq-bonfire.jpg"
+            src={hero?.src ?? "/assets/photos/bbq-bonfire.jpg"}
+            tinaField={hero?.tinaField}
           />
           <p className="grandma">
             {'"made the way grandma would, from scratch, in our kitchen, with nothing fake."'}
@@ -31,7 +41,7 @@ export default function Food() {
           {DETAILS.map((d, i) => (
             <div className="detail rv" key={d.shot} style={{ transitionDelay: `${i * 90}ms` }}>
               <div className="frame">
-                <Shot tone={d.tone} label={d.shot} src={d.src} />
+                <Shot tone={d.tone} label={d.shot} src={details?.[i]?.src ?? d.src} tinaField={details?.[i]?.tinaField} />
               </div>
               <span className="hand">{d.hand}</span>
             </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Shot from "@/components/Shot";
-import { waLink, messages, type Tone } from "@/lib/constants";
+import { waLink, messages, type Tone, type ImgField } from "@/lib/constants";
 
 type Tile = { cls: "sq6" | "pt4" | "pano"; tone: Tone; shot: string; src: string; nm: string; ds: string };
 
@@ -13,7 +13,15 @@ const TILES: Tile[] = [
   { cls: "pt4", tone: "water", shot: "shot 08: splashdown, speed slide, portrait", src: "/assets/photos/slide.jpg", nm: "Speed & family slides", ds: "one for the daredevils, one for everyone" },
 ];
 
-export default function Activities() {
+// Images come from the home doc via Tina (spotlight + 6 tiles, by index); all
+// copy/tones stay in TILES. Falls back to the original srcs if un-wired.
+export default function Activities({
+  spotlight,
+  tiles,
+}: {
+  spotlight?: ImgField;
+  tiles?: ImgField[];
+}) {
   return (
     <section className="acts" id="acts">
       <div className="wrap">
@@ -34,7 +42,8 @@ export default function Activities() {
             <Shot
               tone="jungle"
               label="shot 02: feet on the lower rope, hands on the top rope, halfway across"
-              src="/assets/photos/rope-swing.jpg"
+              src={spotlight?.src ?? "/assets/photos/rope-swing.jpg"}
+              tinaField={spotlight?.tinaField}
             />
           </div>
           <div className="spot-txt">
@@ -58,7 +67,7 @@ export default function Activities() {
         <div className="biggrid">
           {TILES.map((t, i) => (
             <div className={`tile ${t.cls} rv`} key={t.shot} style={{ transitionDelay: `${(i % 3) * 90}ms` }}>
-              <Shot tone={t.tone} label={t.shot} src={t.src} />
+              <Shot tone={t.tone} label={t.shot} src={tiles?.[i]?.src ?? t.src} tinaField={tiles?.[i]?.tinaField} />
               <div className="cap">
                 <span className="nm">{t.nm}</span>
                 <span className="ds">{t.ds}</span>

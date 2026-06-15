@@ -25,6 +25,8 @@ export default defineConfig({
         path: "content/pages",
         format: "json",
         ui: {
+          // Opens the live homepage for click-on-the-page editing.
+          router: () => "/",
           allowedActions: { create: false, delete: false },
         },
         match: { include: "home" },
@@ -34,6 +36,42 @@ export default defineConfig({
             name: "heroImage",
             label: "Hero — Main Background Image",
             uploadDir: () => "home/hero",
+          },
+          {
+            type: "image",
+            name: "activitiesSpotlight",
+            label: "Activities — Rope Walk Spotlight",
+          },
+          {
+            type: "image",
+            name: "activitiesTiles",
+            label:
+              "Activities — Tile Grid (6: Kotta Pora, Tarzan jump, Paddy swings, Waterfall pools, Tree house, Slides)",
+            list: true,
+          },
+          {
+            type: "image",
+            name: "foodHero",
+            label: "Food — Buffet Hero",
+            uploadDir: () => "home/food",
+          },
+          {
+            type: "image",
+            name: "foodDetails",
+            label: "Food — Detail Tiles (3: curry pots, string hoppers, from our gardens)",
+            list: true,
+          },
+          {
+            type: "image",
+            name: "stayRooms",
+            label: "Stay — Room Tiles (3: standard, spacious, A-frame suite)",
+            list: true,
+          },
+          {
+            type: "image",
+            name: "stayExperiences",
+            label: "Stay — Hands-on Experiences (4: cinnamon, tea, hibiscus, fruit)",
+            list: true,
           },
           {
             type: "image",

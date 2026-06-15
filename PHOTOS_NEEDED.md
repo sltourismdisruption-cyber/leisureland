@@ -47,3 +47,20 @@ held as clean placeholders.
 | **Origin — "where it all began"** | Hands plucking cinnamon (or another hands-on-the-land moment), **no faces**, portrait | The only cinnamon photo in the library (`cinnamon-leaf-guide`) shows visitors' faces, so it breaks the page rule — needs a clean hands-only frame. |
 
 *Already filled (no shot needed): Stay ethos → `room-balcony-jungle-view`; Play ethos → `tarzan-swing-mid-flight`; Nature as partner → `giant-tree-jungle-canopy`; Tradition Kotta Pora → `kotta-pora-log-two-men`; Tradition ropes → `rope-walking-full-view`; Final CTA → `paddy-fields-golden-hour-wide` (the sitewide golden-hour closer).*
+
+## Home page — "Home shoot" (Phase 5 — 2026-06-16)
+
+The homepage summarizes the whole site, so most tiles reuse strong shots already
+placed on the deep pages. Six slots are clean placeholders — the hero (held for a
+proper signature shot) plus a few that have no real photo yet anywhere on the site.
+
+| Slot | Shot to capture / source | Notes |
+|---|---|---|
+| **Hero** | The signature wide shot — a drone pass over the pools through the canopy | The single most-seen image on the site. Reserved for a proper hero — **not** the sunset swing, **not** a reused aerial. |
+| Activity tile — **Paddy field swings** | Someone swinging out over the paddy fields | ⤴ Same gap as **Day Outing → Paddy Field Swings**. The sunset swing (`tire-swing-silhouette-sunset`) is deliberately not used on the homepage. |
+| Activity tile — **Tree house** | The tree house in the jungle canopy | ⤴ Same as **Day Outing → Tree House** — the pro shot (`treehouse-canopy-professional`) is **watermarked**; left as a placeholder on the homepage (highest-visibility page) until rights are confirmed. |
+| Food detail — **"string hoppers, fresh"** | A close-up of fresh string hoppers | No string-hopper photo exists in the library yet. Pairs with the broader **Food shoot** above. |
+| Stay experience — **Pick & brew your own tea** | Hands picking tea leaves / brewing a fresh cup | No tea-picking photo exists yet. |
+| Stay experience — **Pluck Ceylon cinnamon** | Hands on the cinnamon branch, peeling the bark | A signature cultural USP — deserves a real cinnamon shot, not a generic garden activity. The only cinnamon photo (`cinnamon-leaf-guide`) shows guests' faces. |
+
+*Already filled via reuse (no shot needed): rope-walk spotlight → `rope-walking-full-view`; Kotta Pora → `kotta-pora-log-two-men`; Tarzan jump → `tarzan-swing-mid-flight`; Waterfall pools → `couple-waterfall-romantic`; Slides → `woman-slide-splashdown`; Food hero → `sri-lankan-buffet-spread`; "curry pots" → `group-feast-buffet-table`; "from our gardens" → `starfruit-picking-tree`; 3 room tiles → `a-frame-double-bed-under-mezzanine` / `a-frame-bed-paddy-view` / `a-frame-villa-exterior-night`; Hibiscus → `hibiscus-drink-making`; Fruit off the branch → `woman-picking-rambutan`; Final CTA → `paddy-fields-golden-hour-wide`.*

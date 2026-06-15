@@ -47,7 +47,12 @@
     ]
   },
   "natureWalk": [
-    "/images/woman-jungle-photography.jpg"
+    "/images/woman-jungle-photography.jpg",
+    "/images/garden-lizard-wildlife.jpg",
+    "/images/garden-guide-nature-activity-alt.jpg",
+    "/images/woman-picking-rambutan.jpg",
+    "/images/starfruit-picking-tree.jpg",
+    "/images/jackfruit-opened-hands.jpg"
   ],
   "ctaImage": "/images/accommodation/final-cta/aerial-pools.jpg"
 }

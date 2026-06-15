@@ -1,5 +1,5 @@
 {
-  "heroImage": "/images/accommodation/hero/a-frame-mezzanine-triangular-window.jpg",
+  "heroImage": "/images/accommodation/hero/a-frame-villa-exterior-night.jpg",
   "rooms": [
     {
       "roomName": "Family Room with Paddy View",
@@ -47,11 +47,7 @@
     ]
   },
   "natureWalk": [
-    "/images/accommodation/nature-walk/coconut-climb.jpg",
-    "/images/accommodation/nature-walk/natural-waterfall.jpg",
-    "/images/accommodation/nature-walk/wildlife-lizard.jpg",
-    "/images/accommodation/nature-walk/hero-lagoon.jpg",
-    "/images/accommodation/nature-walk/waterfall-jump.jpg"
+    "/images/woman-jungle-photography.jpg"
   ],
   "ctaImage": "/images/accommodation/final-cta/aerial-pools.jpg"
 }

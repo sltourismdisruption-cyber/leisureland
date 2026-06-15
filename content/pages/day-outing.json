@@ -1,15 +1,34 @@
 {
   "heroImage": "/images/day-outing/hero/jungle-plunge-pov-rainbow.jpg",
-  "junglePlungeImage": "/images/day-outing/activities/jungle-plunge/jungle-plunge-slide.jpg",
-  "tarzanJumpImage": "",
-  "ropeWalkingImage": "",
-  "waterfallsImage": "",
-  "coconutClimbImage": "/images/day-outing/activities/coconut-tree-climbing/coconut-climb-action.jpg",
-  "kottaPoraImage": "",
-  "twisterImage": "",
-  "paaruwaImage": "/images/day-outing/activities/paaruwa-bamboo-raft/mother-toddler-bamboo-raft.jpg",
-  "treeHouseImage": "/images/day-outing/activities/tree-house/treehouse-canopy-professional.jpg",
-  "paddySwingsImage": "",
-  "poolVolleyballImage": "/images/day-outing/activities/pool-volleyball/pool-volleyball-action-alt.jpg",
-  "poolBasketballImage": ""
+  "moments": [
+    "/images/day-outing/moments/coconut-welcome-drinks.jpg",
+    "/images/day-outing/moments/woman-slide-splashdown.jpg",
+    "/images/day-outing/moments/family-pool-throwing-fun.jpg",
+    "/images/day-outing/moments/group-feast-buffet-table.jpg",
+    "/images/day-outing/moments/man-floating-lagoon-pool.jpg",
+    "/images/day-outing/moments/ceylon-coffee-cup.jpg"
+  ],
+  "activities": [
+    "/images/day-outing/activities/jungle-plunge/jungle-plunge-slide-exit.jpg",
+    "/images/day-outing/activities/tarzan-jump/tarzan-swing-mid-flight.jpg",
+    "/images/day-outing/activities/rope-walking/rope-walking-full-view.jpg",
+    "/images/day-outing/activities/waterfall-massage/couple-waterfall-romantic.jpg",
+    "/images/day-outing/activities/coconut-tree-climbing/coconut-climb-action.jpg",
+    "/images/day-outing/activities/kotta-pora/kotta-pora-log-two-men.jpg",
+    "/images/day-outing/activities/the-twister/twister-duo-jungle-sky.jpg",
+    "/images/day-outing/activities/paaruwa-bamboo-raft/kids-life-jackets-bamboo-raft.jpg",
+    "",
+    "",
+    "/images/day-outing/activities/pool-volleyball/pool-volleyball-game-wide.jpg",
+    ""
+  ],
+  "buffetHero": "/images/day-outing/buffet/sri-lankan-buffet-spread.jpg",
+  "spicyPlate": "",
+  "mildPlate": "",
+  "foodShots": [
+    "/images/day-outing/buffet/guests-dining-long-table.jpg",
+    "/images/day-outing/buffet/hibiscus-drink-making.jpg",
+    "/images/day-outing/buffet/jackfruit-opened-hands.jpg"
+  ],
+  "ctaImage": "/images/day-outing/final-cta/paddy-fields-golden-hour-wide.jpg"
 }

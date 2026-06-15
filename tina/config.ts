@@ -178,6 +178,8 @@ export default defineConfig({
         path: "content/pages",
         format: "json",
         ui: {
+          // Opens the live /food page for click-on-the-page editing.
+          router: () => "/food",
           allowedActions: { create: false, delete: false },
         },
         match: { include: "food" },
@@ -190,18 +192,30 @@ export default defineConfig({
           },
           {
             type: "image",
-            name: "spicyBuffetImage",
-            label: "Spicy Buffet Spread",
+            name: "spicyPlate",
+            label: "Spicy Plate",
           },
           {
             type: "image",
-            name: "mildBuffetImage",
-            label: "Mild Buffet Spread",
+            name: "mildPlate",
+            label: "Mild Plate",
           },
           {
             type: "image",
-            name: "kitchenImage",
-            label: "Kitchen / Behind the Scenes",
+            name: "buffetSpread",
+            label: "Buffet — Wide Spread",
+          },
+          {
+            type: "image",
+            name: "showcase",
+            label: "Eating the LL Way (3: buffet, evening tea, fruit)",
+            list: true,
+          },
+          {
+            type: "image",
+            name: "ctaImage",
+            label: "Final CTA — Background Image",
+            uploadDir: () => "food/final-cta",
           },
         ],
       },

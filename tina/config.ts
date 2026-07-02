@@ -38,6 +38,11 @@ export default defineConfig({
             uploadDir: () => "home/hero",
           },
           {
+            type: "string",
+            name: "videoId",
+            label: "Watch Section — Vimeo Video ID (digits only, e.g. 1205956354)",
+          },
+          {
             type: "image",
             name: "activitiesSpotlight",
             label: "Activities — Rope Walk Spotlight",
@@ -254,6 +259,32 @@ export default defineConfig({
             name: "ctaImage",
             label: "Final CTA — Background Image",
             uploadDir: () => "food/final-cta",
+          },
+        ],
+      },
+      {
+        name: "events",
+        label: "Events Page",
+        path: "content/pages",
+        format: "json",
+        ui: {
+          // Opens the live /events page for click-on-the-page editing.
+          router: () => "/events",
+          allowedActions: { create: false, delete: false },
+        },
+        match: { include: "events" },
+        fields: [
+          {
+            type: "image",
+            name: "heroImage",
+            label: "Hero Image",
+            uploadDir: () => "events/hero",
+          },
+          {
+            type: "image",
+            name: "ctaImage",
+            label: "Final CTA — Background Image",
+            uploadDir: () => "events/final-cta",
           },
         ],
       },

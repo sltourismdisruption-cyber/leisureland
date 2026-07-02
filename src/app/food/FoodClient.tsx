@@ -94,7 +94,7 @@ export default function FoodClient(props: {
 
       <section id="spicy-mild">
         <div className="wrap">
-          <h2 className="rv">One Buffet, Your Way.</h2>
+          <h2 className="rv">One buffet, your way.</h2>
           <p className="lede rv">
             Two default versions of the day-outing buffet: a gentle, non-spicy one and a fiery Sri
             Lankan-spicy one. The same feast, the same dishes, cooked to your spice.
@@ -130,6 +130,13 @@ export default function FoodClient(props: {
           </div>
           <div className="menu-cta rv">
             <MenuModal label="View the full menu" />
+          </div>
+          <div className="alacarte rv">
+            <h3>À la carte, all day</h3>
+            <p>
+              Beyond the buffet, order from our à la carte menu throughout the day. The full list is
+              coming soon; ask us what&apos;s available when you visit.
+            </p>
           </div>
           <p className="diet rv">
             Vegetarian, vegan and gluten free all accommodated. Message us ahead and we&apos;ll take

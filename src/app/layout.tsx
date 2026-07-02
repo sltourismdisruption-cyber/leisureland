@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Young_Serif, Albert_Sans, Kalam } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -57,7 +58,9 @@ export default function RootLayout({
             nothing is ever hidden and the preloader never renders. The
             watchdog un-arms everything if the app bundle never hydrates
             (flaky network), so the curtain can never strand the page blank. */}
-        <script
+        <Script
+          id="boot-js"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `var d=document.documentElement;d.setAttribute("data-js","");setTimeout(function(){if(!d.hasAttribute("data-ready"))d.removeAttribute("data-js")},6000);`,
           }}

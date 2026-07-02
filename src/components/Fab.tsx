@@ -6,7 +6,7 @@ export default function Fab() {
   return (
     <a
       className="fab"
-      href={waLink(messages.book)}
+      href={waLink(messages.general)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Message us on WhatsApp"

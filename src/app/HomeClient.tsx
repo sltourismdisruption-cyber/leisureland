@@ -2,6 +2,7 @@
 
 import { useTina, tinaField } from "tinacms/dist/react";
 import Hero from "@/components/sections/Hero";
+import VideoWatch from "@/components/sections/VideoWatch";
 import TheDay from "@/components/sections/TheDay";
 import SectionEdge from "@/components/SectionEdge";
 import Activities from "@/components/sections/Activities";
@@ -23,7 +24,7 @@ import type { HomeQuery } from "../../tina/__generated__/types";
 
   Band order, every transition separated by the irregular wavy edge
   (hero and final carry their own overlaid edges over the photos):
-  hero(photo) > day(card) > acts(canopy) > food(mist) > stay(card) >
+  hero(photo) > watch(canopy) > day(card) > acts(canopy) > food(mist) > stay(card) >
   getting-here(mist) > corporate(mist-deep) > faq(card) >
   final(photo) > footer via treeline
 */
@@ -50,6 +51,8 @@ export default function HomeClient(props: {
   return (
     <>
       <Hero src={d.heroImage ?? undefined} tinaField={tinaField(d, "heroImage")} />
+      <VideoWatch videoId={d.videoId ?? undefined} tinaField={tinaField(d, "videoId")} />
+      <SectionEdge from="canopy" to="card" />
       <TheDay />
       <SectionEdge from="card" to="canopy" />
       <Activities

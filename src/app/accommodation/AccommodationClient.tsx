@@ -14,6 +14,26 @@ import GalleMap from "@/components/sections/GalleMap";
 import { roomListings, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
 import type { AccommodationQuery } from "../../../tina/__generated__/types";
 
+// Single-person icon standing in for the word "Sleeps" (max pax) on room cards
+// (Round 3 ST1). currentColor + inline sizing so it inherits the meta text.
+const PaxIcon = () => (
+  <svg
+    className="pax-ic"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    role="img"
+    aria-label="Sleeps"
+    style={{ width: "1.05em", height: "1.05em", verticalAlign: "-0.15em", marginRight: "0.35em" }}
+  >
+    <circle cx="12" cy="8" r="3.4" />
+    <path d="M5.5 19.5c0-3.6 2.9-6.3 6.5-6.3s6.5 2.7 6.5 6.3" />
+  </svg>
+);
+
 /*
   Band order: hero(photo) > book-direct banner(mist-deep) > room listings(mist) >
   whole villa(card) > every stay includes(mist) > nature walk(canopy) >
@@ -151,7 +171,7 @@ export default function AccommodationClient(props: {
                     tinaField={tinaRoom ? tinaField(tinaRoom, "gallery") : undefined}
                   />
                   <h3>{r.name}</h3>
-                  <span className="meta">Sleeps {r.occupancy} · {r.count} available</span>
+                  <span className="meta"><PaxIcon />{r.occupancy} · Room count: {r.count}</span>
                   {r.features ? <span className="feat">{r.features}</span> : null}
                   <p className="desc">{r.description}</p>
                   <div>
@@ -189,7 +209,7 @@ export default function AccommodationClient(props: {
                 private jacuzzi just for your group. Book a single room above, or take the entire
                 villa with your favorite people.
               </p>
-              <p className="price-line">Sleeps 7 · one entire villa, private jacuzzi included.</p>
+              <p className="price-line"><PaxIcon />7 · one entire villa, private jacuzzi included.</p>
               <div>
                 <WhatsAppPill message={messages.wholeVilla} big>
                   Message us to book the villa

@@ -11,7 +11,7 @@ type Dest = { name: string; min: number; icon: ReactNode };
 const DESTS: Dest[] = [
   {
     name: "Unawatuna Beach",
-    min: 15,
+    min: 10,
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M3 15q4.5-5 9 0t9 0" />
@@ -20,7 +20,7 @@ const DESTS: Dest[] = [
   },
   {
     name: "Galle Fort",
-    min: 20,
+    min: 15,
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M8 19V5" />
@@ -31,7 +31,7 @@ const DESTS: Dest[] = [
   },
   {
     name: "Jungle Beach",
-    min: 20,
+    min: 10,
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M5 18C5 10.5 11 5.5 19 6c-.5 7.5-6.5 12.5-14 12Z" />
@@ -40,8 +40,8 @@ const DESTS: Dest[] = [
     ),
   },
   {
-    name: "Turtle hatchery",
-    min: 20,
+    name: "Turtle Hatchery",
+    min: 15,
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M5.5 14a6.5 5.5 0 0 1 13 0" />
@@ -51,20 +51,8 @@ const DESTS: Dest[] = [
     ),
   },
   {
-    name: "Coconut Tree Hill",
-    min: 25,
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 19V8" />
-        <path d="M12 8C9.5 5 6 5 4.5 7.5" />
-        <path d="M12 8c2.5-3 6-3 7.5-.5" />
-        <path d="M5 19h14" />
-      </svg>
-    ),
-  },
-  {
-    name: "Stilt fishermen",
-    min: 25,
+    name: "Stilt Fisherman",
+    min: 15,
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M10 19V5" />
@@ -74,11 +62,23 @@ const DESTS: Dest[] = [
       </svg>
     ),
   },
+  {
+    name: "Coconut Tree Hill",
+    min: 20,
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V8" />
+        <path d="M12 8C9.5 5 6 5 4.5 7.5" />
+        <path d="M12 8c2.5-3 6-3 7.5-.5" />
+        <path d="M5 19h14" />
+      </svg>
+    ),
+  },
 ];
 
-// Trail length ratio: minutes over the farthest ride (25), so the longest
+// Trail length ratio: minutes over the farthest ride (20), so the longest
 // trail fills the space left after the time text and the rest stay proportional.
-const trailRatio = (min: number) => String(min / 25);
+const trailRatio = (min: number) => String(min / 20);
 
 export default function GalleMap() {
   return (
@@ -86,7 +86,7 @@ export default function GalleMap() {
       <div className="wrap">
         <h2 className="rv">Stay with us, see all of Galle.</h2>
         <p className="lede rv">
-          Almost everything worth seeing is 10 to 25 minutes away. Tell us what you like and we&apos;ll
+          Almost everything worth seeing is 10 to 20 minutes away. Tell us what you like and we&apos;ll
           arrange a vehicle.
         </p>
 

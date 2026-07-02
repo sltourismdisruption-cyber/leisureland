@@ -69,7 +69,6 @@ const ACTIVITIES: {
   name: string;
   body: string;
   tag?: string;
-  confirmNote?: string;
   tone: Tone;
   shot: string;
 }[] = [
@@ -93,7 +92,7 @@ const ACTIVITIES: {
     shot: "shot 02: feet on the lower rope, hands on the top rope, halfway across",
   },
   {
-    name: "The Waterfall: Nature's Massage",
+    name: "Waterfall Massage",
     body: "Step beneath the cascading water and let it work. The falls pour over your shoulders and back like a natural massage, water therapy the way nature intended. Close your eyes, feel the rush, and let the tension melt into the pool. Surrounded by jungle, there's no spa quite like it.",
     tone: "water",
     shot: "waterfall massage shot: under the falls, blissful, portrait",
@@ -102,7 +101,6 @@ const ACTIVITIES: {
     name: "Coconut Tree Climbing",
     body: "A traditional Sri Lankan skill, nearly lost to time and reintroduced here. Learn how generations scaled the palms, a real cultural adventure you won't find at any regular water park.",
     tag: "🇱🇰 Traditional Sri Lankan experience",
-    confirmNote: '[CONFIRM] credit wording: original note said "reintroduced by National Inn"',
     tone: "jungle",
     shot: "coconut tree climbing: action, the climber up the palm, portrait",
   },
@@ -246,7 +244,7 @@ export default function DayOutingClient(props: {
 
       <section className="band-card" id="activities">
         <div className="wrap">
-          <h2 className="rv">Every activity, properly.</h2>
+          <h2 className="rv">Our Activities</h2>
           <p className="lede rv">
             More ways to play than you can fit in one day, from the slides you know to the old games
             you don&apos;t.
@@ -260,7 +258,6 @@ export default function DayOutingClient(props: {
                 <h3>{a.name}</h3>
                 {a.tag ? <span className="tag">{a.tag}</span> : null}
                 <p>{a.body}</p>
-                {a.confirmNote ? <span className="confirm-note">{a.confirmNote}</span> : null}
               </div>
             ))}
           </div>
@@ -271,7 +268,7 @@ export default function DayOutingClient(props: {
 
       <section id="buffet">
         <div className="wrap">
-          <h2 className="rv">One buffet, your way.</h2>
+          <h2 className="rv">Sri Lankan food, your way.</h2>
           <p className="lede rv">
             Our buffet is authentic Sri Lankan, cooked from scratch with zero artificial flavors.
             Tell us your preference, fiery Sri Lankan-style, or a gentler version loved by guests
@@ -314,6 +311,9 @@ export default function DayOutingClient(props: {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="menu-cta rv">
+            <MenuModal label="View the menu" />
           </div>
         </div>
       </section>
@@ -389,9 +389,6 @@ export default function DayOutingClient(props: {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="menu-cta rv">
-            <MenuModal label="View the menu" />
           </div>
           <p className="hours-line rv">
             {dayHours.regular}. {dayHours.evening}.

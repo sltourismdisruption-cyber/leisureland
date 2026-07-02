@@ -19,8 +19,13 @@ export const EDGE_COLORS = {
 
 export type EdgeColor = keyof typeof EDGE_COLORS;
 
+// The fill overshoots the 54-unit viewBox bottom (→ 60) so the visible bottom
+// edge is always solid: the antialiased boundary falls outside the clipped SVG,
+// eliminating the sub-pixel hairline that showed at fractional scroll positions
+// (Round 3 DO1). Overshoot is clipped by the 54px-tall SVG and, where visible,
+// is the adjacent band's color — invisible on every divider.
 const EDGE_PATH =
-  "M0 34 C 90 18, 165 42, 255 28 C 345 14, 420 44, 520 26 C 615 10, 695 38, 790 24 C 885 11, 960 40, 1055 22 C 1145 7, 1230 34, 1320 20 C 1380 12, 1415 26, 1440 22 L 1440 54 L 0 54 Z";
+  "M0 34 C 90 18, 165 42, 255 28 C 345 14, 420 44, 520 26 C 615 10, 695 38, 790 24 C 885 11, 960 40, 1055 22 C 1145 7, 1230 34, 1320 20 C 1380 12, 1415 26, 1440 22 L 1440 60 L 0 60 Z";
 
 export default function SectionEdge({ from, to }: { from: EdgeColor; to: EdgeColor }) {
   return (

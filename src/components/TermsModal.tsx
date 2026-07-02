@@ -2,8 +2,7 @@ import Modal from "@/components/Modal";
 
 /**
  * "Full rules and booking terms" pop-up (Doc 07 D7). Opens on the page instead
- * of navigating away. Built from the known operational rules; the formal
- * booking terms (Doc 04) drop in where the [CONFIRM] note sits.
+ * of navigating away. Built from the known operational rules (Doc 04).
  */
 export default function TermsModal({ label = "Full rules and booking terms" }: { label?: string }) {
   return (
@@ -29,11 +28,6 @@ export default function TermsModal({ label = "Full rules and booking terms" }: {
           <li>Booking direct with us is the best rate.</li>
           <li>Pool-only tickets are available on non-holidays, and on holidays only if check-in is after 2 pm.</li>
         </ul>
-        <p style={{ marginTop: 6 }}>
-          <span className="confirm-note">
-            [CONFIRM] full formal booking terms from the founder (Doc 04) to be added here
-          </span>
-        </p>
       </div>
     </Modal>
   );

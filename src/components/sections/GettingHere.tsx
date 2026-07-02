@@ -13,9 +13,10 @@ export default function GettingHere() {
   return (
     <section className="getting" id="getting-here">
       <div className="wrap">
-        <h2 className="rv">Easier to reach than it sounds.</h2>
+        <h2 className="rv">Just 10 minutes from the Galle Expressway exit.</h2>
         <p className="lede rv">
-          Ten minutes off the Southern Expressway exit, then a short run through the village.
+          Close enough for a spontaneous day out, far enough to feel like you&apos;ve escaped into
+          nature.
         </p>
 
         <div className="gh-grid">
@@ -30,7 +31,8 @@ export default function GettingHere() {
               </div>
             ))}
             <p className="gh-note">
-              Want a hand getting here? Message us and we&apos;ll arrange a vehicle to bring you in.
+              <strong>Need transport? We can help arrange it.</strong> Message us and we&apos;ll
+              arrange a vehicle to bring you in.
             </p>
             <div className="gh-cta">
               <WhatsAppPill message={messages.directions} big>

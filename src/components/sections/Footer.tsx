@@ -1,6 +1,6 @@
 import Link from "next/link";
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { asset, contact, messages, NAV_LINKS } from "@/lib/constants";
+import { asset, contact, messages, waLink, NAV_LINKS } from "@/lib/constants";
 
 // Page links plus Rules & Safety, which lives on /day-outing (Doc 05).
 const EXPLORE = [
@@ -41,7 +41,9 @@ export default function Footer() {
 
           <div className="foot-col fc-hello">
             <span className="label">Say hello</span>
-            <span>WhatsApp {contact.whatsappDisplay}</span>
+            <a href={waLink(messages.general)} target="_blank" rel="noopener noreferrer">
+              WhatsApp {contact.whatsappDisplay}
+            </a>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
             <span className="foot-dim">We reply in about 15 minutes</span>
           </div>

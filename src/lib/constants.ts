@@ -15,6 +15,7 @@ export const NAV_LINKS = [
   { href: "/day-outing", label: "Day Outing" },
   { href: "/accommodation", label: "Stay" },
   { href: "/food", label: "Food" },
+  { href: "/events", label: "Events" },
   { href: "/our-story", label: "Our Story" },
 ] as const;
 
@@ -30,31 +31,37 @@ export function asset(path: string): string {
 // Prefilled WhatsApp messages (founder may adjust wording). Each one is
 // context-matched to the button it sits behind (Doc 07 G2).
 export const messages = {
+  // Global floating button — general enquiry (Round 3 G1)
+  general: "Hi Leisure Land! I'd like to know more about visiting.",
   // Day outing / day pass booking (nav, hero, footer, day-outing, food)
-  book: "Hi! I'd like to book a day outing. Date: ___ · Number of people: ___ · Name: ___",
+  book: "Hi! I'd like to book a Day Outing. Can you share availability?",
   // Checking a date for a day outing
   checkDate: "Hi! I'd like to check a date for a day outing. Date: ___ · Number of people: ___ · Name: ___",
   // Pool-only ticket (day-outing pricing)
-  poolOnly: "Hi! I'd like a pool-only ticket. Date: ___ · Number of people: ___ · Name: ___",
+  poolOnly: "Hi! I'd like info on the pool-only ticket — dates & availability.",
   // Rope walking interest (short, context-matching)
   ropeWalk: "Hi! I'd love to try the rope walking, tell me more?",
-  // General stay enquiry
-  stay: "Hi! I'd like to book a stay at Leisure Land. Dates: ___ · Guests: ___ · Name: ___",
-  // General planning help
+  // General stay enquiry (accommodation)
+  stay: "Hi! I'd like rates & availability for a stay at Leisure Land.",
+  // General planning help (final CTA)
   finalCta: "Hi! We're in Galle for a few days, can you help us plan a visit?",
-  // Directions / transfers (we can arrange a vehicle pickup)
-  directions: "Hi! Can you help me get to Leisure Land, maybe arrange a vehicle pickup?",
+  // Transport help (we can arrange a vehicle)
+  directions: "Hi! I'd like help arranging transport to Leisure Land.",
   // Whole-villa booking (real name per Doc 07 S1)
-  wholeVilla: "Hi! I'd like to book the entire A-Frame Villa with Private Jacuzzi. Dates: ___ · Guests: ___ · Name: ___",
+  wholeVilla:
+    "Hi! I'd like to book the whole A-Frame Villa with Private Jacuzzi — rates & availability.",
   // Nature walk add-on (short, context-matching)
   natureWalk: "Hi! I'd like to add the nature walk to our stay. Dates: ___ · Guests: ___ · Name: ___",
-  // Group / corporate outing quote (Doc 07 H5)
-  group: "Hi! I'd like a quote for a group/corporate outing. Group size: ___ · Date: ___",
+  // Group events / corporate (Round 3 G1)
+  group:
+    "Hi! I'd like to plan a group event. Type (corporate/school/celebration): ___ · Size: ___ · Date: ___",
+  // Food — menu request (Round 3 G1)
+  menu: "Hi! Could you share the current menu?",
 } as const;
 
-/** Per-room deep link message (Doc 07 G2). */
+/** Per-room deep link message (Round 3 G1) — injects the room's exact name. */
 export function roomMessage(roomName: string): string {
-  return `Hi! I'm interested in the ${roomName}. Dates: ___ · Guests: ___ · Name: ___`;
+  return `Hi! I'd like rates & availability for the ${roomName}.`;
 }
 
 /** Build a wa.me click-to-chat link with a prefilled message. */
@@ -65,8 +72,8 @@ export function waLink(message: string): string {
 export const contact = {
   email: "hello@leisureland.lk",
   hours: "Open 9 am to 10 pm, every day of the year",
-  // Shown verbatim in the footer until the real number lands.
-  whatsappDisplay: "+94 7X XXX XX XX",
+  // Shown in the footer; links to WhatsApp (Round 3 H5).
+  whatsappDisplay: "+94 77 757 2785",
 };
 
 export type Tone = "jungle" | "water" | "food" | "gold";

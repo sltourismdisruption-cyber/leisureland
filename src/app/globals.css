@@ -304,6 +304,21 @@ h2 { font-size: clamp(30px, 4.3vw, 50px); max-width: 760px; }
   .pano { grid-column: span 12; aspect-ratio: 16/10; }
 }
 
+/* watch: homepage property video, a click-to-play facade on the dark canopy
+   band (Round 3 H1). The tree-house play button replaces the default play
+   triangle (Round 3 H2). */
+.watch { background: var(--canopy); padding: 90px 0 104px; text-align: center; }
+.watch h2 { color: #f4f8f4; text-align: center; }
+.watch .lede { color: rgba(244, 248, 244, 0.78); max-width: 560px; margin-left: auto; margin-right: auto; }
+.watch-frame {
+  position: relative; width: 100%; max-width: 960px; margin: var(--space-block) auto 0;
+  aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden;
+  background: var(--canopy-deep); border: 1px solid rgba(244, 248, 244, 0.15);
+  box-shadow: 0 34px 80px -34px rgba(0, 0, 0, 0.7);
+}
+.watch-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 760px) { .watch { padding: 64px 0 78px; } }
+
 /* food */
 .food-hero { position: relative; border-radius: 24px; overflow: hidden; min-height: 440px; margin-top: var(--space-block); }
 .food-hero .ph { position: absolute; inset: 0; }

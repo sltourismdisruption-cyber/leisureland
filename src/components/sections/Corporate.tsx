@@ -1,3 +1,4 @@
+import Link from "next/link";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { messages } from "@/lib/constants";
 
@@ -5,22 +6,31 @@ export default function Corporate() {
   return (
     <section className="corporate" id="corporate">
       <div className="wrap">
-        <h2 className="rv">Bring the team, the class, or the whole crew.</h2>
+        <h2 className="rv">Group Events &amp; Corporate Experiences</h2>
         <div className="prose rv">
           <p>
-            Outbound training in the jungle, birthdays and weddings under the canopy, a school trip the
-            kids actually remember. We host groups of every shape, from a company offsite to a family
-            reunion, and the rates are built around your numbers.
+            <strong>Bring the team, the class, or the whole crew.</strong>
           </p>
           <p>
-            Tell us who&apos;s coming, your dates, and what you&apos;re hoping for, and we&apos;ll put
-            together a plan and a quote that fits.
+            From corporate day outings and outbound training programs to school excursions,
+            birthdays, and private celebrations, we help you plan experiences that bring people
+            together. Our team can assist with activity arrangements, event coordination, meals, and
+            customized schedules to suit your group&apos;s goals.
+          </p>
+          <p>
+            Share your group size, preferred dates, and what you&apos;re looking to achieve, and
+            we&apos;ll help create an experience tailored to your needs.
           </p>
         </div>
         <div className="mailcta rv">
           <WhatsAppPill message={messages.group} big>
             WhatsApp us for a group quote
           </WhatsAppPill>
+          <p className="corporate-events-link">
+            <Link className="section-link" href="/events">
+              Plan your event →
+            </Link>
+          </p>
         </div>
       </div>
     </section>

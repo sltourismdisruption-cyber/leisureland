@@ -44,7 +44,8 @@ export default function Hero({
           We reply on WhatsApp in about 15 minutes. Walk-ins welcome.
         </p>
       </div>
-      <EdgeOverlay fill="card" position="bottom" />
+      {/* Flows into the dark canopy "Watch" video band below (Round 3 H1). */}
+      <EdgeOverlay fill="canopy" position="bottom" />
     </header>
   );
 }

@@ -15,6 +15,8 @@ export const EDGE_COLORS = {
   canopy: "#1D4534",
   // matches the bottom of the /day-outing day-flow golden-hour gradient
   golden: "#ECDFC2",
+  // the footer band — FinalCta's bottom edge waves the photo into it
+  night: "#143026",
 } as const;
 
 export type EdgeColor = keyof typeof EDGE_COLORS;

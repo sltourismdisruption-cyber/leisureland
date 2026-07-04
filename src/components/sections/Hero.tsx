@@ -28,11 +28,17 @@ export default function Hero({
       </div>
       <div className="wrap hero-in">
         <h1 className="ha" style={rise(150)}>
-          Sri Lanka&apos;s <Underline variant="hero">Nature-Inspired</Underline> Water Park
+          <span className="h1-line">Sri Lanka&apos;s</span>{" "}
+          <Underline variant="hero">Nature-Inspired</Underline>{" "}
+          <span className="h1-line">Water Park</span>
         </h1>
-        <p className="sub ha" style={rise(300)}>
+        {/* Full subtitle on desktop; a shorter one on mobile (toggled in CSS). */}
+        <p className="sub sub-lg ha" style={rise(300)}>
           A full day of slides, pools, traditional games and authentic Sri Lankan food. 10 minutes
           from Galle. From $14 per person.
+        </p>
+        <p className="sub sub-sm ha" style={rise(300)}>
+          A full day of slides, pools and authentic Sri Lankan food. 10 minutes from Galle, from $14.
         </p>
         <div className="hero-cta ha" style={rise(450)}>
           <WhatsAppPill message={messages.book} big>

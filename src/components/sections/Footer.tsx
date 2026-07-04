@@ -11,9 +11,6 @@ const EXPLORE = [
 export default function Footer() {
   return (
     <footer>
-      <span className="fly f1" aria-hidden="true" />
-      <span className="fly f3" aria-hidden="true" />
-      <span className="fly f5" aria-hidden="true" />
       <div className="wrap foot-in">
         <div className="foot-grid rv">
           <div className="foot-brand">

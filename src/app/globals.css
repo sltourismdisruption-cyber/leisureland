@@ -113,9 +113,13 @@ nav {
   border-bottom: 1px solid rgba(30, 58, 44, 0.1);
   transition: background-color 0.35s ease, border-color 0.35s ease;
 }
+/* Over the hero the nav is a soft dark vignette fading to transparent — no
+   flat bar, no border, no blur rectangle — so the photo reads full-bleed to
+   the very top of the screen instead of being framed by a hard edge. */
 html[data-js] nav[data-glass="true"] {
-  background: rgba(13, 33, 23, 0.45);
-  border-bottom-color: rgba(244, 250, 245, 0.14);
+  background: linear-gradient(180deg, rgba(13, 33, 23, 0.6), rgba(13, 33, 23, 0.3) 60%, rgba(13, 33, 23, 0));
+  border-bottom-color: transparent;
+  backdrop-filter: none;
 }
 html[data-js] nav[data-glass="true"] .nav-links a,
 html[data-js] nav[data-glass="true"] .nav-toggle { color: #f2f7f3; }
@@ -182,15 +186,23 @@ html[data-js] nav[data-glass="true"] .logo-dark { opacity: 0; }
   .nav-mobile { display: none !important; }
 }
 
-/* hero (centered, full-bleed under the fixed nav) */
-.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
+/* hero (centered, full-bleed under the fixed nav). The homepage hero fills
+   the first viewport PLUS the 54px edge overlay, so the wavy divider starts
+   right at the fold and the first screen is pure hero on every device.
+   (.page-hero overrides min-height for the shorter inner-page heroes.) */
+.hero { position: relative; min-height: calc(100vh + 54px); min-height: calc(100dvh + 54px); display: flex; align-items: center; }
 .hero-bg { position: absolute; inset: 0; }
 .hero-bg .ph { position: absolute; inset: 0; }
 .hero-bg .ph::after { background: linear-gradient(180deg, rgba(13, 33, 23, 0.3), rgba(13, 33, 23, 0.42) 45%, rgba(13, 33, 23, 0.7)); }
+/* Homepage hero only: a stronger scrim than the inner pages, since the pool
+   photo is bright and busy right behind the headline and trustline. */
+.hero:not(.page-hero) .hero-bg .ph::after { background: linear-gradient(180deg, rgba(13, 33, 23, 0.42), rgba(13, 33, 23, 0.54) 45%, rgba(13, 33, 23, 0.78)); }
 /* slow settle on the hero photo: premium, barely-there */
 .hero-bg .ph-img { animation: kenburns 7s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: 50% 38%; }
 @keyframes kenburns { from { transform: scale(1.07); } to { transform: scale(1); } }
-.hero-in { position: relative; z-index: 3; padding: 90px 0 120px; width: 100%; text-align: center; }
+/* Bottom padding exceeds top by 54px: it cancels the extra 54px of hero
+   height, so the content centers in the VISIBLE viewport, not the taller box. */
+.hero-in { position: relative; z-index: 3; padding: 80px 0 134px; width: 100%; text-align: center; }
 .hero h1 { font-size: clamp(40px, 6.2vw, 74px); color: #f7faf7; max-width: 880px; letter-spacing: -0.01em; margin: 0 auto; }
 /* "Nature-Inspired" can't wrap (the underline needs one line), so scale the
    headline down on narrow phones to keep it inside the gutters */
@@ -211,12 +223,38 @@ html[data-js] .uline path { stroke-dashoffset: 340; }
 html[data-js][data-ready] .hero-u path { animation: draw 0.9s 0.55s ease forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 .hero p.sub { margin-top: 22px; max-width: 580px; margin-left: auto; margin-right: auto; font-size: clamp(17px, 2vw, 19.5px); color: rgba(247, 250, 247, 0.93); }
+/* Two subtitles: the full one on desktop, a shorter one on phones (see the
+   mobile media query). Only one is ever visible. */
+.sub-sm { display: none; }
 .hero-cta { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .pill.big { font-size: clamp(15px, 4.2vw, 16.5px); padding: clamp(12px, 3.4vw, 15px) clamp(18px, 5.5vw, 26px); }
 .quiet-link { font-size: 15.5px; color: #eaf3ec; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
 .quiet-link:hover { text-decoration-thickness: 3px; }
 .trustline { margin-top: 24px; font-size: 16px; color: rgba(247, 250, 247, 0.92); }
-@media (max-width: 760px) { .hero { min-height: 92vh; min-height: 92svh; } }
+/* Mobile: keep the full-viewport height (the old 92svh cap let the divider and
+   the next band peek into the first screen) and tighten the type + gaps so the
+   stacked content breathes instead of feeling packed. */
+@media (max-width: 760px) {
+  /* Generous overshoot: the wave sits well past the fold whatever the browser
+     chrome (URL bar expanded/collapsed) does to the visible height. The extra
+     bottom padding (198 - 80 = 118px) cancels it so content stays centered in
+     the VISIBLE screen. */
+  .hero { min-height: calc(100vh + 118px); min-height: calc(100dvh + 118px); }
+  .hero-in { padding: 80px 0 198px; }
+  /* Break the headline into its three intended lines: Sri Lanka's /
+     Nature-Inspired / Water Park. The underline sits cleanly under line 2. */
+  .hero h1 .h1-line { display: block; }
+  /* Swap the long subtitle for the short one. */
+  .sub-lg { display: none; }
+  .sub-sm { display: block; }
+  .hero p.sub { margin-top: 18px; font-size: 16px; max-width: 480px; }
+  .hero-cta { margin-top: 26px; gap: 15px; }
+  .trustline { margin-top: 20px; font-size: 14px; color: rgba(247, 250, 247, 0.82); }
+}
+/* Cramped short phones: drop the trustline so the hero stack stays airy. */
+@media (max-width: 760px) and (max-height: 700px) {
+  .trustline { display: none; }
+}
 
 section { padding: var(--space-section) 0; }
 h2 { font-size: clamp(30px, 4.3vw, 50px); max-width: 760px; }
@@ -796,8 +834,8 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 /* signed closer on /our-story */
 .signoff { margin-top: 28px; font-size: 17px; color: var(--ink); font-weight: 600; }
 
-/* final + treeline */
-.final { position: relative; padding: 160px 0 230px; text-align: center; }
+/* final (golden-hour closer; its bottom EdgeOverlay waves into the footer) */
+.final { position: relative; padding: 160px 0 200px; text-align: center; }
 .final .bg { position: absolute; inset: 0; }
 .final .bg .ph { position: absolute; inset: 0; }
 .final .bg .ph::after { background: linear-gradient(180deg, rgba(13, 33, 23, 0.45), rgba(13, 33, 23, 0.66)); }
@@ -805,51 +843,50 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 .final h2 { color: #f7faf7; max-width: 780px; margin: 0 auto; font-size: clamp(32px, 5vw, 58px); }
 .final p { margin-top: 16px; color: rgba(247, 250, 247, 0.9); font-size: 17.5px; }
 .final .pill { margin-top: 28px; }
-.treeline { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 3; height: 130px; }
-.treeline svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-/* footer */
-footer { background: var(--night); color: rgba(244, 248, 244, 0.82); overflow: hidden; position: relative; }
-.fly { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #f2d98b; box-shadow: 0 0 12px 4px rgba(242, 217, 139, 0.5); animation: fly 6.5s ease-in-out infinite; z-index: 1; }
-@keyframes fly { 0%, 100% { opacity: 0.12; transform: translateY(0); } 50% { opacity: 0.95; transform: translateY(-9px); } }
-.fly.f1 { top: 9%; left: 12%; }
-.fly.f2 { top: 20%; left: 80%; animation-delay: 1.3s; animation-duration: 7.4s; }
-.fly.f3 { top: 6%; left: 56%; animation-delay: 2.6s; animation-duration: 5.8s; }
-.fly.f4 { top: 32%; left: 31%; animation-delay: 3.4s; }
-.fly.f5 { top: 15%; left: 93%; animation-delay: 4.5s; animation-duration: 7s; }
+/* footer: the quiet sign-off. The site's signature wavy edge (FinalCta's
+   bottom overlay) carries the golden-hour photo into this deep night band —
+   no scalloped treeline, no fireflies. Inside: a disciplined grid (brand,
+   links, practical info) and one warm handwritten closer. */
+footer { background: var(--night); color: rgba(244, 248, 244, 0.82); position: relative; }
 /* padding-top only: .foot-in shares the element with .wrap, whose 26px side
    gutters must survive (a padding shorthand here would zero them) */
-.foot-in { padding-top: 64px; position: relative; z-index: 2; }
+.foot-in { padding-top: 84px; }
 .f-logo { height: 30px; width: auto; display: block; margin-bottom: 18px; }
-.foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.25fr; gap: clamp(26px, 4vw, 56px); padding-bottom: 48px; }
-@media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 36px 28px; } }
-@media (max-width: 600px) {
-  .foot-in { padding-top: 52px; }
+.foot-grid { display: grid; grid-template-columns: 1.45fr 1fr 1fr 1.25fr; gap: clamp(30px, 4.5vw, 70px); padding-bottom: 60px; }
+.foot-brand p { margin: 0 0 22px; font-size: 15px; line-height: 1.7; color: rgba(244, 248, 244, 0.68); max-width: 28ch; }
+.foot-col { display: grid; gap: 12px; align-content: start; font-size: 15px; justify-items: start; }
+.foot-col .label { color: #f4f8f4; font-weight: 600; font-size: 16px; margin-bottom: 6px; }
+.foot-col a { text-decoration: none; color: rgba(244, 248, 244, 0.76); transition: color 0.2s ease; }
+.foot-col a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.foot-dim { color: rgba(244, 248, 244, 0.5); font-size: 14px; line-height: 1.6; }
+.foot-bottom { border-top: 1px solid rgba(244, 248, 244, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 24px 0 30px; font-size: 14px; color: rgba(244, 248, 244, 0.45); }
+.foot-bottom .hand { color: #d9c9a8; font-size: 16.5px; }
+/* Tablet and below: brand full-width, Explore | Visit side by side, then the
+   contact block full-width behind its own hairline. */
+@media (max-width: 880px) {
   .foot-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "brand brand"
       "explore visit"
       "hello hello";
-    gap: 30px 20px;
-    padding-bottom: 38px;
+    gap: 38px 26px;
   }
   .foot-brand { grid-area: brand; }
   .fc-explore { grid-area: explore; }
   .fc-visit { grid-area: visit; }
-  .fc-hello { grid-area: hello; }
-  .foot-brand p { max-width: none; margin-bottom: 16px; }
-  .foot-col { gap: 9px; font-size: 15px; }
-  .foot-bottom { justify-content: center; text-align: center; gap: 6px 18px; }
+  .fc-hello { grid-area: hello; border-top: 1px solid rgba(244, 248, 244, 0.1); padding-top: 26px; }
 }
-.foot-brand p { margin: 0 0 20px; font-size: 15.5px; line-height: 1.65; color: rgba(244, 248, 244, 0.72); max-width: 30ch; }
-.foot-col { display: grid; gap: 11px; align-content: start; font-size: 15.5px; justify-items: start; }
-.foot-col .label { color: #f4f8f4; font-weight: 600; font-size: 16px; margin-bottom: 3px; }
-.foot-col a { text-decoration: none; color: rgba(244, 248, 244, 0.82); }
-.foot-col a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.foot-dim { color: rgba(244, 248, 244, 0.55); font-size: 14.5px; }
-.foot-bottom { border-top: 1px solid rgba(244, 248, 244, 0.13); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 22px 0 28px; font-size: 14px; color: rgba(244, 248, 244, 0.5); }
-.foot-bottom .hand { color: #d9c9a8; font-size: 16px; }
+/* Phones: tighter rhythm, one calm scannable pass. */
+@media (max-width: 600px) {
+  .foot-in { padding-top: 54px; }
+  .foot-grid { gap: 32px 20px; padding-bottom: 38px; }
+  .foot-brand p { max-width: none; margin-bottom: 18px; font-size: 14.5px; }
+  .foot-col { gap: 10px; font-size: 14.5px; }
+  .foot-col .label { font-size: 15.5px; }
+  .foot-bottom { justify-content: center; text-align: center; gap: 4px 16px; padding: 20px 0 26px; }
+}
 
 .fab { position: fixed; right: 22px; bottom: 22px; z-index: 60; background: #25d366; color: #06351a; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.45); text-decoration: none; transition: transform 0.15s; }
 .fab:hover { transform: scale(1.06); }
@@ -912,7 +949,6 @@ html[data-ready] .preloader { opacity: 0; visibility: hidden; pointer-events: no
   .tile .ph, .roomtile .ph, .bigplace .ph, .act-card .frame .ph { transition: none; }
   .tile:hover .ph, .roomtile:hover .ph, .bigplace:hover .ph, .act-card:hover .frame .ph { transform: none; }
   html[data-js] .gx-trail { width: var(--trail-w); transition: none; }
-  .fly { animation: none; opacity: 0.45; }
   nav, .nav-links a, .nav-toggle, .brand img { transition: none; }
   html { scroll-behavior: auto; }
 }

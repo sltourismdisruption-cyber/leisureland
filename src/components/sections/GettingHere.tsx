@@ -1,12 +1,12 @@
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { messages } from "@/lib/constants";
 
-// Times unverified (handoff flags them) — confirm with the founder before launch.
+// Drive times mirror the /accommodation "see all of Galle" journey list
+// (founder-confirmed, Round 3 ST2) so the two pages agree. Colombo removed.
 const ROUTES = [
-  { place: "From Galle Fort", note: "about Rs. 1,500 by vehicle", time: "20 min" },
-  { place: "From Unawatuna", note: "a short run down the coast", time: "30 min" },
+  { place: "From Galle Fort", note: "about Rs. 1,500 by vehicle", time: "15 min" },
+  { place: "From Unawatuna", note: "a short run down the coast", time: "10 min" },
   { place: "From Mirissa", note: "straight along the coast road", time: "45 min" },
-  { place: "From Colombo", note: "via the Southern Expressway, 10 min from the exit", time: "2 hrs" },
 ];
 
 export default function GettingHere() {

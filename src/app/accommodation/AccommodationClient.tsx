@@ -27,7 +27,7 @@ const PaxIcon = () => (
     strokeLinejoin="round"
     role="img"
     aria-label="Sleeps"
-    style={{ width: "1.05em", height: "1.05em", verticalAlign: "-0.15em", marginRight: "0.35em" }}
+    style={{ display: "inline-block", width: "1.05em", height: "1.05em", verticalAlign: "-0.15em", marginRight: "0.35em" }}
   >
     <circle cx="12" cy="8" r="3.4" />
     <path d="M5.5 19.5c0-3.6 2.9-6.3 6.5-6.3s6.5 2.7 6.5 6.3" />

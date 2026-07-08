@@ -1,19 +1,13 @@
 import WhatsAppPill from "@/components/WhatsAppPill";
-import { messages } from "@/lib/constants";
+import { messages, GALLE_DISTANCES } from "@/lib/constants";
 
-// Drive times mirror the /accommodation "see all of Galle" journey list
-// (founder-confirmed, Round 3 ST2) so the two pages agree. Colombo removed.
-const ROUTES = [
-  { place: "From Galle Fort", note: "about Rs. 1,500 by vehicle", time: "15 min" },
-  { place: "From Unawatuna", note: "a short run down the coast", time: "10 min" },
-  { place: "From Mirissa", note: "straight along the coast road", time: "45 min" },
-];
-
+// Distances come from lib/constants (GALLE_DISTANCES) so this list and the
+// /accommodation journey list always show the same places and times.
 export default function GettingHere() {
   return (
     <section className="getting" id="getting-here">
       <div className="wrap">
-        <h2 className="rv">Just 10 minutes from the Galle Expressway exit.</h2>
+        <h2 className="rv">Just 6 minutes from the Galle Expressway exit.</h2>
         <p className="lede rv">
           Close enough for a spontaneous day out, far enough to feel like you&apos;ve escaped into
           nature.
@@ -21,13 +15,10 @@ export default function GettingHere() {
 
         <div className="gh-grid">
           <div className="rv">
-            {ROUTES.map((r) => (
-              <div className="route-row" key={r.place}>
-                <div>
-                  <b>{r.place}</b>
-                  <div className="from">{r.note}</div>
-                </div>
-                <span className="time">about {r.time}</span>
+            {GALLE_DISTANCES.map((d) => (
+              <div className="route-row" key={d.name}>
+                <b>{d.name}</b>
+                <span className="time">about {d.min} minutes</span>
               </div>
             ))}
             <p className="gh-note">

@@ -19,6 +19,18 @@ export const NAV_LINKS = [
   { href: "/our-story", label: "Our Story" },
 ] as const;
 
+// Distances from Leisure Land to nearby places (founder-confirmed). Rendered
+// on BOTH the homepage "getting here" section and the /accommodation journey
+// list — edit here once so the two pages always agree. Order is intentional.
+export const GALLE_DISTANCES: { name: string; min: number }[] = [
+  { name: "Galle Highway exit", min: 6 },
+  { name: "Galle Fort", min: 12 },
+  { name: "Unawatuna Beach", min: 10 },
+  { name: "Jungle Beach", min: 10 },
+  { name: "Turtle Hatchery", min: 15 },
+  { name: "Stilt Fisherman", min: 15 },
+];
+
 // On GitHub Pages the site lives under /leisureland, so every static asset URL
 // gets this prefix. Locally it's empty. Set by the deploy workflow.
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";

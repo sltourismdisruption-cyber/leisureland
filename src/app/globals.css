@@ -357,7 +357,17 @@ h2 { font-size: clamp(30px, 4.3vw, 50px); max-width: 760px; }
   box-shadow: 0 34px 80px -34px rgba(0, 0, 0, 0.7);
 }
 .watch-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-@media (max-width: 760px) { .watch { padding: 64px 0 78px; } }
+/* Perf Phase 3 facade: the clickable poster that stands in for the Vimeo embed
+   until play. Fills the same 16/9 .watch-frame box; the real player swaps in on
+   click. */
+.watch-facade { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; display: block; }
+.watch-facade .ph-img { transition: transform 0.6s ease; }
+.watch-facade:hover .ph-img { transform: scale(1.03); }
+.watch-facade::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 33, 23, 0.12), rgba(13, 33, 23, 0.46)); }
+.watch-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; width: 78px; height: 78px; border-radius: 50%; background: rgba(244, 248, 244, 0.94); box-shadow: 0 12px 34px -10px rgba(0, 0, 0, 0.65); transition: transform 0.3s ease; }
+.watch-facade:hover .watch-play { transform: translate(-50%, -50%) scale(1.06); }
+.watch-play::before { content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 12px 0 12px 20px; border-color: transparent transparent transparent var(--canopy-deep); }
+@media (max-width: 760px) { .watch { padding: 64px 0 78px; } .watch-play { width: 64px; height: 64px; } }
 
 /* food */
 .food-hero { position: relative; border-radius: 24px; overflow: hidden; min-height: 440px; margin-top: var(--space-block); }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { asset } from "@/lib/constants";
 
 /**
@@ -32,8 +33,9 @@ export default function Preloader() {
 
   return (
     <div className={`preloader${leaving ? " is-leaving" : ""}`} aria-hidden="true">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={asset("/assets/logo/leisureland-black.png")} alt="" />
+      {/* Shown before hydration; eager so the curtain wordmark paints at once.
+          CSS (.preloader img) renders it ~36px tall; next/image serves WebP. */}
+      <Image src={asset("/assets/logo/leisureland-black.png")} alt="" width={1714} height={357} sizes="180px" loading="eager" />
       <svg className="pre-line" viewBox="0 0 300 20">
         <path d="M4 13 C 60 6, 120 16, 180 9 S 270 6, 296 11" />
       </svg>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { asset, contact, messages, waLink, NAV_LINKS } from "@/lib/constants";
 
@@ -14,8 +15,9 @@ export default function Footer() {
       <div className="wrap foot-in">
         <div className="foot-grid rv">
           <div className="foot-brand">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="f-logo" src={asset("/assets/logo/leisureland-white.png")} alt="Leisure Land" />
+            {/* Below the fold → stays lazy (next/image default). CSS (.f-logo)
+                renders it ~30px tall; next/image serves a small WebP variant. */}
+            <Image className="f-logo" src={asset("/assets/logo/leisureland-white.png")} alt="Leisure Land" width={1714} height={357} sizes="150px" />
             <p>
               A nature-inspired water park and stay, deep in the jungle ten minutes from Galle.
             </p>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { asset, messages, NAV_LINKS } from "@/lib/constants";
@@ -64,10 +65,11 @@ export default function Nav() {
     >
       <div className="wrap nav-in">
         <Link className="brand" href="/" onClick={() => setOpen(false)} aria-label="Leisure Land home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="logo-dark" src={asset("/assets/logo/leisureland-black.png")} alt="Leisure Land" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="logo-light" src={asset("/assets/logo/leisureland-white.png")} alt="" aria-hidden="true" />
+          {/* Intrinsic 1714×357; CSS (.brand img) renders it ~28px tall.
+              eager (above the fold) but not `priority` — the hero keeps sole
+              LCP priority. next/image serves a small WebP variant. */}
+          <Image className="logo-dark" src={asset("/assets/logo/leisureland-black.png")} alt="Leisure Land" width={1714} height={357} sizes="150px" loading="eager" />
+          <Image className="logo-light" src={asset("/assets/logo/leisureland-white.png")} alt="" aria-hidden="true" width={1714} height={357} sizes="150px" loading="eager" />
         </Link>
         <div className="nav-links">
           {NAV_LINKS.map((l) => (

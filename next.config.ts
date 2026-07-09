@@ -8,7 +8,15 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   basePath,
   trailingSlash: true,
-  images: { unoptimized: true },
+
+  // Image optimization ON (Perf doc Phase 1, Path B). `unoptimized: true` is
+  // removed AND assets.tina.io is whitelisted in the SAME change — one without
+  // the other would break images or serve them raw. Tina-managed photos come
+  // from the TinaCloud media CDN (assets.tina.io); whitelisting lets Vercel's
+  // optimizer fetch, resize, convert to WebP/AVIF and cache them on its edge.
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "assets.tina.io" }],
+  },
 
   // MIGRATION SAFETY NET (SEO Plan doc 09, Phase 1). The live site ranks on
   // these OLD urls; when leisureland.lk flips to this build they must 301 to

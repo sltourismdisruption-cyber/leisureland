@@ -36,7 +36,7 @@ export default function PageHero({
   return (
     <header className="hero page-hero">
       <div className="hero-bg">
-        <Shot tone={tone} label={shotLabel} src={src} tinaField={tinaField} />
+        <Shot tone={tone} label={shotLabel} src={src} tinaField={tinaField} priority />
       </div>
       <div className="wrap hero-in">
         <h1 className="ha" style={rise(150)}>{title}</h1>

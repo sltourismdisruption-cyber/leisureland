@@ -24,6 +24,7 @@ export default function Hero({
           label="shot 01: drone pass over the pools, through the canopy"
           src={src}
           tinaField={tinaField}
+          priority
         />
       </div>
       <div className="wrap hero-in">

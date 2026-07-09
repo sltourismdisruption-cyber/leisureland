@@ -8,6 +8,7 @@ import Fab from "@/components/Fab";
 import CookieConsent from "@/components/CookieConsent";
 import RevealObserver from "@/components/RevealObserver";
 import Preloader from "@/components/Preloader";
+import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const youngSerif = Young_Serif({
   variable: "--font-young-serif",
@@ -30,11 +31,22 @@ const kalam = Kalam({
   display: "swap",
 });
 
+// Sitewide defaults. `metadataBase` lets every page use relative canonical/OG
+// URLs that resolve to https://leisureland.lk. Individual pages override title,
+// description, canonical and OG image (see src/lib/seo.ts). The title/desc here
+// are the fallback for any route that sets none (e.g. /admin); trimmed to ≤60.
 export const metadata: Metadata = {
-  title:
-    "Leisure Land · Sri Lanka's Nature-Inspired Water Park · 10 min from Galle",
+  metadataBase: new URL(SITE_URL),
+  title: "Leisure Land | Nature Water Park & Stay in Galle",
   description:
-    "A full day of slides, pools, traditional games and authentic Sri Lankan food. 10 minutes from Galle. From $14 per person.",
+    "A nature-immersed water park, jungle adventures and rooms tucked in the paddy fields of Galle. Day outings and stays — message us on WhatsApp.",
+  openGraph: {
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "website",
+    images: [{ url: DEFAULT_OG_IMAGE, alt: SITE_NAME }],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

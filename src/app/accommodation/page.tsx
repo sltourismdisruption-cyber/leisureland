@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import client from "../../../tina/__generated__/client";
 import AccommodationClient from "./AccommodationClient";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Stay With Us · The A-Frame Villa & Family Rooms near Galle",
+export const metadata: Metadata = pageMetadata({
+  title: "Stay in Galle | Nature Rooms & A-Frame Villa",
   description:
-    "Rooms in the jungle near Galle and Unawatuna: the A-Frame Villa, family rooms with paddy and pool views, hands-on Ceylon experiences, and the whole water park included in your stay.",
-};
+    "Ten rooms tucked into the jungle — paddy and pool views, a private-jacuzzi villa, full water park access with every stay. Book direct & save.",
+  path: "/accommodation/",
+  // The page hero is a dark/moody night shot; use a daytime landscape (pool +
+  // paddy view, no faces) so shares read warm. [ASSET] still needs a proper
+  // 1200×630 no-faces image; this interim also carries a photo watermark.
+  image:
+    "/images/accommodation/rooms/family-room-pool-view/poolview-pool-paddy-pro.jpg",
+  imageAlt: "Leisure Land pool overlooking the Galle paddy fields",
+});
 
 // Server component: fetch the Accommodation page content from Tina at build
 // time (statically prerendered), then hand it to the client component that

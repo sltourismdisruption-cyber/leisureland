@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
   // optimizer fetch, resize, convert to WebP/AVIF and cache them on its edge.
   images: {
     remotePatterns: [{ protocol: "https", hostname: "assets.tina.io" }],
+    // Long cache lifetime for optimized images (Perf doc Phase 4). assets.tina.io
+    // sends no cache header, so without this the optimized max-age stays tiny and
+    // Lighthouse flags "efficient cache lifetimes". The optimized max-age is the
+    // larger of this and the upstream's, so this sets a 1-year browser/edge TTL.
+    // Safe: a Tina content edit commits to git and triggers a Vercel redeploy,
+    // which purges the per-deployment image cache — so a long TTL won't stale.
+    minimumCacheTTL: 31536000, // 1 year
   },
 
   // MIGRATION SAFETY NET (SEO Plan doc 09, Phase 1). The live site ranks on

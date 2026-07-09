@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "tina:dev": "tinacms dev -c \"next dev\"",
-    "tina:build": "tinacms build --skip-search-index && next build"
+    "tina:build": "tinacms build --skip-search-index && next build",
+    "seo:indexnow": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
     "@tinacms/cli": "^2.4.4",

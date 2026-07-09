@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import client from "../../../tina/__generated__/client";
 import FoodClient from "./FoodClient";
+import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/seo";
+import { restaurantLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
   title: "From Our Kitchen | Real Sri Lankan Food, Galle",
@@ -21,10 +23,13 @@ export const metadata: Metadata = pageMetadata({
 export default async function Food() {
   const res = await client.queries.food({ relativePath: "food.json" });
   return (
-    <FoodClient
-      data={res.data}
-      query={res.query}
-      variables={res.variables}
-    />
+    <>
+      <JsonLd data={restaurantLd()} />
+      <FoodClient
+        data={res.data}
+        query={res.query}
+        variables={res.variables}
+      />
+    </>
   );
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import client from "../../../tina/__generated__/client";
 import AccommodationClient from "./AccommodationClient";
+import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/seo";
+import { lodgingBusinessLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
   title: "Stay in Galle | Nature Rooms & A-Frame Villa",
@@ -22,10 +24,13 @@ export const metadata: Metadata = pageMetadata({
 export default async function Accommodation() {
   const res = await client.queries.accommodation({ relativePath: "accommodation.json" });
   return (
-    <AccommodationClient
-      data={res.data}
-      query={res.query}
-      variables={res.variables}
-    />
+    <>
+      <JsonLd data={lodgingBusinessLd()} />
+      <AccommodationClient
+        data={res.data}
+        query={res.query}
+        variables={res.variables}
+      />
+    </>
   );
 }

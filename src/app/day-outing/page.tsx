@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import client from "../../../tina/__generated__/client";
 import DayOutingClient from "./DayOutingClient";
+import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/seo";
+import { amusementParkLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
   title: "Day Outing in Galle | Water Park + Sri Lankan Buffet",
@@ -20,10 +22,13 @@ export const metadata: Metadata = pageMetadata({
 export default async function DayOuting() {
   const res = await client.queries.dayOuting({ relativePath: "day-outing.json" });
   return (
-    <DayOutingClient
-      data={res.data}
-      query={res.query}
-      variables={res.variables}
-    />
+    <>
+      <JsonLd data={amusementParkLd()} />
+      <DayOutingClient
+        data={res.data}
+        query={res.query}
+        variables={res.variables}
+      />
+    </>
   );
 }

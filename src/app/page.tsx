@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import client from "../../tina/__generated__/client";
 import HomeClient from "./HomeClient";
+import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/seo";
+import { organizationLd, webSiteLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
   title: "Leisure Land | Nature Water Park & Stay in Galle",
@@ -19,6 +21,9 @@ export const metadata: Metadata = pageMetadata({
 export default async function Home() {
   const res = await client.queries.home({ relativePath: "home.json" });
   return (
-    <HomeClient data={res.data} query={res.query} variables={res.variables} />
+    <>
+      <JsonLd data={[organizationLd(), webSiteLd()]} />
+      <HomeClient data={res.data} query={res.query} variables={res.variables} />
+    </>
   );
 }

@@ -774,8 +774,22 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 .mrow:last-child { border-bottom: 1px solid rgba(30, 58, 44, 0.12); }
 .mrow b { color: var(--ink); font-weight: 600; }
 .diet { margin-top: 22px; font-size: 15.5px; color: #5d7065; }
-.menu-soon { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--note);
-  border: 1px dashed rgba(122, 91, 60, 0.55); padding: 5px 10px; border-radius: 6px; }
+
+/* food page: "À la carte, all day" block — was unstyled and sat flush
+   against the menu button above it and its own heading/paragraph. */
+.alacarte { margin-top: var(--space-block); }
+.alacarte p { margin-top: var(--space-heading); }
+
+/* modal: "coming soon" content (heading, paragraph, WhatsApp CTA), centered
+   with even spacing inside a dashed note card. */
+.menu-soon {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: clamp(14px, 3vw, 18px);
+  padding: clamp(26px, 5vw, 34px) clamp(20px, 5vw, 28px);
+  border: 1px dashed rgba(122, 91, 60, 0.55); border-radius: 16px;
+}
+.menu-soon strong { color: var(--ink); font-size: 17px; line-height: 1.45; }
+.menu-soon p { font-size: 15.5px; color: #5d7065; line-height: 1.6; max-width: 42ch; }
 
 /* food page: 3-col culinary showcase */
 .show { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: var(--space-block); }

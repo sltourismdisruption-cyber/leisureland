@@ -13,7 +13,7 @@
   "foodHero": "/images/home/food/sri-lankan-buffet-spread_2.jpg",
   "foodDetails": [
     "/images/home/food/group-feast-buffet-table.jpg",
-    "",
+    "/images/Dessert.jpg",
     "/images/home/food/starfruit-picking-tree.jpg"
   ],
   "stayRooms": [
@@ -22,8 +22,8 @@
     "/images/home/stay/a-frame-villa-exterior-night.jpg"
   ],
   "stayExperiences": [
-    "",
-    "",
+    "/images/Cinnamon.jpg",
+    "/images/Herbal-Tea.jpg",
     "/images/home/stay/hibiscus-drink-making.jpg",
     "/images/home/stay/woman-picking-rambutan.jpg"
   ],

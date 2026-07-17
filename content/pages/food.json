@@ -1,11 +1,11 @@
 {
-  "heroImage": "",
-  "spicyPlate": "",
-  "mildPlate": "",
-  "buffetSpread": "",
+  "heroImage": "/images/food/hero/Hero-Kitchen.jpg",
+  "spicyPlate": "/images/Spicy-Buffet-2.jpg",
+  "mildPlate": "/images/Mild-Buffet.jpg",
+  "buffetSpread": "/images/Buffet-Wide.jpg",
   "showcase": [
-    "",
-    "",
+    "/images/Buffet-Wide-2.jpg",
+    "/images/Evening-Tea.jpg",
     "/images/food/showcase/starfruit-picking-tree.jpg"
   ],
   "ctaImage": "/images/food/final-cta/paddy-fields-golden-hour-wide.jpg"

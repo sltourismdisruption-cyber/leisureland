@@ -202,11 +202,18 @@ html[data-js] nav[data-glass="true"] .logo-dark { opacity: 0; }
 @keyframes kenburns { from { transform: scale(1.07); } to { transform: scale(1); } }
 /* Bottom padding exceeds top by 54px: it cancels the extra 54px of hero
    height, so the content centers in the VISIBLE viewport, not the taller box. */
-.hero-in { position: relative; z-index: 3; padding: 80px 0 134px; width: 100%; text-align: center; }
+/* padding-top/-bottom only (not the shorthand) — `.hero-in` shares its element
+   with `.wrap`, and a shorthand `padding` here would zero out .wrap's side
+   padding entirely, pushing all hero content (subtext, trustline) flush to
+   the screen edges on mobile. */
+.hero-in { position: relative; z-index: 3; padding-top: 80px; padding-bottom: 134px; width: 100%; text-align: center; }
 .hero h1 { font-size: clamp(40px, 6.2vw, 74px); color: #f7faf7; max-width: 880px; letter-spacing: -0.01em; margin: 0 auto; }
-/* "Nature-Inspired" can't wrap (the underline needs one line), so scale the
-   headline down on narrow phones to keep it inside the gutters */
-@media (max-width: 420px) { .hero h1 { font-size: clamp(30px, 8.5vw, 40px); } }
+/* "Nature-Inspired" can't wrap (the underline needs one line). Below 640px the
+   base clamp's vw term never exceeds its 40px floor, so the headline rendered
+   flat and small on every phone; this scales it up to fill most of the width
+   instead (verified 90-97% fill, no overflow, from 320-430px). The 40px cap
+   matches the base rule's own floor so there's no jump at the 640px boundary. */
+@media (max-width: 640px) { .hero h1 { font-size: clamp(30px, 10vw, 40px); } }
 /* staged entrance for the hero content: armed by JS, fired when the
    preloader lifts (data-ready), with a soft blur-to-sharp settle */
 html[data-js] .ha { opacity: 0; }
@@ -240,7 +247,7 @@ html[data-js][data-ready] .hero-u path { animation: draw 0.9s 0.55s ease forward
      bottom padding (198 - 80 = 118px) cancels it so content stays centered in
      the VISIBLE screen. */
   .hero { min-height: calc(100vh + 118px); min-height: calc(100dvh + 118px); }
-  .hero-in { padding: 80px 0 198px; }
+  .hero-in { padding-top: 80px; padding-bottom: 198px; }
   /* Break the headline into its three intended lines: Sri Lanka's /
      Nature-Inspired / Water Park. The underline sits cleanly under line 2. */
   .hero h1 .h1-line { display: block; }
@@ -290,9 +297,14 @@ h2 { font-size: clamp(30px, 4.3vw, 50px); max-width: 760px; }
 .price-block { margin-top: var(--space-feature); text-align: center; }
 .price-block .amount { font-family: var(--serif); font-size: clamp(38px, 5.6vw, 66px); color: var(--ink); line-height: 1.2; }
 .price-block .amount em { color: var(--fern); font-style: normal; }
-/* mobile: always two lines, the "(about $14)" dropping to its own line */
+/* mobile: always two lines, the "(about $14)" dropping to its own line.
+   The nowrap "All of it: 4,200 LKR" line was fixed at the 38px desktop floor
+   on every phone width, so it overflowed the viewport on narrower phones
+   (e.g. clipped off-screen around 360px). This scales the size down with
+   viewport width so it always fits on one line, verified overflow-free
+   from 320px through 430px. */
 @media (max-width: 640px) {
-  .price-block .amount { white-space: nowrap; }
+  .price-block .amount { font-size: clamp(22px, 8vw, 38px); white-space: nowrap; }
   .price-block .amount em { display: block; white-space: normal; }
 }
 .in .pu path { animation: draw 0.9s 0.25s ease forwards; }
@@ -477,7 +489,7 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 
 /* shorter full-bleed hero for subpages, same glass-nav seam */
 .page-hero { min-height: 76vh; min-height: 76svh; }
-.page-hero .hero-in { padding: 120px 0 110px; }
+.page-hero .hero-in { padding-top: 120px; padding-bottom: 110px; }
 @media (max-width: 760px) { .page-hero { min-height: 70vh; min-height: 70svh; } }
 
 /* generic color bands for subpage sections (mist is the page default) */

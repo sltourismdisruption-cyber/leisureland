@@ -3,9 +3,9 @@ import Shot from "@/components/Shot";
 import type { ImgField } from "@/lib/constants";
 
 const DETAILS = [
-  { tone: "food" as const, shot: "shot 10", src: "/assets/photos/bbq-bonfire.jpg", hand: "the curry pots" },
-  { tone: "food" as const, shot: "shot 11", src: "/assets/photos/coconut-climb.jpg", hand: "string hoppers, fresh" },
-  { tone: "gold" as const, shot: "shot 12", src: "/assets/photos/wildlife-lizard.jpg", hand: "plucked from our gardens" },
+  { tone: "food" as const, shot: "shot 10", src: "/assets/photos/bbq-bonfire.jpg" },
+  { tone: "food" as const, shot: "shot 11", src: "/assets/photos/coconut-climb.jpg" },
+  { tone: "gold" as const, shot: "shot 12", src: "/assets/photos/wildlife-lizard.jpg" },
 ];
 
 // Images come from the home doc via Tina (buffet hero + 3 detail tiles, by
@@ -43,7 +43,6 @@ export default function Food({
               <div className="frame">
                 <Shot tone={d.tone} label={d.shot} src={details?.[i]?.src ?? d.src} tinaField={details?.[i]?.tinaField} />
               </div>
-              <span className="hand">{d.hand}</span>
             </div>
           ))}
         </div>

@@ -9,6 +9,7 @@ import CookieConsent from "@/components/CookieConsent";
 import RevealObserver from "@/components/RevealObserver";
 import Preloader from "@/components/Preloader";
 import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const youngSerif = Young_Serif({
   variable: "--font-young-serif",
@@ -85,6 +86,7 @@ export default function RootLayout({
         <Fab />
         <CookieConsent />
         <RevealObserver />
+        <SpeedInsights />
       </body>
     </html>
   );

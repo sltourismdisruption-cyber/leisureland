@@ -22,6 +22,14 @@ export default function Nav() {
   const stripSlash = (s: string) => s.replace(/\/+$/, "") || "/";
   const isActive = (href: string) => stripSlash(pathname) === stripSlash(href);
 
+  // Next only scrolls to top on an actual route change, so clicking the logo
+  // or the current page's own nav link while scrolled down does nothing. Force
+  // it back to top in that one case; every other click already navigates and
+  // gets Next's normal scroll-to-top for free.
+  const scrollTopIfCurrent = (href: string) => {
+    if (isActive(href)) window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     setOpen(false);
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -64,7 +72,15 @@ export default function Nav() {
       data-menu-open={open ? "true" : "false"}
     >
       <div className="wrap nav-in">
-        <Link className="brand" href="/" onClick={() => setOpen(false)} aria-label="Leisure Land home">
+        <Link
+          className="brand"
+          href="/"
+          onClick={() => {
+            setOpen(false);
+            scrollTopIfCurrent("/");
+          }}
+          aria-label="Leisure Land home"
+        >
           {/* Intrinsic 1714×357; CSS (.brand img) renders it ~28px tall.
               eager (above the fold) but not `priority` — the hero keeps sole
               LCP priority. next/image serves a small WebP variant. */}
@@ -78,6 +94,7 @@ export default function Nav() {
               href={l.href}
               className={isActive(l.href) ? "active" : undefined}
               aria-current={isActive(l.href) ? "page" : undefined}
+              onClick={() => scrollTopIfCurrent(l.href)}
             >
               {l.label}
             </Link>
@@ -107,7 +124,10 @@ export default function Nav() {
             href={l.href}
             className={isActive(l.href) ? "active" : undefined}
             aria-current={isActive(l.href) ? "page" : undefined}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              scrollTopIfCurrent(l.href);
+            }}
           >
             {l.label}
           </Link>

@@ -34,7 +34,7 @@ export default function Food({
             tinaField={hero?.tinaField}
           />
           <p className="grandma">
-            {'"made the way grandma would, from scratch, in our kitchen, with nothing fake."'}
+            {'"Just like Grandma made it — from scratch, in our kitchen, with nothing fake."'}
           </p>
         </div>
         <div className="food-details">

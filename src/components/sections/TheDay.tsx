@@ -11,7 +11,7 @@ type Moment = { icon: ReactNode; title: string; body: string };
 const MOMENTS: Moment[] = [
   {
     title: "Arrive and breathe.",
-    body: "Fresh fruit juice in hand, jungle all around.",
+    body: "Fresh fruit juice in hand, surrounded by lush greenery.",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path d="M16 15h16l-2.4 22.5c-.3 3-2.4 4.5-5.6 4.5s-5.3-1.5-5.6-4.5L16 15z" />

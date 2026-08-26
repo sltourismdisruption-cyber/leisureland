@@ -266,7 +266,7 @@ export default function AccommodationClient(props: {
           </p>
           <WalkCarousel photos={walkPhotos} tinaField={tinaField(acc, "natureWalk")} />
           <p className="closing rv">
-            This is the Sri Lanka most tourists never touch. Literally.{" "}
+            This is the Sri Lanka most tourists never see.{" "}
             <a
               className="section-link"
               href={waLink(messages.natureWalk)}

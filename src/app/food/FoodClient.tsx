@@ -44,7 +44,7 @@ export default function FoodClient(props: {
             <div className="rv">
               <h2>Absolutely no artificial flavors. Everything made from real ingredients.</h2>
               <p className="pp">From scratch, in our kitchen, every single day. Ingredients from our own land where we can, the rest from the village around us.</p>
-              <p className="grandma">Food made the way grandma would.</p>
+              <p className="grandma">Just like Grandma made it.</p>
             </div>
             <div className="rv philo-art" style={{ transitionDelay: "90ms" }}>
               <svg className="botanical" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

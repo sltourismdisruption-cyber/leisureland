@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import WhatsAppPill from "@/components/WhatsAppPill";
+import { XIcon, ListIcon } from "@phosphor-icons/react/ssr";
 import { asset, messages, NAV_LINKS } from "@/lib/constants";
 
 export default function Nav() {
@@ -110,9 +111,9 @@ export default function Nav() {
             onClick={() => setOpen((v) => !v)}
           >
             {open ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              <XIcon size="100%" weight="regular" aria-hidden="true" />
             ) : (
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+              <ListIcon size="100%" weight="regular" aria-hidden="true" />
             )}
           </button>
         </div>

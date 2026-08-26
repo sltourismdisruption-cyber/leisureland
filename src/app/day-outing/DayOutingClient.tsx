@@ -1,7 +1,14 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import { useTina, tinaField } from "tinacms/dist/react";
+import {
+  IdentificationCardIcon,
+  TShirtIcon,
+  TowelIcon,
+  LifebuoyIcon,
+  UsersThreeIcon,
+} from "@phosphor-icons/react/ssr";
 import PageHero from "@/components/PageHero";
 import SectionEdge from "@/components/SectionEdge";
 import Shot from "@/components/Shot";
@@ -167,20 +174,20 @@ const RULES: { rule: string; detail: string }[] = [
   { rule: "Under 18s", detail: "Come along with a parent or guardian." },
 ];
 
-// Hand-drawn stroke icons for the rules, in the same order as RULES.
-const RULE_ICONS = [
-  // ID card
-  <svg viewBox="0 0 48 48" key="id"><rect x="6" y="12" width="36" height="25" rx="4" /><circle cx="15.5" cy="22" r="4" /><path d="M25 20h13" /><path d="M25 26.5h10" /><path d="M11 31.5h9" /></svg>,
-  // swimwear
-  <svg viewBox="0 0 48 48" key="swim"><path d="M11 16h26" /><path d="M11 16l3.5 15c1 4.5 6.5 4.5 7.5 0l2-8 2 8c1 4.5 6.5 4.5 7.5 0L37 16" /><path d="M21.5 16c0 3 5 3 5 0" /></svg>,
-  // towel
-  <svg viewBox="0 0 48 48" key="towel"><path d="M9 17h25a6.5 6.5 0 0 1 0 13H9z" /><path d="M9 17v13" /><path d="M9 23.5h25" /><path d="M38 22v9" /></svg>,
-  // alcohol clock
-  <svg viewBox="0 0 48 48" key="alcohol"><circle cx="17" cy="25" r="10.5" /><path d="M17 25v-6.5" /><path d="M17 25l4.5 2.5" /><path d="M32 13h9l-1.8 9c-.8 6.5-4.6 6.5-5.4 0z" /><path d="M36.5 29v6" /><path d="M33 35h7" /></svg>,
-  // lifebuoy
-  <svg viewBox="0 0 48 48" key="guard"><circle cx="24" cy="24" r="13" /><circle cx="24" cy="24" r="5.5" /><path d="M24 11v7.5M24 29.5V37M11 24h7.5M29.5 24H37" /></svg>,
-  // parent and child
-  <svg viewBox="0 0 48 48" key="kids"><circle cx="17" cy="13.5" r="5" /><path d="M9 38c0-8.5 3.8-12.5 8-12.5s8 4 8 12.5" /><circle cx="34" cy="20" r="4" /><path d="M28.5 38c0-6 2.5-9 5.5-9s5.5 3 5.5 9" /></svg>,
+// Icons for the rules, in the same order as RULES. Generic ones now use
+// Phosphor; the alcohol/clock combo is a specific compound concept no icon
+// library has, so it stays hand-drawn (see .lib-icon in globals.css).
+const RULE_ICONS: { icon: ReactNode; lib?: boolean }[] = [
+  { lib: true, icon: <IdentificationCardIcon size="100%" weight="regular" /> },
+  { lib: true, icon: <TShirtIcon size="100%" weight="regular" /> },
+  { lib: true, icon: <TowelIcon size="100%" weight="regular" /> },
+  {
+    icon: (
+      <svg viewBox="0 0 48 48" key="alcohol"><circle cx="17" cy="25" r="10.5" /><path d="M17 25v-6.5" /><path d="M17 25l4.5 2.5" /><path d="M32 13h9l-1.8 9c-.8 6.5-4.6 6.5-5.4 0z" /><path d="M36.5 29v6" /><path d="M33 35h7" /></svg>
+    ),
+  },
+  { lib: true, icon: <LifebuoyIcon size="100%" weight="regular" /> },
+  { lib: true, icon: <UsersThreeIcon size="100%" weight="regular" /> },
 ];
 
 export default function DayOutingClient(props: {
@@ -198,7 +205,7 @@ export default function DayOutingClient(props: {
         shotLabel="day-outing hero: best action or joy shot from the shoot"
         src={d.heroImage ?? undefined}
         title="Your Day at Leisure Land"
-        sub="One ticket. A full day of slides, traditional games, jungle, and a proper Sri Lankan feast."
+        sub="One ticket. A full day of slides, traditional games, jungle, and a proper Sri Lankan feast. Six minutes from the Galle Highway exit."
         ctaLabel="WhatsApp to book your day"
         message={messages.book}
         edgeFill="mist"
@@ -323,7 +330,7 @@ export default function DayOutingClient(props: {
       <section className="band-card" id="pricing">
         <div className="wrap">
           <h2 className="rv">What your day costs.</h2>
-          <p className="lede rv">Two simple options, side by side. Pick the day you want.</p>
+          <p className="lede rv">Two simple day out packages, side by side. Pick the day you want.</p>
           <div className="tickets">
             <div className="twrap tilt-a rv">
               <div className="ticket">
@@ -414,7 +421,7 @@ export default function DayOutingClient(props: {
           <div className="rules">
             {RULES.map((r, i) => (
               <div className="rule rv" key={r.rule} style={{ transitionDelay: `${(i % 2) * 60}ms` }}>
-                <span className="ric" aria-hidden="true">{RULE_ICONS[i]}</span>
+                <span className={RULE_ICONS[i].lib ? "ric lib-icon" : "ric"} aria-hidden="true">{RULE_ICONS[i].icon}</span>
                 <div>
                   <b>{r.rule}</b>
                   <p>{r.detail}</p>

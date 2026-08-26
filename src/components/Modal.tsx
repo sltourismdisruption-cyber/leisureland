@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState, type ReactNode } from "react";
+import { XIcon } from "@phosphor-icons/react/ssr";
 
 /**
  * Generic pop-up dialog with its own trigger button. Reuses the lightbox
@@ -61,9 +62,7 @@ export default function Modal({
                 aria-label="Close"
                 autoFocus
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M6 6l12 12M18 6L6 18" />
-                </svg>
+                <XIcon size="100%" weight="regular" aria-hidden="true" />
               </button>
             </div>
             <div className="modal-body">{children}</div>

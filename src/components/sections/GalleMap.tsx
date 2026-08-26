@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { WavesIcon, FlagIcon, RoadHorizonIcon, MapPinIcon } from "@phosphor-icons/react/ssr";
 import { GALLE_DISTANCES } from "@/lib/constants";
 
 /**
@@ -6,51 +7,38 @@ import { GALLE_DISTANCES } from "@/lib/constants";
  * (minutes), so near and far read at a glance. The places and times come from
  * lib/constants (GALLE_DISTANCES) so this list and the homepage "getting here"
  * section always agree; the icon per place is matched by name below.
+ *
+ * Generic places (roads, flags, beaches) use Phosphor icons; Turtle Hatchery
+ * and Stilt Fisherman stay hand-drawn — no icon library has a turtle or a
+ * stilt-fisherman glyph, and a generic stand-in would lose what makes them
+ * recognizable. See .lib-icon in globals.css.
  */
 
-const ICONS: Record<string, ReactNode> = {
-  "Galle Highway exit": (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M9 21 10.5 3" />
-      <path d="M15 21 13.5 3" />
-      <path d="M12 6v2" />
-      <path d="M12 11v2" />
-      <path d="M12 16v2" />
-    </svg>
-  ),
-  "Galle Fort": (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 19V5" />
-      <path d="M8 6l7 2.5L8 11" />
-      <path d="M4.5 19h8" />
-    </svg>
-  ),
-  "Unawatuna Beach": (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M3 15q4.5-5 9 0t9 0" />
-    </svg>
-  ),
-  "Jungle Beach": (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 18C5 10.5 11 5.5 19 6c-.5 7.5-6.5 12.5-14 12Z" />
-      <path d="M7.5 15.5C10 12 13.5 9.5 17.5 8" />
-    </svg>
-  ),
-  "Turtle Hatchery": (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5.5 14a6.5 5.5 0 0 1 13 0" />
-      <path d="M3.5 14h17" />
-      <path d="M18.5 11.5l2-1.5" />
-    </svg>
-  ),
-  "Stilt Fisherman": (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M10 19V5" />
-      <path d="M6.5 9.5h7" />
-      <circle cx="15.5" cy="7" r="1.8" />
-      <path d="M4 19q4-4 8 0t8 0" />
-    </svg>
-  ),
+const ICONS: Record<string, { icon: ReactNode; lib?: boolean }> = {
+  "Katugoda Surfing Beach": { lib: true, icon: <WavesIcon size="100%" weight="regular" /> },
+  "Galle Highway exit": { lib: true, icon: <RoadHorizonIcon size="100%" weight="regular" /> },
+  "Galle Fort": { lib: true, icon: <FlagIcon size="100%" weight="regular" /> },
+  "Unawatuna Beach": { lib: true, icon: <WavesIcon size="100%" weight="regular" /> },
+  "Jungle Beach": { lib: true, icon: <WavesIcon size="100%" weight="regular" /> },
+  "Turtle Hatchery": {
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5.5 14a6.5 5.5 0 0 1 13 0" />
+        <path d="M3.5 14h17" />
+        <path d="M18.5 11.5l2-1.5" />
+      </svg>
+    ),
+  },
+  "Stilt Fisherman": {
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10 19V5" />
+        <path d="M6.5 9.5h7" />
+        <circle cx="15.5" cy="7" r="1.8" />
+        <path d="M4 19q4-4 8 0t8 0" />
+      </svg>
+    ),
+  },
 };
 
 // Trail length ratio: minutes over the farthest ride (15), so the longest
@@ -69,10 +57,7 @@ export default function GalleMap() {
 
         <div className="mappanel rv">
           <div className="gx-base">
-            <svg className="gx-pin" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" fill="none" stroke="var(--cta)" strokeWidth="2.5" />
-              <circle cx="12" cy="12" r="4" fill="var(--cta)" />
-            </svg>
+            <MapPinIcon className="gx-pin" weight="fill" aria-hidden="true" />
             <b>Leisure Land</b>
             <span className="hand">deep in the jungle, 6 min off the highway</span>
           </div>
@@ -84,7 +69,7 @@ export default function GalleMap() {
                 style={{ transitionDelay: `${i * 70}ms`, "--ratio": trailRatio(d.min) } as CSSProperties}
               >
                 <span className="gx-name">
-                  <span className="gx-ic">{ICONS[d.name]}</span>
+                  <span className={ICONS[d.name]?.lib ? "gx-ic lib-icon" : "gx-ic"}>{ICONS[d.name]?.icon}</span>
                   {d.name}
                 </span>
                 <span className="gx-bar">

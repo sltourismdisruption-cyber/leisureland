@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react/ssr";
 import Shot from "@/components/Shot";
 import type { Tone } from "@/lib/constants";
 
 export type GalleryPhoto = { tone: Tone; label: string; src?: string };
 
-const Chevron = ({ dir }: { dir: "left" | "right" }) => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    {dir === "left" ? <path d="M14.5 5 8 12l6.5 7" /> : <path d="M9.5 5 16 12l-6.5 7" />}
-  </svg>
-);
+const Chevron = ({ dir }: { dir: "left" | "right" }) =>
+  dir === "left" ? (
+    <CaretLeftIcon size="100%" weight="bold" aria-hidden="true" />
+  ) : (
+    <CaretRightIcon size="100%" weight="bold" aria-hidden="true" />
+  );
 
 /**
  * Multi-photo room gallery (Doc 06 §1): swipeable scroll-snap track with
@@ -145,9 +147,7 @@ export default function RoomGallery({
             aria-label="Close photos"
             autoFocus
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
+            <XIcon size="100%" weight="regular" aria-hidden="true" />
           </button>
           <span className="lb-count" aria-hidden="true">
             {lightbox + 1} / {photos.length}

@@ -2,6 +2,15 @@
 
 import type { ReactNode } from "react";
 import { useTina, tinaField } from "tinacms/dist/react";
+import {
+  UserIcon,
+  SwimmingPoolIcon,
+  WifiHighIcon,
+  LeafIcon,
+  CoffeeIcon,
+  OrangeIcon,
+  BirdIcon,
+} from "@phosphor-icons/react/ssr";
 import PageHero from "@/components/PageHero";
 import SectionEdge from "@/components/SectionEdge";
 import WhatsAppPill from "@/components/WhatsAppPill";
@@ -15,23 +24,10 @@ import { roomListings, roomMessage, waLink, messages, type Tone } from "@/lib/co
 import type { AccommodationQuery } from "../../../tina/__generated__/types";
 
 // Single-person icon standing in for the word "Sleeps" (max pax) on room cards
-// (Round 3 ST1). currentColor + inline sizing so it inherits the meta text.
+// (Round 3 ST1). Sizing/color come from the .pax-ic CSS rule (globals.css),
+// matching every other icon family instead of one-off inline styles.
 const PaxIcon = () => (
-  <svg
-    className="pax-ic"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    role="img"
-    aria-label="Sleeps"
-    style={{ display: "inline-block", width: "1.05em", height: "1.05em", verticalAlign: "-0.15em", marginRight: "0.35em" }}
-  >
-    <circle cx="12" cy="8" r="3.4" />
-    <path d="M5.5 19.5c0-3.6 2.9-6.3 6.5-6.3s6.5 2.7 6.5 6.3" />
-  </svg>
+  <UserIcon className="pax-ic" weight="regular" role="img" aria-label="Sleeps" />
 );
 
 /*
@@ -83,24 +79,30 @@ const STAY_FAQS: QA[] = [
 ];
 
 // Every stay includes: the founder's exact 6 items (BBQ stays an add-on, not
-// folded in here), each paired with a hand-drawn fern stroke icon. Strokes
-// inherit color/width from .inc .iic svg, so no per-path styling.
-const INCLUDES: { title: string; body: string; icon: ReactNode }[] = [
-  { title: "Full access to the water park", body: "Every slide, pool and game, all day, every day of your stay.", icon: <svg viewBox="0 0 48 48"><path d="M7 30c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3" /><path d="M7 38c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3" /><path d="M14 27V13a4 4 0 0 1 8 0v3" /><circle cx="30" cy="14" r="3.5" /></svg> },
-  { title: "Complimentary Wi-Fi", body: "Stay connected across the whole property.", icon: <svg viewBox="0 0 48 48"><path d="M10 22c8-7 20-7 28 0" /><path d="M15 28c5.5-4.5 12.5-4.5 18 0" /><path d="M20 34c3-2.5 5-2.5 8 0" /><circle cx="24" cy="38.5" r="1.6" fill="currentColor" stroke="none" /></svg> },
-  { title: "Peaceful jungle surroundings", body: "Fresh air and calm, with nothing rushing you.", icon: <svg viewBox="0 0 48 48"><path d="M24 40c0-10 5-16 13-18-3 9-7 13-13 14" /><path d="M24 40c0-12-5-19-13-21 3 10 7 15 13 16" /><path d="M24 40V24" /></svg> },
-  { title: "Natural sounds and birdsong", body: "The property is alive with birds from first light.", icon: <svg viewBox="0 0 48 48"><path d="M14 32c0-7 5-12 12-12 4 0 6 2 9 2-1 4-4 6-4 6" /><path d="M14 32c-3 0-5-2-5-5" /><path d="M14 32l-3 6" /><circle cx="31" cy="20.5" r="1.4" fill="currentColor" stroke="none" /></svg> },
-  { title: "Welcome drink on arrival", body: "A cold drink to greet you the moment you land.", icon: <svg viewBox="0 0 48 48"><path d="M15 13h18l-2.5 24a2 2 0 0 1-2 1.8h-9a2 2 0 0 1-2-1.8z" /><path d="M16.5 21h15" /><path d="M27 13l4-6" /></svg> },
-  { title: "Morning bed tea", body: "Bed tea brought to your room when you wake.", icon: <svg viewBox="0 0 48 48"><path d="M14 18h16v8a8 8 0 0 1-16 0z" /><path d="M30 20h4a3 3 0 0 1 0 6h-4" /><path d="M18 13c0-2 2-2 2-4M24 13c0-2 2-2 2-4" /></svg> },
+// folded in here). Generic ones (`lib: true`) now use Phosphor icons; the
+// welcome-drink glass (reused across the site) and cinnamon/hibiscus below
+// stay hand-drawn — no icon library has a matching glyph. Birdsong used to
+// be hand-drawn too but the shape didn't actually read as a bird (just a
+// swoosh + dot), so it's swapped to Phosphor's real Bird icon instead of
+// trying to redraw a better one. See .lib-icon in globals.css.
+const INCLUDES: { title: string; icon: ReactNode; lib?: boolean }[] = [
+  { title: "Full access to the water park", lib: true, icon: <SwimmingPoolIcon size="100%" weight="regular" /> },
+  { title: "Complimentary Wi-Fi", lib: true, icon: <WifiHighIcon size="100%" weight="regular" /> },
+  { title: "Peaceful jungle surroundings", lib: true, icon: <LeafIcon size="100%" weight="regular" /> },
+  { title: "Natural sounds and birdsong", lib: true, icon: <BirdIcon size="100%" weight="regular" /> },
+  { title: "Welcome drink on arrival", icon: <svg viewBox="0 0 48 48"><path d="M15 13h18l-2.5 24a2 2 0 0 1-2 1.8h-9a2 2 0 0 1-2-1.8z" /><path d="M16.5 21h15" /><path d="M27 13l4-6" /></svg> },
+  { title: "Morning bed tea", lib: true, icon: <CoffeeIcon size="100%" weight="regular" /> },
 ];
 
-// Hands-on Ceylon experiences, each with its own hand-drawn icon.
-const EXPERIENCES: { title: string; body: string; icon: ReactNode }[] = [
-  { title: "Pluck Ceylon cinnamon", body: "Straight from the tree.", icon: <svg viewBox="0 0 48 48"><path d="M24 40c0-12 5-19 14-21-3 10-8 15-14 16" /><path d="M24 40c0-9-4-14-11-16 2 8 6 12 11 13" /></svg> },
-  { title: "Pick and brew tea", body: "Your own cup, leaf to pot.", icon: <svg viewBox="0 0 48 48"><path d="M16 16h16v8a8 8 0 0 1-16 0z" /><path d="M32 18h3a3 3 0 0 1 0 6h-3" /><path d="M16 30h16" /></svg> },
+// Hands-on Ceylon experiences. Cinnamon and hibiscus/shoe-flower are
+// specific to this activity, not generic library glyphs — kept hand-drawn;
+// tea, fruit and the bird icon swap to Phosphor (see INCLUDES above).
+const EXPERIENCES: { title: string; body: string; icon: ReactNode; lib?: boolean }[] = [
+  { title: "Pluck Ceylon cinnamon", body: "Straight from the tree.", icon: <svg viewBox="0 0 48 48"><path d="M11 33 L33 11" /><path d="M15 37 L37 15" /><path d="M9 31c-2 2-2 5 0 7s5 2 7 0" /><path d="M39 17c2-2 2-5 0-7s-5-2-7 0" /></svg> },
+  { title: "Pick and brew tea", body: "Your own cup, leaf to pot.", lib: true, icon: <CoffeeIcon size="100%" weight="regular" /> },
   { title: "Make a hibiscus drink", body: "Shoe-flower, the local way.", icon: <svg viewBox="0 0 48 48"><circle cx="24" cy="27" r="9" /><path d="M24 18c0-4 3-6 6-6-1 4-3 6-6 6" /><path d="M20 27h8M24 23v8" /></svg> },
-  { title: "Fruit off the tree", body: "Whatever's ripe that day.", icon: <svg viewBox="0 0 48 48"><path d="M24 38c-6 0-10-5-10-11 0-5 4-9 10-9s10 4 10 9c0 6-4 11-10 11z" /><path d="M24 18c0-4 2-7 5-8" /></svg> },
-  { title: "Watch the birds", body: "The land is full of them.", icon: <svg viewBox="0 0 48 48"><path d="M14 32c0-7 5-12 12-12 4 0 6 2 9 2-1 4-4 6-4 6" /><path d="M14 32c-3 0-5-2-5-5" /><circle cx="31" cy="20.5" r="1.4" fill="currentColor" stroke="none" /></svg> },
+  { title: "Fruit off the tree", body: "Whatever's ripe that day.", lib: true, icon: <OrangeIcon size="100%" weight="regular" /> },
+  { title: "Watch the birds", body: "The land is full of them.", lib: true, icon: <BirdIcon size="100%" weight="regular" /> },
 ];
 
 // Build gallery photos from a Tina image list, keeping the original shot-chip
@@ -229,11 +231,8 @@ export default function AccommodationClient(props: {
           <div className="incl">
             {INCLUDES.map((it, i) => (
               <div className="inc rv" key={it.title} style={{ transitionDelay: `${(i % 2) * 60}ms` }}>
-                <span className="iic" aria-hidden="true">{it.icon}</span>
-                <div>
-                  <b>{it.title}</b>
-                  <p>{it.body}</p>
-                </div>
+                <span className={it.lib ? "iic lib-icon" : "iic"} aria-hidden="true">{it.icon}</span>
+                <b>{it.title}</b>
               </div>
             ))}
           </div>
@@ -288,7 +287,7 @@ export default function AccommodationClient(props: {
           <div className="exp">
             {EXPERIENCES.map((e, i) => (
               <div className="expc rv" key={e.title} style={{ transitionDelay: `${(i % 3) * 70}ms` }}>
-                <span className="eic" aria-hidden="true">{e.icon}</span>
+                <span className={e.lib ? "eic lib-icon" : "eic"} aria-hidden="true">{e.icon}</span>
                 <b>{e.title}</b>
                 <p>{e.body}</p>
               </div>

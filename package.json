@@ -12,6 +12,7 @@
     "seo:indexnow": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@tinacms/cli": "^2.4.4",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",

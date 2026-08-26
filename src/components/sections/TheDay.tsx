@@ -1,12 +1,16 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { CoffeeIcon } from "@phosphor-icons/react/ssr";
 import Underline from "@/components/Underline";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { messages } from "@/lib/constants";
 
 // Moment-based flow per Doc 05 §2: no clock times anywhere in this section.
 // Operating hours live in the /day-outing pricing section, FAQ and footer.
-type Moment = { icon: ReactNode; title: string; body: string };
+// `lib: true` marks icons drawn from the Phosphor library instead of hand
+// drawn — those need the `lib-icon` modifier class (see globals.css) since
+// they're fill-based glyphs, not stroke-based line art like their siblings.
+type Moment = { icon: ReactNode; title: string; body: string; lib?: boolean };
 
 const MOMENTS: Moment[] = [
   {
@@ -67,15 +71,8 @@ const MOMENTS: Moment[] = [
   {
     title: "Wind down.",
     body: "Black tea or coffee as the light goes golden.",
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M11 24h20v5.5c0 6-4 10.5-10 10.5s-10-4.5-10-10.5V24z" />
-        <path d="M31 26c4.5 0 6.5 2 6.5 4.2S35.5 34.5 31 34.5" />
-        <path d="M9 43h26" />
-        <path d="M18 18c0-3 2-3 2-6" />
-        <path d="M26 18c0-3 2-3 2-6" />
-      </svg>
-    ),
+    lib: true,
+    icon: <CoffeeIcon size="100%" weight="regular" aria-hidden="true" />,
   },
 ];
 
@@ -89,7 +86,7 @@ export default function TheDay() {
         <div className="timeline">
           {MOMENTS.map((m, i) => (
             <div className="stop rv" key={m.title} style={{ transitionDelay: `${i * 70}ms` }}>
-              <span className="ic">{m.icon}</span>
+              <span className={m.lib ? "ic lib-icon" : "ic"}>{m.icon}</span>
               <div>
                 <b>{m.title}</b>
                 <p>{m.body}</p>

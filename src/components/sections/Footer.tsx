@@ -3,10 +3,13 @@ import Image from "next/image";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { asset, contact, messages, waLink, NAV_LINKS } from "@/lib/constants";
 
-// Page links plus Rules & Safety, which lives on /day-outing (Doc 05).
+// Page links plus Rules & Safety (Doc 05) and Photos — both deliberately kept
+// out of the primary nav (NAV_LINKS) to keep it short, but real destinations
+// worth surfacing in the footer.
 const EXPLORE = [
   ...NAV_LINKS,
   { href: "/day-outing#rules", label: "Rules & Safety" },
+  { href: "/gallery", label: "Photos" },
 ];
 
 export default function Footer() {

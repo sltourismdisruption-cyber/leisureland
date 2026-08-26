@@ -13,6 +13,7 @@
  */
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { asset } from "@/lib/constants";
 
 // Poster: a no-faces, landscape aerial of the pools + jungle (brand rule).
@@ -42,6 +43,11 @@ export default function VideoWatch({
         <h2 className="rv">See the place for yourself.</h2>
         <p className="lede rv">
           A quick look around the park, the pools, and the jungle it all sits in.
+        </p>
+        <p className="rv">
+          <Link className="section-link" href="/gallery">
+            See more photos
+          </Link>
         </p>
 
         <div className="watch-frame rv" data-tina-field={tinaField}>

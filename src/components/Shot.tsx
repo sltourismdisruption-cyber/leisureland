@@ -11,6 +11,7 @@ import { asset, type Tone } from "@/lib/constants";
 export default function Shot({
   tone,
   src,
+  alt = "",
   tinaField,
   priority = false,
   sizes = "100vw",
@@ -19,6 +20,13 @@ export default function Shot({
   /** Photographer brief; retained as data, no longer rendered as an overlay. */
   label: string;
   src?: string;
+  /**
+   * Descriptive alt text for image search / screen readers. Defaults to ""
+   * (decorative) to match every existing caller — only pass this where the
+   * image is content a visitor or Google Images should be able to find on
+   * its own (e.g. the gallery page).
+   */
+  alt?: string;
   /** Formerly aligned the brief chip to the right; retained for caller compatibility. */
   chipRight?: boolean;
   /** Optional Tina visual-editing handle, set by `tinaField(...)`. */
@@ -47,7 +55,7 @@ export default function Shot({
         <Image
           className="ph-img"
           src={asset(src)}
-          alt=""
+          alt={alt}
           fill
           sizes={sizes}
           priority={priority}

@@ -630,6 +630,15 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 .act-card p { margin-top: 8px; font-size: 16px; max-width: 480px; }
 @media (max-width: 760px) { .allacts { grid-template-columns: 1fr; } }
 
+/* gallery page: dense photo grid, click to open the shared lightbox */
+.photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 1.6vw, 18px); margin-top: var(--space-block); }
+.photo-tile { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
+.photo-tile .frame { aspect-ratio: 1/1; }
+.photo-tile .frame .ph { position: absolute; inset: 0; transition: transform 0.6s ease; }
+.photo-tile:hover .frame .ph { transform: scale(1.04); }
+@media (max-width: 760px) { .photo-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
+@media (max-width: 480px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+
 /* ruled menu list (day-outing buffet + /food menu) */
 .menu-list { margin-top: 40px; max-width: 720px; list-style: none; padding: 0; }
 .menu-list li { display: flex; gap: 14px; align-items: baseline; padding: 13px 0; border-top: 1px solid rgba(30, 58, 44, 0.1); }

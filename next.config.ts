@@ -35,12 +35,16 @@ const nextConfig: NextConfig = {
   // `permanent: true` (which would emit 308) so the status matches the plan.
   // NOTE: `/accomodation` keeps the live site's one-"m" typo on the SOURCE on
   // purpose; the NEW route is the correctly spelled `/accommodation`.
+  // `/gallery` is NO LONGER redirected: it used to bounce to `/` because the
+  // new site had no gallery page, but "leisure land photos" / old-URL search
+  // demand never went away (real GSC impressions with nowhere to land) — a
+  // real page now lives at src/app/gallery, reclaiming the exact URL Google
+  // already had signal on instead of losing it to `/`.
   async redirects() {
     return [
       { source: "/dayouting", destination: "/day-outing/", statusCode: 301 },
       { source: "/about", destination: "/our-story/", statusCode: 301 },
       { source: "/accomodation", destination: "/accommodation/", statusCode: 301 },
-      { source: "/gallery", destination: "/", statusCode: 301 },
       { source: "/contact", destination: "/", statusCode: 301 },
     ];
   },

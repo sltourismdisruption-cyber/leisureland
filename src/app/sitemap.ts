@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/", priority: 1 },
     { path: "/day-outing/", priority: 0.9 },
     { path: "/accommodation/", priority: 0.9 },
+    { path: "/gallery/", priority: 0.7 },
     { path: "/food/", priority: 0.8 },
     { path: "/events/", priority: 0.6 },
     { path: "/our-story/", priority: 0.6 },

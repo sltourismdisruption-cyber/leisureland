@@ -13,7 +13,7 @@ import Corporate from "@/components/sections/Corporate";
 import Faq from "@/components/sections/Faq";
 import Reviews from "@/components/sections/Reviews";
 import FinalCta from "@/components/sections/FinalCta";
-import type { ImgField } from "@/lib/constants";
+import { REVIEWS_ENABLED, type ImgField } from "@/lib/constants";
 import type { HomeQuery } from "../../tina/__generated__/types";
 
 /*
@@ -24,9 +24,18 @@ import type { HomeQuery } from "../../tina/__generated__/types";
 
   Band order, every transition separated by the irregular wavy edge
   (hero and final carry their own overlaid edges over the photos):
-  hero(photo) > watch(canopy) > day(card) > acts(canopy) > food(mist) > stay(card) >
-  getting-here(mist) > corporate(mist-deep) > faq(card) >
+  hero(photo) > watch(canopy) > day(card) > stay(mist) > acts(canopy) > food(mist) >
+  getting-here(card) > corporate(mist-deep) > faq(card) > reviews(mist) >
   final(photo) > footer via treeline
+
+  Stay moved up (right after day, before acts) so the 10 rooms surface much
+  earlier in the scroll — was 6th of 11 sections, now 4th. No two adjacent
+  bands share a tone: stay is mist (not card, so it stands apart from "day"
+  right above it) and getting-here is explicit card (not the mist body
+  default, so it stands apart from food right above it). Reviews is mist too
+  (not "day"/card, so it stands apart from faq); when REVIEWS_ENABLED is off
+  Reviews doesn't render, so its edge and FinalCta's edgeFill fall back to
+  card to match faq directly.
 */
 
 export default function HomeClient(props: {
@@ -54,7 +63,12 @@ export default function HomeClient(props: {
       <VideoWatch videoId={d.videoId ?? undefined} tinaField={tinaField(d, "videoId")} />
       <SectionEdge from="canopy" to="card" />
       <TheDay />
-      <SectionEdge from="card" to="canopy" />
+      <SectionEdge from="card" to="mist" />
+      <Stay
+        roomImgs={[0, 1, 2].map((i) => item("stayRooms", d.stayRooms, i))}
+        experienceImgs={[0, 1, 2, 3].map((i) => item("stayExperiences", d.stayExperiences, i))}
+      />
+      <SectionEdge from="mist" to="canopy" />
       <Activities
         spotlight={{ src: d.activitiesSpotlight ?? undefined, tinaField: tinaField(d, "activitiesSpotlight") }}
         tiles={[0, 1, 2, 3, 4, 5].map((i) => item("activitiesTiles", d.activitiesTiles, i))}
@@ -65,18 +79,18 @@ export default function HomeClient(props: {
         details={[0, 1, 2].map((i) => item("foodDetails", d.foodDetails, i))}
       />
       <SectionEdge from="mist" to="card" />
-      <Stay
-        roomImgs={[0, 1, 2].map((i) => item("stayRooms", d.stayRooms, i))}
-        experienceImgs={[0, 1, 2, 3].map((i) => item("stayExperiences", d.stayExperiences, i))}
-      />
-      <SectionEdge from="card" to="mist" />
       <GettingHere />
-      <SectionEdge from="mist" to="mistDeep" />
+      <SectionEdge from="card" to="mistDeep" />
       <Corporate />
       <SectionEdge from="mistDeep" to="card" />
       <Faq />
+      {REVIEWS_ENABLED && <SectionEdge from="card" to="mist" />}
       <Reviews />
-      <FinalCta src={d.ctaImage ?? undefined} tinaField={tinaField(d, "ctaImage")} />
+      <FinalCta
+        src={d.ctaImage ?? undefined}
+        tinaField={tinaField(d, "ctaImage")}
+        edgeFill={REVIEWS_ENABLED ? "mist" : "card"}
+      />
     </>
   );
 }

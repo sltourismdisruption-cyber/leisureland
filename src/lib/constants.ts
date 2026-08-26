@@ -23,6 +23,7 @@ export const NAV_LINKS = [
 // on BOTH the homepage "getting here" section and the /accommodation journey
 // list — edit here once so the two pages always agree. Order is intentional.
 export const GALLE_DISTANCES: { name: string; min: number }[] = [
+  { name: "Katugoda Surfing Beach", min: 5 },
   { name: "Galle Highway exit", min: 6 },
   { name: "Galle Fort", min: 12 },
   { name: "Unawatuna Beach", min: 10 },

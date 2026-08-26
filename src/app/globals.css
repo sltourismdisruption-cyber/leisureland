@@ -251,6 +251,10 @@ html[data-js][data-ready] .hero-u path { animation: draw 0.9s 0.55s ease forward
   /* Break the headline into its three intended lines: Sri Lanka's /
      Nature-Inspired / Water Park. The underline sits cleanly under line 2. */
   .hero h1 .h1-line { display: block; }
+  /* At this line-height the underline's -12px bottom offset reaches past
+     line 2's own box and visually collides with "Water Park" on line 3.
+     Room to breathe below "Nature-Inspired" keeps the underline clear of it. */
+  .hero h1 .hero-u { margin-bottom: 16px; }
   /* Swap the long subtitle for the short one. */
   .sub-lg { display: none; }
   .sub-sm { display: block; }
@@ -393,8 +397,9 @@ h2 { font-size: clamp(30px, 4.3vw, 50px); max-width: 760px; }
 /* mobile: one big image per row (the 2-up looked small and left an odd orphan) */
 @media (max-width: 700px) { .food-details { grid-template-columns: 1fr; gap: 26px; } .food-hero { min-height: 320px; } }
 
-/* stay */
-.stay { background: var(--card); }
+/* stay: mist (not card) so it stands apart from "day" (card) directly above it
+   now that it sits right after the day-outing itinerary. */
+.stay { background: var(--mist); }
 .roomcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: var(--space-block); }
 .roomtile { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(30, 58, 44, 0.14); aspect-ratio: 3/3.8; display: block; text-decoration: none; }
 .roomtile .ph { position: absolute; inset: 0; transition: transform 0.6s ease; }
@@ -446,9 +451,9 @@ html[data-js] .gx-row.in .gx-trail { width: var(--trail-w); }
 }
 .galle .after { margin-top: 26px; font-size: 16px; max-width: 560px; }
 
-/* getting here: practical split panel. Sits on the mist band now that the
-   Galle journey rows moved to /accommodation. */
-.getting { background: transparent; }
+/* getting here: practical split panel. Explicit card tone (not the mist body
+   default) so it stands apart from food (mist) directly above it. */
+.getting { background: var(--card); }
 .gh-grid { display: grid; grid-template-columns: 1.02fr 1fr; gap: clamp(26px, 4.5vw, 64px); margin-top: var(--space-block); align-items: start; }
 .route-row { display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: baseline; padding: 18px 0; border-top: 1px solid rgba(30, 58, 44, 0.1); }
 .route-row:last-of-type { border-bottom: 1px solid rgba(30, 58, 44, 0.1); }

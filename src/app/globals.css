@@ -196,7 +196,7 @@ html[data-js] nav[data-glass="true"] .logo-dark { opacity: 0; }
 .hero-bg .ph::after { background: linear-gradient(180deg, rgba(13, 33, 23, 0.3), rgba(13, 33, 23, 0.42) 45%, rgba(13, 33, 23, 0.7)); }
 /* Homepage hero only: a stronger scrim than the inner pages, since the pool
    photo is bright and busy right behind the headline and trustline. */
-.hero:not(.page-hero) .hero-bg .ph::after { background: linear-gradient(180deg, rgba(13, 33, 23, 0.42), rgba(13, 33, 23, 0.54) 45%, rgba(13, 33, 23, 0.78)); }
+.hero:not(.page-hero) .hero-bg .ph::after { background: linear-gradient(180deg, rgba(13, 33, 23, 0.5), rgba(13, 33, 23, 0.62) 45%, rgba(13, 33, 23, 0.85)); }
 /* slow settle on the hero photo: premium, barely-there */
 .hero-bg .ph-img { animation: kenburns 7s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: 50% 38%; }
 @keyframes kenburns { from { transform: scale(1.07); } to { transform: scale(1); } }

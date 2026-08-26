@@ -5,13 +5,15 @@
       "name": "leisureland-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "port": 3000,
+      "autoPort": true
     },
     {
       "name": "leisureland-tina",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "tina:dev"],
-      "port": 3000
+      "runtimeArgs": ["run", "tina:dev", "--", "--port", "4011", "--datalayer-port", "9010"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

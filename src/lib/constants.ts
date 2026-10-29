@@ -223,3 +223,11 @@ export const GOOGLE_REVIEWS_URL =
   "https://www.google.com/maps/search/?api=1&query=Leisure+Land+Galle&query_place_id=ChIJt5RcRnpy4ToRx7ubNibTwrg";
 export const GOOGLE_REVIEWS_COUNT = "1,000+";
 export const GOOGLE_REVIEWS_RATING = "4.2";
+
+// Real individual review quotes for the reviews carousel, pulled live from
+// Featurable (featurable.com) — a free widget that syncs actual Google
+// Business Profile reviews, refreshed automatically every ~48h. Empty until
+// the founder creates a free Featurable account, connects the Leisure Land
+// Google Business Profile, and shares the widget id. Until then the section
+// falls back to the aggregate rating card above (no invented quotes).
+export const GOOGLE_REVIEWS_FEATURABLE_ID = "";

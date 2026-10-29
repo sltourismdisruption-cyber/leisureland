@@ -4,7 +4,6 @@ import { useTina, tinaField } from "tinacms/dist/react";
 import PageHero from "@/components/PageHero";
 import SectionEdge from "@/components/SectionEdge";
 import Shot from "@/components/Shot";
-import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
 import { messages } from "@/lib/constants";
 import type { OurStoryQuery } from "../../../tina/__generated__/types";
@@ -197,7 +196,6 @@ export default function OurStoryClient(props: {
         </div>
       </section>
 
-      <ReviewsStrip />
       <FinalCta
         heading="Escape. Explore. Enjoy."
         body="Come spend a day with us and see what we mean. With love, the Leisure Land family."

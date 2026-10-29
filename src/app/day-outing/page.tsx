@@ -6,9 +6,9 @@ import { pageMetadata } from "@/lib/seo";
 import { amusementParkLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Day Outing in Galle | Water Park + Sri Lankan Buffet",
+  title: "Galle Day Out Packages from 4,200 LKR | Leisure Land",
   description:
-    "A full day of water slides, rope swings and jungle activities plus a real Sri Lankan lunch buffet. 10 min from the Galle exit. Book on WhatsApp.",
+    "Water slides, rope swings, jungle activities and a Sri Lankan lunch buffet, all in one day. 4,200 LKR per person, kids 2,600. 10 min from the Galle exit.",
   path: "/day-outing/",
   // The page hero is portrait (bad OG crop); use a landscape, no-faces shot
   // from the same page instead. [ASSET] still needs a proper 1200×630 image.

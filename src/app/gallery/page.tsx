@@ -8,9 +8,9 @@ import { pageMetadata } from "@/lib/seo";
 // URL (see next.config.ts — it no longer redirects) which already carried
 // real search demand ("leisure land photos") that had nowhere to land.
 export const metadata: Metadata = pageMetadata({
-  title: "Photos | Leisure Land, Galle",
+  title: "Leisure Land Photos | Water Park, Villas & Food, Galle",
   description:
-    "The water park, the rooms, the food and the jungle around it, in one place. See Leisure Land before you book.",
+    "Photos of the Leisure Land water park, villas, food and the jungle around it near Galle. See it all before you book.",
   path: "/gallery/",
   image: "/images/events/final-cta/aerial-topdown-pools-2019.jpg",
   imageAlt: "Aerial view of the Leisure Land pools and jungle",

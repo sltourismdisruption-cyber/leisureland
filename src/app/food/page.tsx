@@ -6,9 +6,9 @@ import { pageMetadata } from "@/lib/seo";
 import { restaurantLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
-  title: "From Our Kitchen | Real Sri Lankan Food, Galle",
+  title: "Sri Lankan Buffet & Food in Galle | Leisure Land",
   description:
-    "No artificial flavors — real ingredients, village recipes. One buffet, your way: spicy or mild. À la carte all day at Leisure Land.",
+    "Real Sri Lankan food cooked from scratch with village recipes and no artificial flavors. One buffet, spicy or mild, plus à la carte all day near Galle.",
   path: "/food/",
   // No hero shot on this page and real food photos aren't shot yet; use the
   // existing Sri Lankan buffet spread (landscape, no faces) as a topical

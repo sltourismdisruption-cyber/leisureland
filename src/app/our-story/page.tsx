@@ -4,9 +4,9 @@ import OurStoryClient from "./OurStoryClient";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "The Land | Our Story | Leisure Land Galle",
+  title: "Our Story | Leisure Land Galle",
   description:
-    "How childhood adventures in Sri Lanka's paddy fields and jungles became Leisure Land — a place to escape, explore and enjoy near Galle.",
+    "How childhood adventures in Sri Lanka's paddy fields and jungles became Leisure Land, a place to escape, explore and enjoy near Galle.",
   path: "/our-story/",
   // The page hero shows craft workers (faces); use the aerial "land" shot
   // (no discernible faces) which is on-brand for "The Land". [ASSET] a proper

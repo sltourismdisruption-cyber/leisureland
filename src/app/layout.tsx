@@ -39,9 +39,9 @@ const kalam = Kalam({
 // are the fallback for any route that sets none (e.g. /admin); trimmed to ≤60.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Leisure Land | Nature Water Park & Stay in Galle",
+  title: "Leisure Land Galle | Water Park, Day Out Packages & Villas",
   description:
-    "A nature-immersed water park, jungle adventures and rooms tucked in the paddy fields of Galle. Day outings and stays — message us on WhatsApp.",
+    "Nature water park near Galle with jungle activities, a Sri Lankan buffet and villas in the paddy fields. Day out packages from 4,200 LKR. Book on WhatsApp.",
   openGraph: {
     siteName: SITE_NAME,
     locale: "en_US",

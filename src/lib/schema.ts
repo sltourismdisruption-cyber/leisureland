@@ -29,7 +29,7 @@
  *   // },
  */
 import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from "@/lib/seo";
-import { contact } from "@/lib/constants";
+import { contact, GOOGLE_REVIEWS_URL } from "@/lib/constants";
 
 const abs = (path: string) =>
   path.startsWith("http") ? path : `${SITE_URL}${path}`;
@@ -63,6 +63,8 @@ function businessCore(opts: {
       // streetAddress / addressLocality / postalCode: [CONFIRM]
     },
     // geo: [CONFIRM] — no coordinates on record; omitted, not invented.
+    // Ties the site to the Google Business Profile (same place_id as reviews).
+    hasMap: GOOGLE_REVIEWS_URL,
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -109,6 +111,22 @@ export function amusementParkLd() {
       image: "/images/day-outing/final-cta/pool-paddy-fields-professional.jpg",
       description:
         "A nature-immersed water park day outing near Galle: water slides, waterfall pools, traditional Sri Lankan games and an all-you-can-eat buffet.",
+    }),
+  };
+}
+
+// Events page: a bookable group venue. Multi-typed so it keeps the
+// LocalBusiness NAP/hours fields while saying what the page is about.
+export function eventVenueLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "EventVenue"],
+    "@id": `${SITE_URL}/events/#venue`,
+    ...businessCore({
+      url: `${SITE_URL}/events/`,
+      image: "/images/events/final-cta/aerial-topdown-pools-2019.jpg",
+      description:
+        "Group venue near Galle for corporate day outings, outbound training, school trips, birthdays and private celebrations, with a water park and Sri Lankan buffet.",
     }),
   };
 }

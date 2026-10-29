@@ -6,9 +6,9 @@ import { pageMetadata } from "@/lib/seo";
 import { lodgingBusinessLd } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Stay in Galle | Nature Rooms & A-Frame Villa",
+  title: "Leisure Land Villas Galle | A-Frame Villa & Paddy View Rooms",
   description:
-    "Ten rooms tucked into the jungle — paddy and pool views, a private-jacuzzi villa, full water park access with every stay. Book direct & save.",
+    "Ten rooms and a private-jacuzzi A-Frame villa in the jungle near Galle, with water park access on every stay. Book direct on WhatsApp and save.",
   path: "/accommodation/",
   // The page hero is a dark/moody night shot; use a daytime landscape (pool +
   // paddy view, no faces) so shares read warm. [ASSET] still needs a proper

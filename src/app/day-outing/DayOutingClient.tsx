@@ -15,7 +15,6 @@ import Shot from "@/components/Shot";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import MenuModal from "@/components/MenuModal";
 import TermsModal from "@/components/TermsModal";
-import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
 import { messages, dayPricing, dayHours, poolPricing, poolSpecialNote, type Tone } from "@/lib/constants";
 import type { DayOutingQuery } from "../../../tina/__generated__/types";
@@ -435,7 +434,6 @@ export default function DayOutingClient(props: {
         </div>
       </section>
 
-      <ReviewsStrip />
       <FinalCta
         heading="Trust us."
         body="You don't want to miss this experience."

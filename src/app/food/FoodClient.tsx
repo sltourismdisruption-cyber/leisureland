@@ -6,7 +6,6 @@ import PageHero from "@/components/PageHero";
 import SectionEdge from "@/components/SectionEdge";
 import Shot from "@/components/Shot";
 import MenuModal from "@/components/MenuModal";
-import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
 import { messages } from "@/lib/constants";
 import type { FoodQuery } from "../../../tina/__generated__/types";
@@ -183,7 +182,6 @@ export default function FoodClient(props: {
         </div>
       </section>
 
-      <ReviewsStrip />
       <FinalCta
         heading="Hungry already?"
         body="Come for the day and the buffet's included. Tell us spicy or mild when you book."

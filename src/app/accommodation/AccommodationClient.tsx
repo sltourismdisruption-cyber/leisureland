@@ -17,7 +17,6 @@ import WhatsAppPill from "@/components/WhatsAppPill";
 import Accordion, { type QA } from "@/components/Accordion";
 import RoomGallery, { type GalleryPhoto } from "@/components/RoomGallery";
 import WalkCarousel from "@/components/WalkCarousel";
-import ReviewsStrip from "@/components/ReviewsStrip";
 import FinalCta from "@/components/sections/FinalCta";
 import GalleMap from "@/components/sections/GalleMap";
 import { roomListings, roomMessage, waLink, messages, type Tone } from "@/lib/constants";
@@ -309,7 +308,6 @@ export default function AccommodationClient(props: {
         </div>
       </section>
 
-      <ReviewsStrip />
       <FinalCta
         heading="Stay the night. Wake to paddy fields."
         body="Tell us your dates and group size, we'll match you to the right room."

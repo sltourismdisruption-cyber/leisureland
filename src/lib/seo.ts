@@ -12,6 +12,19 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://leisureland.lk";
 export const SITE_NAME = "Leisure Land";
 
+// Official social/listing profiles (founder-supplied 2026-10-29). Rendered as
+// footer links and as schema.org `sameAs`, which tells Google these profiles
+// belong to the same business as the site.
+export const SOCIAL_LINKS = [
+  { label: "Facebook", href: "https://www.facebook.com/leisurelandvillas/" },
+  { label: "Instagram", href: "https://www.instagram.com/leisure_land_villas/" },
+  { label: "TikTok", href: "https://www.tiktok.com/@leisurelandvillas" },
+  {
+    label: "TripAdvisor",
+    href: "https://www.tripadvisor.com/Hotel_Review-g16872286-d6394370-Reviews-Leisure_Land_Villas-Kalahe_Galle_District_Southern_Province.html",
+  },
+];
+
 // Interim sitewide share image: a landscape, no-faces hero (brand rule: never
 // faces on share images). Pages pass their own hero where it's suitable.
 // TODO [ASSET]: replace with a purpose-made 1200×630 no-faces share image.

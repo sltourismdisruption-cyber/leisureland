@@ -14,7 +14,6 @@
  * founder supplies them, the markup omits them rather than guessing:
  *   • streetAddress / addressLocality / postalCode
  *   • geo latitude & longitude
- *   • sameAs (Facebook / Instagram / TripAdvisor profile URLs)
  *   • openingHours — the site publicly states 9am–10pm daily (contact.hours),
  *     but that conflicts with the day-outing 9am–5pm line; reconcile before trusting.
  *
@@ -28,19 +27,14 @@
  *   //   reviewCount: "<from on-site reviews>",
  *   // },
  */
-import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, SOCIAL_LINKS } from "@/lib/seo";
 import { contact, GOOGLE_REVIEWS_URL } from "@/lib/constants";
 
 const abs = (path: string) =>
   path.startsWith("http") ? path : `${SITE_URL}${path}`;
 
-// [CONFIRM] Real social profile URLs. Left empty on purpose — an empty sameAs
-// is omitted from output rather than shipping placeholder/guessed links.
-const SAME_AS: string[] = [
-  // "https://www.facebook.com/…",
-  // "https://www.instagram.com/…",
-  // "https://www.tripadvisor.com/…",
-];
+// Official profiles (see SOCIAL_LINKS in seo.ts), emitted as sameAs.
+const SAME_AS: string[] = SOCIAL_LINKS.map((l) => l.href);
 
 // Shared name/address/phone/hours (NAP) for the venue's business facets.
 function businessCore(opts: {

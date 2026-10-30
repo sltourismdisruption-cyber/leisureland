@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import WhatsAppPill from "@/components/WhatsAppPill";
 import { asset, contact, messages, waLink, NAV_LINKS } from "@/lib/constants";
+import { SOCIAL_LINKS } from "@/lib/seo";
 
 // Page links plus Rules & Safety (Doc 05) and Photos — both deliberately kept
 // out of the primary nav (NAV_LINKS) to keep it short, but real destinations
@@ -48,6 +49,11 @@ export default function Footer() {
             </a>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
             <span className="foot-dim">We reply in about 15 minutes</span>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2">
+              {SOCIAL_LINKS.map((l) => (
+                <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>
+              ))}
+            </div>
           </div>
         </div>
 
